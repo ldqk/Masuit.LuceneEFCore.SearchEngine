@@ -1,3 +1,5 @@
 */obj
 */bin
 /.vs
+/WebSearchDemo/lucene
+/Masuit.LuceneEFCore.SearchEngine.sln.DotSettings.user

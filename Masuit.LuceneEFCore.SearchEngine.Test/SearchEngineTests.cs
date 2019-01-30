@@ -41,8 +41,6 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             searchProvider.CreateIndex();
 
             Assert.Equal(2000, searchProvider.IndexCount);
-
-            // cleanup
             searchProvider.DeleteIndex();
         }
 
@@ -51,23 +49,17 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         {
             InitializeContext();
 
-
             LuceneIndexerOptions options = new LuceneIndexerOptions()
             {
                 Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
-
             searchProvider.CreateIndex();
-
             SearchOptions searchOptions = new SearchOptions("John", "FirstName");
 
-            // test
             var results = searchProvider.ScoredSearch<User>(searchOptions);
 
             Assert.Equal(5, results.TotalHits);
-
-            // cleanup
             searchProvider.DeleteIndex();
         }
 
@@ -75,17 +67,14 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         public void SkipAndTakeWorkWhenSearchingUsingAContextProvider()
         {
             InitializeContext();
-            LuceneIndexerOptions options =new LuceneIndexerOptions()
+            LuceneIndexerOptions options = new LuceneIndexerOptions()
             {
                 Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
-
             searchProvider.CreateIndex();
-
             SearchOptions searchOptions = new SearchOptions("John", "FirstName");
 
-            // test
             var initialResults = searchProvider.ScoredSearch<User>(searchOptions);
             var lastId = initialResults.Results[4].Entity.Id;
 
@@ -100,7 +89,6 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             Assert.Equal(1, subResults.Results.Count);
             Assert.Equal(lastId, subResults.Results.First().Entity.Id);
 
-            // cleanup
             searchProvider.DeleteIndex();
         }
 
@@ -113,9 +101,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
                 Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
-
             searchProvider.CreateIndex();
-
             SearchOptions searchOptions = new SearchOptions("Joh*", "FirstName");
 
             // test
@@ -124,7 +110,6 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
 
             Assert.Equal(10, results.TotalHits);
 
-            // cleanup
             searchProvider.DeleteIndex();
         }
 
@@ -138,9 +123,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
                 Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
-
             searchProvider.CreateIndex();
-
             SearchOptions searchOptions = new SearchOptions("Joh*", "FirstName");
 
             // test
@@ -148,7 +131,6 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
 
             Assert.Equal(10, results.TotalHits);
 
-            // cleanup
             searchProvider.DeleteIndex();
         }
 
@@ -161,13 +143,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
                 Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
-
             searchProvider.CreateIndex();
-
             SearchOptions searchOptions = new SearchOptions("Burns", "FirstName,Surname");
 
             var results = searchProvider.ScoredSearch<User>(searchOptions);
-
             var first = results.Results.First().Entity;
             var highest = results.Results.First().Score;
             var lowest = results.Results.Last().Score;
@@ -188,13 +167,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
                 Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
-
             searchProvider.CreateIndex();
-
             SearchOptions searchOptions = new SearchOptions("Jeremy Burns", "FirstName,Surname");
 
             var results = searchProvider.Search<User>(searchOptions);
-
             var first = results.Results.First();
 
             Assert.Equal("Jeremy", first.FirstName);
@@ -222,13 +198,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             };
             _context.Users.Add(jc);
             _context.SaveChanges();
-
             searchProvider.CreateIndex();
-
             SearchOptions search = new SearchOptions("John", "FirstName", 1000, null, null, "Surname,JobTitle");
 
             var results = searchProvider.ScoredSearch<User>(search);
-
             var topResult = results.Results[0];
             var secondResult = results.Results[1];
 
@@ -247,9 +220,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
                 Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
-
             searchProvider.CreateIndex();
-
             var newUser = new User()
             {
                 FirstName = "Duke",
@@ -257,19 +228,15 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
                 Email = "duke.nukem@test.com",
                 JobTitle = "Shooty Man"
             };
-
             var search = new SearchOptions("Nukem", "Surname");
 
             var initialResults = searchProvider.Search<User>(search);
-
             searchProvider.Context.Users.Add(newUser);
             searchProvider.SaveChanges();
-
             var newResults = searchProvider.Search<User>(search);
 
             Assert.Equal(0, initialResults.TotalHits);
             Assert.Equal(1, newResults.TotalHits);
-
             Assert.Equal(newUser.Id, newResults.Results[0].Id);
         }
 
@@ -290,10 +257,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
 
         private void PrintResult(IScoredSearchResultCollection<User> results)
         {
-            _output.WriteLine($"Total Hist: {results.TotalHits}\tTime Taken: {results.Elapsed}");
+            _output.WriteLine($"总条数: {results.TotalHits}\t耗时: {results.Elapsed}");
             foreach (IScoredSearchResult<User> item in results.Results)
             {
-                _output.WriteLine($"Score: {item.Score}\tName:{item.Entity.FirstName}\tSurname: {item.Entity.Surname}\tEmail: {item.Entity.Email}");
+                _output.WriteLine($"匹配度: {item.Score}\tName:{item.Entity.FirstName}\tSurname: {item.Entity.Surname}\tEmail: {item.Entity.Email}");
             }
         }
     }

@@ -12,11 +12,9 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
 {
     public class LuceneIndexSearcherTests : IClassFixture<TestDataGenerator>
     {
-        // class setup
         static readonly Directory Directory = new RAMDirectory();
         static readonly Analyzer Analyzer = new StandardAnalyzer(Lucene.Net.Util.LuceneVersion.LUCENE_48);
 
-        // create an index
         static readonly LuceneIndexer Indexer = new LuceneIndexer(Directory, Analyzer);
         static readonly LuceneIndexSearcher Searcher = new LuceneIndexSearcher(Directory, Analyzer, new MemoryCache(new MemoryCacheOptions()));
 
@@ -34,18 +32,6 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
 
             Assert.Equal(5, results.TotalHits);
         }
-
-        //[Fact]
-        //public void SearchesCanBeDoneAcrossMultipleTypes()
-        //{
-        //    SearchOptions options = new SearchOptions("John China", "FirstName, Country");
-        //    var results = searcher.ScoredSearch(options);
-
-        //    var firstType = results.Results.First().Document.GetField("Type");
-        //    var lastType = results.Results[results.TotalHits - 1].Document.GetField("Type");
-
-        //    Assert.NotEqual(firstType, lastType);
-        //}
 
         [Fact]
         public void TopNNumberOfResultsCanBeReturned()
@@ -111,7 +97,6 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             var result = Searcher.ScoredSearchSingle(options);
 
             Assert.NotNull(result);
-            // Assert.InstanceOfType(result, typeof(Document));
             Assert.IsType<Document>(result);
             Assert.IsAssignableFrom<Document>(result);
             Assert.Equal("jfisherj@alexa.com", result.Get("Email"));
