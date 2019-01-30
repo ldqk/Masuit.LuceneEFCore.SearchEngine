@@ -4,28 +4,89 @@ using Lucene.Net.Index;
 using Lucene.Net.QueryParsers.Classic;
 using Lucene.Net.Search;
 using Lucene.Net.Store;
+using Masuit.LuceneEFCore.SearchEngine.Helpers;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
+using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text.RegularExpressions;
 
 namespace Masuit.LuceneEFCore.SearchEngine
 {
     public class LuceneIndexSearcher : ILuceneIndexSearcher
     {
-        private static Directory directory;
-        private static Analyzer analyzer;
+        private static Directory _directory;
+        private static Analyzer _analyzer;
+        private readonly IMemoryCache _memoryCache;
+        private static readonly HttpClient HttpClient = new HttpClient()
+        {
+            BaseAddress = new Uri("http://zhannei.baidu.com")
+        };
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="directory">索引目录</param>
         /// <param name="analyzer">索引分析器</param>
-        public LuceneIndexSearcher(Directory directory, Analyzer analyzer)
+        public LuceneIndexSearcher(Directory directory, Analyzer analyzer, IMemoryCache memoryCache)
         {
-            LuceneIndexSearcher.directory = directory;
-            LuceneIndexSearcher.analyzer = analyzer;
+            _directory = directory;
+            _analyzer = analyzer;
+            _memoryCache = memoryCache;
+        }
+
+        /// <summary>
+        /// 分词
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        public List<string> CutKeywords(string keyword)
+        {
+            if (_memoryCache.TryGetValue(keyword, out List<string> list))
+            {
+                return list;
+            }
+            var set = new HashSet<string>
+            {
+                keyword
+            };
+            var mc = Regex.Matches(keyword, @"(([A-Z]*[a-z]*)[\d]*)([\u4E00-\u9FA5]+)*((?!\p{P}).)*");
+            foreach (Match m in mc)
+            {
+                set.Add(m.Value);
+                foreach (Group g in m.Groups)
+                {
+                    set.Add(g.Value);
+                }
+            }
+            if (keyword.Length >= 6)
+            {
+                try
+                {
+                    var res = HttpClient.GetAsync($"/api/customsearch/keywords?title={keyword}").Result;
+                    if (res.StatusCode == HttpStatusCode.OK)
+                    {
+                        BaiduAnalysisModel model = JsonConvert.DeserializeObject<BaiduAnalysisModel>(res.Content.ReadAsStringAsync().Result, new JsonSerializerSettings()
+                        {
+                            NullValueHandling = NullValueHandling.Ignore
+                        });
+                        model.Result.Res.KeywordList?.ForEach(s => set.Add(s));
+                    }
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
+            set.RemoveWhere(s => s.Length < 2 || Regex.IsMatch(s, @"^\p{P}.*"));
+            list = set.OrderByDescending(s => s.Length).ToList();
+            _memoryCache.Set(keyword, list);
+            return list;
         }
 
         /// <summary>
@@ -37,12 +98,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         private BooleanQuery GetFuzzyquery(MultiFieldQueryParser parser, string keywords)
         {
             var finalQuery = new BooleanQuery();
-
-            string[] terms = keywords.Split(new[] //todo:分词
-            {
-                " "
-            }, StringSplitOptions.RemoveEmptyEntries);
-
+            var terms = CutKeywords(keywords);
             foreach (var term in terms)
             {
                 finalQuery.Add(parser.Parse(term.Replace("~", "") + "~"), Occur.MUST);
@@ -61,7 +117,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             // 结果集
             ILuceneSearchResultCollection results = new LuceneSearchResultCollection();
 
-            using (var reader = DirectoryReader.Open(directory))
+            using (var reader = DirectoryReader.Open(_directory))
             {
                 var searcher = new IndexSearcher(reader);
                 Query query;
@@ -75,13 +131,13 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 if (options.Fields.Count == 1)
                 {
                     // 单字段搜索
-                    QueryParser queryParser = new QueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields[0], analyzer);
+                    QueryParser queryParser = new QueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields[0], _analyzer);
                     query = queryParser.Parse(options.Keywords);
                 }
                 else
                 {
                     // 多字段搜索
-                    MultiFieldQueryParser multiFieldQueryParser = new MultiFieldQueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields.ToArray(), analyzer, options.Boosts);
+                    MultiFieldQueryParser multiFieldQueryParser = new MultiFieldQueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields.ToArray(), _analyzer, options.Boosts);
                     query = GetFuzzyquery(multiFieldQueryParser, options.Keywords);
                 }
 

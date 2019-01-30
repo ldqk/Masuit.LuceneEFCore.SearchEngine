@@ -6,6 +6,7 @@ using Lucene.Net.Store;
 using Masuit.LuceneEFCore.SearchEngine.Helpers;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -31,7 +32,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         private static LuceneIndexer _indexer;
         private static LuceneIndexSearcher _searcher;
         private static bool isInitialized = false;
-
+        private readonly IMemoryCache _memoryCache;
         /// <summary>
         /// 索引条数
         /// </summary>
@@ -43,14 +44,15 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="indexerOptions">索引选项</param>
         /// <param name="context">数据库上下文</param>
         /// <param name="overrideIfExists">是否被覆盖</param>
-        public SearchEngine(LuceneIndexerOptions indexerOptions, TContext context, bool overrideIfExists = false)
+        public SearchEngine(LuceneIndexerOptions indexerOptions, TContext context, IMemoryCache memoryCache, bool overrideIfExists = false)
         {
+            Context = context;
+            _memoryCache = memoryCache;
             if (isInitialized == false || overrideIfExists)
             {
                 InitializeLucene(indexerOptions);
             }
 
-            Context = context;
         }
 
         /// <summary>
@@ -73,7 +75,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
 
             _analyzer = new JieBaAnalyzer(TokenizerMode.Search);
             _indexer = new LuceneIndexer(_directory, _analyzer);
-            _searcher = new LuceneIndexSearcher(_directory, _analyzer);
+            _searcher = new LuceneIndexSearcher(_directory, _analyzer, _memoryCache);
         }
 
         /// <summary>
