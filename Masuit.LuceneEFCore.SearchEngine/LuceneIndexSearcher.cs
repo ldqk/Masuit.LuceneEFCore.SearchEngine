@@ -4,7 +4,7 @@ using Lucene.Net.Index;
 using Lucene.Net.QueryParsers.Classic;
 using Lucene.Net.Search;
 using Lucene.Net.Store;
-using Masuit.LuceneEFCore.SearchEngine.Helpers;
+using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;

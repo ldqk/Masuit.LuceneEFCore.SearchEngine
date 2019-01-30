@@ -20,4 +20,10 @@
     <ProjectReference Include="..\Masuit.LuceneEFCore.SearchEngine\Masuit.LuceneEFCore.SearchEngine.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Posts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

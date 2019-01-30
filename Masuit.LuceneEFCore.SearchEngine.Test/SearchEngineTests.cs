@@ -32,9 +32,9 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         public void AContextProviderCanIndexADatabase()
         {
             InitializeContext();
-            LuceneIndexerOptions options = new LuceneIndexerOptions
+            LuceneIndexerOptions options = new LuceneIndexerOptions()
             {
-                UseRamDirectory = true
+                Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
 
@@ -52,9 +52,9 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             InitializeContext();
 
 
-            LuceneIndexerOptions options = new LuceneIndexerOptions
+            LuceneIndexerOptions options = new LuceneIndexerOptions()
             {
-                UseRamDirectory = true
+                Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
 
@@ -75,9 +75,9 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         public void SkipAndTakeWorkWhenSearchingUsingAContextProvider()
         {
             InitializeContext();
-            LuceneIndexerOptions options = new LuceneIndexerOptions
+            LuceneIndexerOptions options =new LuceneIndexerOptions()
             {
-                UseRamDirectory = true
+                Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
 
@@ -108,9 +108,9 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         public void AContextCanBeSearchedUsingAWildCard()
         {
             InitializeContext();
-            LuceneIndexerOptions options = new LuceneIndexerOptions
+            LuceneIndexerOptions options = new LuceneIndexerOptions()
             {
-                UseRamDirectory = true
+                Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
 
@@ -133,9 +133,9 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         public void ASearchWillReturnTheSameResultsAsAScoredSearch()
         {
             InitializeContext();
-            LuceneIndexerOptions options = new LuceneIndexerOptions
+            LuceneIndexerOptions options = new LuceneIndexerOptions()
             {
-                UseRamDirectory = true
+                Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
 
@@ -156,9 +156,9 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         public void AScoredSearchWillOrderByRelevence()
         {
             InitializeContext();
-            LuceneIndexerOptions options = new LuceneIndexerOptions
+            LuceneIndexerOptions options = new LuceneIndexerOptions()
             {
-                UseRamDirectory = true
+                Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
 
@@ -183,9 +183,9 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         public void ASearchWillStillOrderByRelevence()
         {
             InitializeContext();
-            LuceneIndexerOptions options = new LuceneIndexerOptions
+            LuceneIndexerOptions options = new LuceneIndexerOptions()
             {
-                UseRamDirectory = true
+                Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
 
@@ -207,9 +207,9 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         public void ASearchCanOrderByMultipleFields()
         {
             InitializeContext();
-            LuceneIndexerOptions options = new LuceneIndexerOptions
+            LuceneIndexerOptions options = new LuceneIndexerOptions()
             {
-                UseRamDirectory = true
+                Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
 
@@ -242,9 +242,9 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         public void SaveChangesUpdatesEntitiesAddedToTheIndex()
         {
             InitializeContext();
-            LuceneIndexerOptions options = new LuceneIndexerOptions
+            LuceneIndexerOptions options = new LuceneIndexerOptions()
             {
-                UseRamDirectory = true
+                Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
 
@@ -277,9 +277,9 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         public void NonValidEntitiesAreIgnored()
         {
             InitializeContext();
-            LuceneIndexerOptions options = new LuceneIndexerOptions
+            LuceneIndexerOptions options = new LuceneIndexerOptions()
             {
-                UseRamDirectory = true
+                Path = "lucene"
             };
             SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
 

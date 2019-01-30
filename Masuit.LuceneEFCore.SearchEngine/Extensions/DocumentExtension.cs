@@ -1,7 +1,7 @@
 ﻿using Lucene.Net.Documents;
 using System;
 
-namespace Masuit.LuceneEFCore.SearchEngine.Helpers
+namespace Masuit.LuceneEFCore.SearchEngine.Extensions
 {
     public static class DocumentExtension
     {

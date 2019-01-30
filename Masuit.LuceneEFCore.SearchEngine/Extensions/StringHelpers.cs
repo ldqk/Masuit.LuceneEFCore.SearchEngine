@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Masuit.LuceneEFCore.SearchEngine.Helpers
+namespace Masuit.LuceneEFCore.SearchEngine.Extensions
 {
     public static class StringHelpers
     {

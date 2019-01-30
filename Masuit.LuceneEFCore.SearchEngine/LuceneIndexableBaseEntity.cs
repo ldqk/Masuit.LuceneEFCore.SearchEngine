@@ -1,5 +1,5 @@
 ﻿using Lucene.Net.Documents;
-using Masuit.LuceneEFCore.SearchEngine.Helpers;
+using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

@@ -1,4 +1,4 @@
-﻿using Masuit.LuceneEFCore.SearchEngine.Helpers;
+﻿using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

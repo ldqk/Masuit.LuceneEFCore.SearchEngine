@@ -3,7 +3,7 @@ using Lucene.Net.Analysis;
 using Lucene.Net.Analysis.JieBa;
 using Lucene.Net.Documents;
 using Lucene.Net.Store;
-using Masuit.LuceneEFCore.SearchEngine.Helpers;
+using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -51,6 +51,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             if (isInitialized == false || overrideIfExists)
             {
                 InitializeLucene(indexerOptions);
+                isInitialized = true;
             }
 
         }
@@ -61,21 +62,15 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="options"></param>
         private void InitializeLucene(LuceneIndexerOptions options)
         {
-            if (options.UseRamDirectory)
+            if (_directory == null)
             {
-                _directory = new RAMDirectory();
-            }
-            else
-            {
-                if (_directory == null)
-                {
-                    _directory = FSDirectory.Open(options.Path);
-                }
+                _directory = FSDirectory.Open(options.Path);
             }
 
             _analyzer = new JieBaAnalyzer(TokenizerMode.Search);
             _indexer = new LuceneIndexer(_directory, _analyzer);
             _searcher = new LuceneIndexSearcher(_directory, _analyzer, _memoryCache);
+
         }
 
         /// <summary>

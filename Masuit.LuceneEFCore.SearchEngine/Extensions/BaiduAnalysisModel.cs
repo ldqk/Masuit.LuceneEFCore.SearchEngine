@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Masuit.LuceneEFCore.SearchEngine.Helpers
+namespace Masuit.LuceneEFCore.SearchEngine.Extensions
 {
     public class BaiduAnalysisModel
     {
