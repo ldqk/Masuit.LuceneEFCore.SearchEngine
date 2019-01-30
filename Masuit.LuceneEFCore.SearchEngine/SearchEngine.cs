@@ -19,18 +19,23 @@ namespace Masuit.LuceneEFCore.SearchEngine
     /// 搜索引擎
     /// </summary>
     /// <typeparam name="TContext"></typeparam>
-    public class SearchContextProvider<TContext> : ISearchContextProvider<TContext> where TContext : DbContext
+    public class SearchEngine<TContext> : ISearchEngine<TContext> where TContext : DbContext
     {
         /// <summary>
         /// 数据库上下文
         /// </summary>
         public TContext Context { get; protected set; }
 
-        private static Directory directory;
-        private static Analyzer analyzer;
-        private static LuceneIndexer indexer;
-        private static LuceneIndexSearcher searcher;
+        private static Directory _directory;
+        private static Analyzer _analyzer;
+        private static LuceneIndexer _indexer;
+        private static LuceneIndexSearcher _searcher;
         private static bool isInitialized = false;
+
+        /// <summary>
+        /// 索引条数
+        /// </summary>
+        public int IndexCount => _indexer.Count();
 
         /// <summary>
         /// 搜索引擎
@@ -38,7 +43,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="indexerOptions">索引选项</param>
         /// <param name="context">数据库上下文</param>
         /// <param name="overrideIfExists">是否被覆盖</param>
-        public SearchContextProvider(LuceneIndexerOptions indexerOptions, TContext context, bool overrideIfExists = false)
+        public SearchEngine(LuceneIndexerOptions indexerOptions, TContext context, bool overrideIfExists = false)
         {
             if (isInitialized == false || overrideIfExists)
             {
@@ -56,19 +61,19 @@ namespace Masuit.LuceneEFCore.SearchEngine
         {
             if (options.UseRamDirectory)
             {
-                directory = new RAMDirectory();
+                _directory = new RAMDirectory();
             }
             else
             {
-                if (directory == null)
+                if (_directory == null)
                 {
-                    directory = FSDirectory.Open(options.Path);
+                    _directory = FSDirectory.Open(options.Path);
                 }
             }
 
-            analyzer = new JieBaAnalyzer(TokenizerMode.Search);
-            indexer = new LuceneIndexer(directory, analyzer);
-            searcher = new LuceneIndexSearcher(directory, analyzer);
+            _analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            _indexer = new LuceneIndexer(_directory, _analyzer);
+            _searcher = new LuceneIndexSearcher(_directory, _analyzer);
         }
 
         /// <summary>
@@ -148,7 +153,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 result = Context.SaveChanges();
                 if (changes.HasChanges && index)
                 {
-                    indexer.Update(changes);
+                    _indexer.Update(changes);
                 }
             }
 
@@ -171,7 +176,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 result = await Context.SaveChangesAsync();
                 if (changes.HasChanges && index)
                 {
-                    indexer.Update(changes);
+                    _indexer.Update(changes);
                 }
             }
 
@@ -179,24 +184,11 @@ namespace Masuit.LuceneEFCore.SearchEngine
         }
 
         /// <summary>
-        /// 索引条数
-        /// </summary>
-        public int IndexCount => indexer.Count();
-
-        /// <summary>
-        /// 删除索引
-        /// </summary>
-        public void DeleteIndex()
-        {
-            indexer?.DeleteAll();
-        }
-
-        /// <summary>
         /// 扫描数据库上下文并对所有已实现ILuceneIndexable的对象，并创建索引
         /// </summary>
         public void CreateIndex()
         {
-            if (indexer != null)
+            if (_indexer != null)
             {
                 List<ILuceneIndexable> index = new List<ILuceneIndexable>();
                 PropertyInfo[] properties = Context.GetType().GetProperties();
@@ -211,9 +203,42 @@ namespace Masuit.LuceneEFCore.SearchEngine
 
                 if (index.Any())
                 {
-                    indexer.CreateIndex(index);
+                    _indexer.CreateIndex(index);
                 }
             }
+        }
+
+        /// <summary>
+        /// 创建指定数据表的索引
+        /// </summary>
+        public void CreateIndex(List<string> tables)
+        {
+            if (_indexer != null)
+            {
+                List<ILuceneIndexable> index = new List<ILuceneIndexable>();
+                PropertyInfo[] properties = Context.GetType().GetProperties();
+                foreach (PropertyInfo pi in properties)
+                {
+                    if (typeof(IEnumerable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType) && tables.Contains(pi.Name))
+                    {
+                        var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null);
+                        index.AddRange(entities as IEnumerable<ILuceneIndexable>);
+                    }
+                }
+
+                if (index.Any())
+                {
+                    _indexer.CreateIndex(index);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 删除索引
+        /// </summary>
+        public void DeleteIndex()
+        {
+            _indexer?.DeleteAll();
         }
 
         /// <summary>
@@ -225,7 +250,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public ISearchResultCollection<T> Search<T>(SearchOptions options)
         {
             options.Type = typeof(T);
-            var indexResults = searcher.ScoredSearch(options);
+            var indexResults = _searcher.ScoredSearch(options);
 
             ISearchResultCollection<T> resultSet = new SearchResultCollection<T>()
             {
@@ -259,7 +284,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 options.Type = typeof(T);
             }
 
-            var indexResults = searcher.ScoredSearch(options);
+            var indexResults = _searcher.ScoredSearch(options);
 
             IScoredSearchResultCollection<T> results = new ScoredSearchResultCollection<T>();
             results.TotalHits = indexResults.TotalHits;

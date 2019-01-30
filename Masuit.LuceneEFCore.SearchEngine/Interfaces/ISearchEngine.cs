@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
 {
-    public interface ISearchContextProvider<out TContext> where TContext : DbContext
+    public interface ISearchEngine<out TContext> where TContext : DbContext
     {
         /// <summary>
         /// 数据库上下文
@@ -19,6 +20,11 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// 创建索引
         /// </summary>
         void CreateIndex();
+
+        /// <summary>
+        /// 创建指定数据表的索引
+        /// </summary>
+        void CreateIndex(List<string> tables);
 
         /// <summary>
         /// 删除索引

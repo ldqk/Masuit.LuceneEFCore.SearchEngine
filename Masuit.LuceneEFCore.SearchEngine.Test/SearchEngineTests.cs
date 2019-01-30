@@ -9,13 +9,13 @@ using Xunit.Abstractions;
 namespace Masuit.LuceneEFCore.SearchEngine.Test
 {
     [Trait("Category", "SearchContext")]
-    public class SearchContextTests
+    public class SearchEngineTests
     {
         private TestDbContext _context;
         private readonly ITestOutputHelper _output;
         string _tempName;
 
-        public SearchContextTests(ITestOutputHelper output)
+        public SearchEngineTests(ITestOutputHelper output)
         {
             _output = output;
         }
@@ -35,7 +35,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 UseRamDirectory = true
             };
-            SearchContextProvider<TestDbContext> searchProvider = new SearchContextProvider<TestDbContext>(options, _context);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context);
 
             searchProvider.CreateIndex();
 
@@ -55,7 +55,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 UseRamDirectory = true
             };
-            SearchContextProvider<TestDbContext> searchProvider = new SearchContextProvider<TestDbContext>(options, _context);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context);
 
             searchProvider.CreateIndex();
 
@@ -78,7 +78,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 UseRamDirectory = true
             };
-            SearchContextProvider<TestDbContext> searchProvider = new SearchContextProvider<TestDbContext>(options, _context);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context);
 
             searchProvider.CreateIndex();
 
@@ -111,7 +111,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 UseRamDirectory = true
             };
-            SearchContextProvider<TestDbContext> searchProvider = new SearchContextProvider<TestDbContext>(options, _context);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context);
 
             searchProvider.CreateIndex();
 
@@ -136,7 +136,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 UseRamDirectory = true
             };
-            SearchContextProvider<TestDbContext> searchProvider = new SearchContextProvider<TestDbContext>(options, _context);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context);
 
             searchProvider.CreateIndex();
 
@@ -159,7 +159,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 UseRamDirectory = true
             };
-            SearchContextProvider<TestDbContext> searchProvider = new SearchContextProvider<TestDbContext>(options, _context);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context);
 
             searchProvider.CreateIndex();
 
@@ -186,7 +186,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 UseRamDirectory = true
             };
-            SearchContextProvider<TestDbContext> searchProvider = new SearchContextProvider<TestDbContext>(options, _context);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context);
 
             searchProvider.CreateIndex();
 
@@ -210,7 +210,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 UseRamDirectory = true
             };
-            SearchContextProvider<TestDbContext> searchProvider = new SearchContextProvider<TestDbContext>(options, _context);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context);
 
             User jc = new User()
             {
@@ -245,7 +245,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 UseRamDirectory = true
             };
-            SearchContextProvider<TestDbContext> searchProvider = new SearchContextProvider<TestDbContext>(options, _context);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context);
 
             searchProvider.CreateIndex();
 
@@ -280,7 +280,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 UseRamDirectory = true
             };
-            SearchContextProvider<TestDbContext> searchProvider = new SearchContextProvider<TestDbContext>(options, _context);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context);
 
             searchProvider.CreateIndex();
 
