@@ -86,7 +86,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
 
             // test
             var initialResults = searchProvider.ScoredSearch<User>(searchOptions);
-            int lastId = initialResults.Results[4].Entity.Id;
+            var lastId = initialResults.Results[4].Entity.Id;
 
             Assert.Equal(5, initialResults.TotalHits);
             Assert.Equal(5, initialResults.Results.Count);

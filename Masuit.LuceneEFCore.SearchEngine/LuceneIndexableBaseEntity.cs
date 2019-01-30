@@ -17,7 +17,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// 主键id
         /// </summary>
         [LuceneIndexable(Name = "Id", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED), Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// 索引唯一id
