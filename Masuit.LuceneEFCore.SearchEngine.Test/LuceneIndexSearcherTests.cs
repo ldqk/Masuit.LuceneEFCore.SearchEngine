@@ -4,6 +4,7 @@ using Lucene.Net.Documents;
 using Lucene.Net.Store;
 using Masuit.LuceneEFCore.SearchEngine.Test.Helpers;
 using Masuit.LuceneEFCore.SearchEngine.Test.Models;
+using Microsoft.Extensions.Caching.Memory;
 using System.Linq;
 using Xunit;
 
@@ -17,7 +18,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
 
         // create an index
         static readonly LuceneIndexer Indexer = new LuceneIndexer(Directory, Analyzer);
-        static readonly LuceneIndexSearcher Searcher = new LuceneIndexSearcher(Directory, Analyzer);
+        static readonly LuceneIndexSearcher Searcher = new LuceneIndexSearcher(Directory, Analyzer, new MemoryCache(new MemoryCacheOptions()));
 
         public LuceneIndexSearcherTests(TestDataGenerator tdg)
         {

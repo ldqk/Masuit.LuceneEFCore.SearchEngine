@@ -71,10 +71,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                     var res = HttpClient.GetAsync($"/api/customsearch/keywords?title={keyword}").Result;
                     if (res.StatusCode == HttpStatusCode.OK)
                     {
-                        BaiduAnalysisModel model = JsonConvert.DeserializeObject<BaiduAnalysisModel>(res.Content.ReadAsStringAsync().Result, new JsonSerializerSettings()
-                        {
-                            NullValueHandling = NullValueHandling.Ignore
-                        });
+                        BaiduAnalysisModel model = JsonConvert.DeserializeObject<BaiduAnalysisModel>(res.Content.ReadAsStringAsync().Result);
                         model.Result.Res.KeywordList?.ForEach(s => set.Add(s));
                     }
                 }
@@ -85,7 +82,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             }
             set.RemoveWhere(s => s.Length < 2 || Regex.IsMatch(s, @"^\p{P}.*"));
             list = set.OrderByDescending(s => s.Length).ToList();
-            _memoryCache.Set(keyword, list);
+            _memoryCache.Set(keyword, list, TimeSpan.FromHours(1));
             return list;
         }
 
@@ -101,7 +98,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             var terms = CutKeywords(keywords);
             foreach (var term in terms)
             {
-                finalQuery.Add(parser.Parse(term.Replace("~", "") + "~"), Occur.MUST);
+                finalQuery.Add(parser.Parse(term.Replace("~", "") + "~"), Occur.SHOULD);
             }
             return finalQuery;
         }

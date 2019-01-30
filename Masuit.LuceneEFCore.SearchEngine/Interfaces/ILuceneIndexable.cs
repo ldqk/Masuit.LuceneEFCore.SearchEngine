@@ -10,7 +10,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// <summary>
         /// 主键id
         /// </summary>
-        long Id { get; set; }
+        int Id { get; set; }
 
         /// <summary>
         /// 索引id

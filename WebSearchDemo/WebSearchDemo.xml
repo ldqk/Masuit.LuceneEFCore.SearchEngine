@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebSearchDemo</name>
+    </assembly>
+    <members>
+        <member name="T:WebSearchDemo.Database.Post">
+            <summary>
+            文章
+            </summary>
+        </member>
+        <member name="P:WebSearchDemo.Database.Post.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:WebSearchDemo.Database.Post.Author">
+            <summary>
+            作者
+            </summary>
+        </member>
+        <member name="P:WebSearchDemo.Database.Post.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:WebSearchDemo.Database.Post.PostDate">
+            <summary>
+            发表时间
+            </summary>
+        </member>
+        <member name="P:WebSearchDemo.Database.Post.Email">
+            <summary>
+            作者邮箱
+            </summary>
+        </member>
+        <member name="P:WebSearchDemo.Database.Post.Label">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:WebSearchDemo.Database.Post.Keyword">
+            <summary>
+            文章关键词
+            </summary>
+        </member>
+    </members>
+</doc>

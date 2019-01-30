@@ -4,6 +4,7 @@ using Lucene.Net.Documents;
 using Lucene.Net.Store;
 using Masuit.LuceneEFCore.SearchEngine.Test.Helpers;
 using Masuit.LuceneEFCore.SearchEngine.Test.Models;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Linq;
 using Xunit;
@@ -98,7 +99,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             _indexer.CreateIndex(tdg.AllData);
 
             // we need a searcher for this test
-            LuceneIndexSearcher searcher = new LuceneIndexSearcher(directory, analyzer);
+            LuceneIndexSearcher searcher = new LuceneIndexSearcher(directory, analyzer, new MemoryCache(new MemoryCacheOptions()));
 
             // get the 1st item
             SearchOptions options = new SearchOptions("ghudson0@rambler.ru", "Email");

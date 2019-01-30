@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Masuit.LuceneEFCore.SearchEngine
 {
@@ -97,18 +98,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         }
 
         /// <summary>
-        /// 构造函数
-        /// </summary>
-        public SearchOptions()
-        {
-            Fields = new List<string>();
-            OrderBy = new List<string>();
-            MaximumNumberOfHits = 10000;
-            boosts = new Dictionary<string, float>();
-        }
-
-        /// <summary>
-        /// 构造函数
+        /// 搜索选项
         /// </summary>
         /// <param name="keywords">关键词</param>
         /// <param name="fields">限定检索字段</param>
@@ -120,6 +110,10 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="take">取多少条</param>
         public SearchOptions(string keywords, string fields, int maximumNumberOfHits = 10000, Dictionary<string, float> boosts = null, Type type = null, string orderBy = null, int? skip = null, int? take = null)
         {
+            if (string.IsNullOrWhiteSpace(keywords))
+            {
+                throw new ArgumentException("搜索关键词不能为空！");
+            }
             Keywords = keywords;
             MaximumNumberOfHits = maximumNumberOfHits;
             Skip = skip;
@@ -144,6 +138,48 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 orderBy = orderBy.RemoveCharacters(" ");
                 OrderBy.AddRange(orderBy.Split(',').ToList());
             }
+        }
+
+        /// <summary>
+        /// 搜索选项
+        /// </summary>
+        /// <param name="keywords">关键词</param>
+        /// <param name="size">页大小</param>
+        /// <param name="fields">限定检索字段</param>
+        /// <param name="page">第几页</param>
+        public SearchOptions(string keywords, int page, int size, string fields) : this(keywords, fields, int.MaxValue, null, null, null, (page - 1) * size, size)
+        {
+            if (page < 1)
+            {
+                page = 1;
+            }
+            if (size < 1)
+            {
+                size = 1;
+            }
+            Skip = (page - 1) * size;
+            Take = size;
+        }
+
+        /// <summary>
+        /// 搜索选项
+        /// </summary>
+        /// <param name="keywords">关键词</param>
+        /// <param name="size">页大小</param>
+        /// <param name="page">第几页</param>
+        /// <param name="t">需要被全文检索的类型</param>
+        public SearchOptions(string keywords, int page, int size, Type t) : this(keywords, string.Join(",", t.GetProperties().Where(p => p.GetCustomAttributes<LuceneIndexableAttribute>().Any()).Select(p => p.Name)), int.MaxValue, null, null, null, (page - 1) * size, size)
+        {
+            if (page < 1)
+            {
+                page = 1;
+            }
+            if (size < 1)
+            {
+                size = 1;
+            }
+            Skip = (page - 1) * size;
+            Take = size;
         }
     }
 }

@@ -6,15 +6,6 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
     public class LuceneSearchOptionsTests
     {
         [Fact]
-        public void DefaultLuceneSearchOptionsInitialisesCollections()
-        {
-            SearchOptions options = new SearchOptions();
-
-            Assert.NotNull(options.OrderBy);
-            Assert.NotNull(options.Fields);
-        }
-
-        [Fact]
         public void LuceneSearchOptionsCanBeConstructedWithMultipleFields()
         {
             SearchOptions options = new SearchOptions("Test", "one,two,three,four");
