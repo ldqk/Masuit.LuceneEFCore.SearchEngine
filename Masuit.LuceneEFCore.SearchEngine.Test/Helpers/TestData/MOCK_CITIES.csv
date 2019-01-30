@@ -1,0 +1,1001 @@
+id,Country,CountryCode,City,IndexId
+1,Indonesia,ID,Palebunan,59cc0738-96a5-41db-b097-90940728c6c2
+2,Brazil,BR,Pelotas,d332064c-84e0-432b-98ac-b71b1cbe68b5
+3,China,CN,Daixi,90e53b3d-07a4-41a8-9330-41689c9f5f64
+4,Peru,PE,Yauca,f2e229ee-3f5c-4f85-976a-2fa64d7feede
+5,Russia,RU,Slobodka,36284f0b-775e-4ee1-81d1-73fd2011e8a4
+6,Brazil,BR,Indaial,f6d65219-6ce9-4e80-8cb4-3c3f3ac6c1d3
+7,Sweden,SE,Stockholm,3441acd5-49ac-4d99-b181-7671f1a7f007
+8,United States,US,Miami,c6f1248b-dd35-4057-a99e-3565d256ea83
+9,Russia,RU,Konstantinovskoye,67a5e681-3f56-4ee9-9936-dd476a91cf22
+10,Portugal,PT,Vila Maior,9c750b2b-4e20-49e1-ab2c-251a181c0e8f
+11,Russia,RU,Opechenskiy Posad,35c60cdd-c8b0-4c18-a114-b27a2063edc5
+12,Colombia,CO,El Retén,08a331a9-a661-46b2-8c3d-2e98c9ba8d05
+13,China,CN,Pingba,007eb182-706c-43aa-bd3f-7cf924743474
+14,Indonesia,ID,Puan Selatan,1774b1d8-5639-4c3c-bd7d-4738f03d9c5a
+15,China,CN,Shiziling,dbddd306-8874-4eee-9043-50b35c4599ce
+16,Brazil,BR,Marau,5d3c41d2-2963-4467-8c7f-eb439eaa32fd
+17,Portugal,PT,Carvalhal,685e315f-1fca-4bcb-8055-cc41e9edab08
+18,Indonesia,ID,Pasirreungit,3de01489-8b2e-4915-a939-57bfae18f354
+19,Palestinian Territory,PS,Faḩmah,19f8b804-fbce-45e7-80da-ebadc7f89dc2
+20,Netherlands,NL,Utrecht (stad),2799fd2c-4dac-46c4-9ead-3ff7fadc2200
+21,Poland,PL,Przybyszówka,3826067a-3b35-43c9-9344-5e32ce4175d6
+22,China,CN,Cunliji,24e3cf0b-9a85-4783-a364-0066c883fa66
+23,China,CN,Puyuan,b37e6007-384b-4a92-8696-37caf18c276f
+24,China,CN,Dainan,0acdc10d-4e56-43e2-959d-7e08a0aad209
+25,China,CN,Qiaoshi,67085793-1044-497c-9ae0-b81e2e58ad08
+26,China,CN,Chunjing,03508055-6409-483b-8908-46838fdd30d3
+27,China,CN,Changsha,72d7f939-b103-4057-a013-6e7cda06273d
+28,Costa Rica,CR,San Rafael,9fc855cc-a8ad-4d6c-bd49-f1fafe961883
+29,Bosnia and Herzegovina,BA,Gostovići,b8519037-1d5d-4754-b455-aa85fd84ab42
+30,Indonesia,ID,Curahklapa,8dbed099-2f1c-4681-8b7d-8b27b52fd2dc
+31,Indonesia,ID,Long Loreh,925a8476-66ab-4f85-b467-0921cee8980c
+32,Madagascar,MG,Fianarantsoa,d4117f83-2f5d-441a-90a8-96de7d9f8a17
+33,Vietnam,VN,Hòa Bình,0b1ea9db-34fa-4208-af19-23a2eefc78b8
+34,Sweden,SE,Uppsala,8c53682e-e5c9-40cc-ba77-5e362691a4a3
+35,Canada,CA,Edson,1d787b8c-9457-442f-a27e-ffb7cff93e93
+36,Sweden,SE,Gimo,6d847530-964f-488b-b269-648d518951b0
+37,Colombia,CO,Barrancas,789eb436-5028-49a3-a3c6-2ae7497addea
+38,Russia,RU,Polazna,12fc874c-b131-4c60-9c3d-e031061702e1
+39,Panama,PA,Changuinola,42887cf3-3022-48d9-9058-1da64280210a
+40,Uruguay,UY,Santa Bernardina,09018a57-47a6-4f82-b054-ebc7fc8359de
+41,France,FR,Paris 02,a08789ff-b0ff-41be-bd1b-02e791560df0
+42,Canada,CA,Agassiz,18e1f172-fec8-4309-9ca4-4a5112c68281
+43,Philippines,PH,San Jose,f3f46824-dcb8-4f74-8aad-6b5056088904
+44,Brazil,BR,Pederneiras,b915e337-9be2-41c7-b223-46e59801babd
+45,Poland,PL,Piła,5be2ea93-ebb3-4dac-a006-d7ff280e479a
+46,Mexico,MX,Benito Juarez,448d3255-5ba3-439f-9809-8f40cccf5d64
+47,Poland,PL,Siemiątkowo,23c24495-71d1-493f-b65a-0b43c15cf098
+48,Poland,PL,Gubin,fd06e7a1-61d4-4893-a1bd-70c2b87c27ae
+49,Switzerland,CH,Basel,2615caa7-a04c-4c33-883f-37262e68285d
+50,United States,US,Cumming,0af2579d-1d5e-4c5f-8bfc-60148f1699fa
+51,Indonesia,ID,Sidonganti,c7ee128f-a62b-432b-a193-44393a027140
+52,Norway,NO,Oslo,255a74fa-dae5-4c49-a4a1-4d813a253fec
+53,Indonesia,ID,Sinarbakti,4f70f1d1-0117-4f28-93f2-879c3e69c584
+54,Russia,RU,Mirskoy,b2b309ec-7d8a-4bf1-a297-f3155c004ad4
+55,Vietnam,VN,Thị Trấn Mộc Châu,67b6823b-b037-4101-b84c-63da9289c00e
+56,Mongolia,MN,Dzuunmod,4cd6e58b-ac16-4a71-aa8e-deae8b23bcb9
+57,Russia,RU,Tosno,68c0edca-6710-4168-beee-4fc56b79d129
+58,Micronesia,FM,Nukuoro,273d42ef-f0a0-44b8-96f8-78eb459f3f13
+59,Poland,PL,Koszarawa,d4add32f-bc58-4d49-be0a-df492cc99d3c
+60,Ukraine,UA,Pryazovs’ke,ecee4b6c-7289-4692-a14c-f2e48cd420ff
+61,Israel,IL,Yavne,70153fa0-20ca-44ac-a2ed-80509534eb51
+62,Ukraine,UA,Fastiv,2900462f-08f7-4b61-a1a0-0e9e6a3211a0
+63,Canada,CA,Watrous,b9a2eab3-4436-4063-b087-29f17341b992
+64,Ukraine,UA,Richky,eddeffc2-d6fd-4ccd-94ed-bdb700ea911c
+65,Thailand,TH,Kamalasai,46942361-8c1f-43f8-bb90-46325d11ed31
+66,Mexico,MX,Benito Juarez,212d6ca9-0f51-4864-983e-b72232d4b3a2
+67,Philippines,PH,Sinacaban,bffbe3a3-b44d-4e04-9b83-a0341f54cb22
+68,Mongolia,MN,Buga,5d051aa2-f878-41e7-8c35-cdc0365f32c0
+69,Cameroon,CM,Bafoussam,5137bc39-3f61-445c-abb2-d3a8b024c6d7
+70,China,CN,Xinzhaiping,bfb475bb-e2e0-4d43-b5e2-6ba50bb1fe25
+71,Colombia,CO,Barrancas,ece2f7e0-9c9d-4d8f-9b53-a2a4379e4744
+72,Ukraine,UA,Apostolove,5b35187a-477d-46f5-bfe7-568218756443
+73,Poland,PL,Sokołów Podlaski,43d5d602-c49a-4b8d-b082-26d5e7cd2017
+74,China,CN,Yangzhuang,e5c1eae0-51ee-4c4f-8656-11bec5834b28
+75,China,CN,Lukou,20af42d8-1e66-4128-9760-6356efb15876
+76,Japan,JP,Hagi,5d2e93d4-031b-4a83-912e-5d04b792f3b5
+77,China,CN,Luzhang,d1a1438a-f591-40d1-bd22-56548e1d457e
+78,China,CN,Xinshan,f2bbd8f4-ccea-4d2b-ab90-1c4cb9c7dfc0
+79,Portugal,PT,Moscavide,eafe8d4d-d859-4d6d-a122-19d4082552f9
+80,Japan,JP,Yokotemachi,3c7d5543-295f-481a-8353-07bcf10b2639
+81,Russia,RU,Staropavlovskaya,f9a1984c-014b-4c19-ad7c-b51608a4f5f0
+82,Honduras,HN,Santa Lucía,d16c028c-c7bd-43d6-ad7b-286718a4ae2c
+83,China,CN,Zhongcheng,8c0064dd-57fe-4a63-83af-23b913ec09c8
+84,Indonesia,ID,Mangkon Daja,7e18be49-ff9b-41c5-b076-c395a640bd35
+85,Indonesia,ID,Serang,ee61fe4c-b926-4275-9a8f-0c03f951ac66
+86,Portugal,PT,Póvoa,c108b48a-aacf-4e4d-9f46-624cd52c5569
+87,Venezuela,VE,Santa Bárbara,b61f0afe-12a3-4a83-b51f-92136a09a58b
+88,Philippines,PH,Sabang,861f928d-1096-42c3-a025-5304649bfd3b
+89,Dominican Republic,DO,Bella Vista,45844a9b-9a83-4126-889d-770ae7788d84
+90,Philippines,PH,Looc,c25524f2-fab3-45a8-b8a8-1cbd14655bbb
+91,Poland,PL,Ruda Śląska,ea1616b8-bcf1-4006-9357-671a0563823f
+92,Indonesia,ID,Ngembak,fb16dbdf-afd8-4ef3-b8b0-e2b391080810
+93,Albania,AL,Voskop,59d29b2e-bcfd-49c5-beef-72e1457d1ead
+94,Philippines,PH,La Fortuna,2b7449f8-6d26-49fa-ad41-109d4fe4c95f
+95,New Zealand,NZ,Methven,41ed946d-5c1f-4b39-94e4-ac041ca161bb
+96,China,CN,Dancheng,8105af89-8ff8-4bb3-9ee8-fc64b37a1919
+97,Brazil,BR,Alfenas,ccff9389-5151-4703-a712-5bfdef5e8c94
+98,China,CN,Wucheng,9f664149-e4ef-4c1a-832b-61717552f6e9
+99,Nigeria,NG,Offa,5c3d696f-2a49-40f9-9112-f70b9258ffc1
+100,Myanmar,MM,Taungoo,f73c52ac-c800-4dff-811a-5bf3a3c6c924
+101,Philippines,PH,Talipan,5b4a1320-d113-49a4-a549-23a95a09c6c0
+102,Germany,DE,Wetzlar,527f8870-991a-4db3-8036-5a181ae9b5b8
+103,Portugal,PT,Valeirinha,83f398c2-024f-40cb-a60c-e04572529a9b
+104,China,CN,Hekou,66f0d05f-cdcc-402c-9096-f605403a6d67
+105,Canada,CA,Collingwood,b68f1021-d39d-4966-a355-deb6aa31ef55
+106,Afghanistan,AF,Nīkêh,0585c0e3-ba60-4997-8521-c121d9cd7701
+107,Colombia,CO,Turbaco,82259a16-2d53-4c31-a66a-5c9a07c0a0a7
+108,Indonesia,ID,Poteran,64744654-28ab-40fd-a2bb-ed99fcd72ccd
+109,Pakistan,PK,Hujra,cb554594-a9cc-4f69-9ee0-ba554b975a8a
+110,United States,US,Evansville,e48b7db7-1e9e-4260-9396-0b53c157aae3
+111,Portugal,PT,Outeiro de Polima,0a039402-7abf-4f05-ae65-c19054ceb4d3
+112,Japan,JP,Onomichi,1694bb7b-6f49-4eb0-ac74-db99c68bec3c
+113,Japan,JP,Mizusawa,0d5aac75-a80e-4427-97a8-031751586930
+114,Comoros,KM,Oussivo,0ad80bee-5da5-47a3-ae50-9336de4cb2cf
+115,Peru,PE,Jeberos,b6c64318-4655-4d32-b2b0-f19a4da46517
+116,Poland,PL,Nowy Sącz,7b26dfd2-b086-461c-8621-08af8e0058f7
+117,Thailand,TH,Khong Chai,90a9ab06-1784-430c-9b50-8a50715fd217
+118,Indonesia,ID,Purut,96343828-e699-442c-93a2-06a992b7abba
+119,China,CN,Sanhe,9a379482-d3fa-4b5a-a509-7359d142bcd8
+120,China,CN,Fenjie,c50e5bf8-afcf-483c-a411-74801f400eea
+121,Pakistan,PK,Lāliān,acd4253a-b2e2-448c-a6c2-6f8b2fc74365
+122,Uzbekistan,UZ,Koson Shahri,6fd363cf-abab-49cb-9eeb-9ebcebb892c9
+123,China,CN,Changting,28e946d9-3b50-4f7b-bc3b-8d11c2ecacd6
+124,Finland,FI,Kauniainen,9cd4905a-6fd1-4220-aa6e-0bdfed682d7b
+125,Norway,NO,Oslo,9589eab1-ff46-4565-9ab1-e2a526eec037
+126,China,CN,Tailing,f093a4d5-a87b-4813-9312-75dfed0ed25c
+127,China,CN,Baisha,014c8ae3-afc6-40cc-99d8-87aaeac6387c
+128,Colombia,CO,Aguadas,33bdf308-696e-4920-84fb-f2e6b35440ad
+129,China,CN,Huangdimiao,6566d6de-0279-41d3-9417-194633f890b0
+130,China,CN,Huangtang,dd567087-f332-4313-8aa6-f592409ebf28
+131,China,CN,Wanquan,08a61bc0-3c64-4e6e-98ae-77c2af52864b
+132,China,CN,Chengyue,4da61eea-7da3-408d-af12-2999caa95fc1
+133,Canada,CA,Claresholm,673559a0-a258-4ea8-a6d5-ccd2927ee2cb
+134,Poland,PL,Lipiany,f0f18825-8bd1-450e-b66d-4d3d37e7426a
+135,Philippines,PH,Cantapoy,4f567728-7f01-494f-b55e-5c1a422a7738
+136,Philippines,PH,Santa Ana,66b53744-c636-46b9-84ee-ea57bbffbfdb
+137,Sweden,SE,Södertälje,b4e054ef-6825-41a0-9f8f-f1821fdc3311
+138,Italy,IT,Roma,a13ff7d2-8d20-4c06-b490-a145fb6347bc
+139,Kazakhstan,KZ,Zhambyl,056da862-bcb9-4f5d-9c1a-9479fd6d96f6
+140,Poland,PL,Pokój,4f560a96-a134-43f3-81e3-a91cd0b62927
+141,Greece,GR,Níkaia,c5309b07-4c21-4d1d-ab66-b940f057c532
+142,United Kingdom,GB,Ford,a60842ad-030f-4ac2-a7b5-cd0fee4ac5aa
+143,Mauritius,MU,Mapou,d386350e-6bb7-48d8-88c4-7e651fc220ff
+144,Philippines,PH,Cantapoy,94441e7c-d5ca-4932-a86f-f2d1bf5157ab
+145,Venezuela,VE,El Pao,6801ca71-c2b6-4a17-ad8c-f5aa53694caf
+146,Philippines,PH,Vigan,baa6802f-a39a-4195-a773-80b25318d5f7
+147,Malaysia,MY,Kuching,ae66b8d0-3705-4ac7-91ae-f6d6962ccab1
+148,Canada,CA,Kamloops,b17cf6e6-6943-4752-95a6-b163004f36dc
+149,Uruguay,UY,Dolores,a02ea78b-16a8-4b55-a1aa-996d307f7b57
+150,Russia,RU,Razumnoye,bbb09bff-1728-4fc5-b6ab-04614cdcd96b
+151,Poland,PL,Pogórze,046e089a-f96d-4a66-9463-bd4bc120c18d
+152,Indonesia,ID,Pasuruan,7f844761-9294-48fd-8317-3f0889024ffb
+153,Australia,AU,Eastern Suburbs Mc,de1e97e5-a0a4-4541-ad66-114e019bdb0a
+154,Philippines,PH,Patria,52a6c005-3e8b-49d4-a18f-81299ba09af3
+155,Indonesia,ID,Bator,3bf2dc9a-a2e8-4c93-8818-bd12ad4aa0c9
+156,Greece,GR,Maroúsi,26092e99-b649-4537-afbe-43a5fce07881
+157,Tajikistan,TJ,Qŭrghonteppa,5c90f8a8-732a-43a0-ac1e-e8baeff9ccfa
+158,France,FR,Lyon,cd87cf80-f3ef-45f7-bbaf-109b7b6b648b
+159,Ukraine,UA,Dmytrivka,68fecd43-a5a3-4b46-bbc7-41d8e4159e1b
+160,Ireland,IE,Oughterard,d60a5282-ab63-4d1c-845e-73c03716c552
+161,China,CN,Huangjia,9224b1f9-3e9c-4c65-8342-176b331ba74d
+162,China,CN,Xiapu,35bd3db4-cca6-4a28-90cc-e81ed7be039b
+163,Peru,PE,Chincha Baja,8ccdd6b7-f505-48e5-965b-ae8d08b85bc0
+164,Italy,IT,Genova,82fa55fa-634c-4d18-a925-48f168b2fd53
+165,Brazil,BR,Araucária,3184626c-5dc3-4bc0-8857-c243af2524f3
+166,Canada,CA,Oak Bay,d5fcc99a-82ae-4af2-abc3-0e496e0b9f62
+167,Russia,RU,Vykhino-Zhulebino,23865904-f1c0-4d22-9db5-b55052a42ad2
+168,Peru,PE,Sausa,af14dd95-2b01-450a-8591-b4c0ef25a5cc
+169,Finland,FI,Ilmajoki,1caab11c-479a-4bd0-8b1d-71a6b329ea57
+170,Brazil,BR,Piracuruca,1cadcdde-fb1f-4c00-b7ef-137836db6e89
+171,Ireland,IE,Greenhills,d46323fd-683d-4b83-94a6-a17285a22896
+172,Indonesia,ID,Jatisari,6932335a-b008-49c6-af59-66f0ffeffc6d
+173,Portugal,PT,Rosmaninhal,f60ee89f-949a-454f-b9a5-fc0acda4ff75
+174,Russia,RU,Dubna,df197402-f227-4151-a9a2-61fbe1c2c158
+175,China,CN,Dachuan,2a1a78f2-1067-40e7-97d5-b1a7bbb7b871
+176,China,CN,Yutan,d0a17251-bb17-45b7-bdaf-f1a2410ad1a4
+177,Czech Republic,CZ,Frýdlant,c9ef8efb-b9af-4bd7-b36c-27216424179e
+178,Serbia,RS,Senta,e5b4bdbf-d917-432a-bfe9-7f49d9e8a1e5
+179,Philippines,PH,Mangusu,285c7bb1-4534-458d-895f-eb2d2e2fc08c
+180,Micronesia,FM,Ettal,cba626c8-6f58-4b0d-8b58-c23e5a077a23
+181,Kyrgyzstan,KG,Chayek,6abbb730-27e4-445f-bfb9-fc02576d866e
+182,Sweden,SE,Rättvik,69c34136-ddb9-4b94-9975-a5fff5af9ed8
+183,Bangladesh,BD,Teknāf,7dcd5028-ab3d-4926-afd6-5bb6efb2afb4
+184,Pakistan,PK,Vihāri,6e7319ef-2cdb-42b2-a4a0-4df7d0029c49
+185,United States,US,Evansville,e1bcfc6f-af7a-41db-a1f8-33755029a259
+186,Canada,CA,Niagara Falls,c5226320-15c9-41c9-93b9-62aab7ae6f06
+187,Indonesia,ID,Pasatan,6bb37134-168f-4dc9-ae12-aa59e27b8de0
+188,China,CN,Kuantian,7b47a977-71c6-4ab4-9ce7-b47d830cd522
+189,Poland,PL,Wasilków,d8a8d4b9-7d36-4503-be8f-64c5813b95a0
+190,France,FR,Carcassonne,1668b9a6-3b78-48e4-93d4-173f485a001c
+191,Brazil,BR,Sinop,4c8058e4-ac6f-4e7f-b7dc-5c67c9a65354
+192,Canada,CA,Watrous,2959bf05-9e64-4518-bfb5-ad268fc600b3
+193,China,CN,Bashan,f6273707-0013-4092-a5bc-9d3275ace0e3
+194,Libya,LY,Brak,fe4dcc17-64a3-4cff-b1a2-2368ff842d06
+195,Canada,CA,Picton,e3f8dcd0-60b3-45f2-973e-07dc12730f93
+196,Malaysia,MY,Nusajaya,52e4118e-cff8-491d-b233-545df9601a4a
+197,Mexico,MX,Francisco I Madero,dc6a4998-e1bc-4bff-b5a6-12c5db96b0dc
+198,China,CN,Guxi,66255444-88b5-4db7-8c9f-29108b1eee39
+199,Latvia,LV,Jūrmala,3906033c-eabe-49b2-8206-38a6e0ce6c4a
+200,South Africa,ZA,Creighton,fb5ec86a-f136-4571-a092-047f86b7daee
+201,Albania,AL,Zall-Dardhë,332df75f-3725-4652-bb63-53e962a88bff
+202,China,CN,Samdo,490b9563-4850-404f-8563-2eaa659b13b2
+203,China,CN,Beigang,4e9368ec-46e0-4788-a451-91c1ee9d9d59
+204,Indonesia,ID,Cikomara,c56787df-e0fd-476e-b632-4143556a8c59
+205,Mexico,MX,San Jose,2cc6962b-b9cf-467d-8929-03d1b0801206
+206,China,CN,Xialiao,20808829-200c-4ac6-bd04-8bcf7e544268
+207,China,CN,Nanzhihui,f608f2e7-e8e5-473f-9405-fa5973ceef2f
+208,Japan,JP,Hirosaki,a6a83fb4-4bf9-449c-8eb5-d49221511877
+209,Russia,RU,Nachalovo,ad06cf20-f208-4f85-9e3c-efa2b68705d9
+210,Peru,PE,Sorochuco,0569d277-7c35-4e4a-ad3d-cd651d48948d
+211,China,CN,Chegang,a9c39a29-7f32-4bbe-85cb-55351838b5f0
+212,China,CN,Shuiyang,3a7d7d54-849f-4be2-9202-f8e09a0ca909
+213,Portugal,PT,Capela,d8ababfa-6d5b-472f-acc3-6a5a403b3761
+214,China,CN,Yonglong,039a8581-c7db-4d2d-91c5-c793dc5e112d
+215,China,CN,Yingmaili,c5451f45-b0c9-44e4-b20b-a66579145c49
+216,Iran,IR,Bandar-e Torkaman,5f816394-ebd2-496b-bf39-e60d3c67d9ce
+217,Ukraine,UA,Verblyany,19a435a5-1e4d-4281-9c63-36eed00befda
+218,Japan,JP,Narutō,b6245652-8b06-4934-8ff7-c6b7bb87d3bc
+219,China,CN,Shuiyuan,6939cec5-1fca-4644-a01c-679de42d5d9a
+220,China,CN,Shijia,334ffbb3-b3cc-4ddb-bc8a-e7a9a2e77f5b
+221,Uzbekistan,UZ,Toshbuloq,b9319d98-bf69-4ba8-a367-45f4df12121b
+222,Philippines,PH,Tigbaw,067f2e3e-756f-4499-826e-6c979c71682a
+223,Mongolia,MN,Rashaant,4b51bd8f-a281-4319-86b6-3aec37489dc1
+224,China,CN,Lengji,87077eab-9004-4858-88d6-fc310eb0e88c
+225,Poland,PL,Wielichowo,afe786b3-6556-46f5-bec4-f8d5cadec928
+226,Mexico,MX,Emiliano Zapata,2e499b4a-8327-4366-90e9-0d2d27bb83ac
+227,Philippines,PH,Ogod,da064aba-7bf2-479a-8ad6-18a5484a6ae2
+228,China,CN,Wantan,2e223883-9cc2-44a9-bdcf-3207813d9736
+229,Russia,RU,Volzhskiy,cbd7ee54-d9fa-4da8-8cc0-abc91e99c6e3
+230,Venezuela,VE,Caramuca,6066bd23-8c44-455c-98ff-f95ca7ce1a05
+231,France,FR,Brétigny-sur-Orge,5bc5b1cc-9697-4bed-a42b-ae90ebd4adb9
+232,Indonesia,ID,Selorejo,6998d846-8550-47e8-ac2b-530eca65ea4c
+233,China,CN,Shentong,fb3ae04b-7288-47e5-bd43-06a6177086cc
+234,Indonesia,ID,Legok,53585f4d-aa24-43d4-a155-cada73447608
+235,Colombia,CO,El Tambo,2be54d0b-5bc8-4abf-a035-804d2921ff8f
+236,Albania,AL,Shkodër,d243cd3a-9c24-4b2f-a91b-1e8285f9fca8
+237,China,CN,Chuanxi,7a45794d-985e-4ece-a0b3-b65d1251db6d
+238,Brazil,BR,Canela,5630f3a1-9359-406c-afa3-9d036250b6c6
+239,Russia,RU,Orsha,bae30eac-38be-4a08-8b3f-efafdb4b2a0a
+240,Sweden,SE,Arboga,9057af1d-988d-4237-bbc7-6e1168ec95c5
+241,Mexico,MX,Obrera,47cff0f2-faff-423c-81b9-4ab4194c2bba
+242,Cuba,CU,Consolación del Sur,70727c76-a027-4d03-af0c-e74d68b56680
+243,Italy,IT,Padova,b047feb8-5c51-4800-bf53-9d07489ad5bb
+244,France,FR,Saint-Brieuc,c8360af1-a75f-4e47-92e4-09e1ad6deab4
+245,Kyrgyzstan,KG,Talas,668988a1-fa56-426d-b5a7-ecc1931810d0
+246,Jordan,JO,As Salţ,10891dd2-9088-4e51-a723-5a8b83416a26
+247,Philippines,PH,Santa Monica,41c3d1c2-dbae-416e-83d1-93058fa1ce11
+248,Belarus,BY,Veyno,3ba4e9b8-0ecd-4a80-8887-fd79730c1259
+249,Mexico,MX,Buenos Aires,0584cff9-4d03-4507-b324-ce1193c7227c
+250,Netherlands,NL,Bergen op Zoom,8325bf6b-004d-4265-bd16-993e13c4d88c
+251,China,CN,Jiaocheng,eeca861e-61ca-4465-a4ca-e541be218ff2
+252,Russia,RU,Ishkhoy-Yurt,c8dc7feb-8b2d-4967-aeed-f27efeca405e
+253,Indonesia,ID,Sarkanjut,965e2444-ce69-4493-8dc6-6baf880b17e2
+254,Thailand,TH,Raman,30699c8c-bac5-417b-97b5-bc3a17ce74af
+255,Czech Republic,CZ,Horní Čermná,f0a5fb8e-b77a-4b9d-bfb1-2d009779358c
+256,Canada,CA,Campbellton,0d8b6768-172f-40be-b378-180a53ae04d0
+257,France,FR,Valence,3734759d-7dc1-4f09-9698-132d726e8900
+258,Poland,PL,Zielona Góra,ef110759-1000-4f8c-ac55-9d290a64db61
+259,China,CN,Sanquan,2c61437e-078d-45f1-8f30-b09917f5fe73
+260,Indonesia,ID,Campraksanta,35262c97-1518-43d4-acf4-c6282443b8b8
+261,China,CN,Muzhou,13e909e2-b33b-4013-be92-c03fb47e0005
+262,Indonesia,ID,Ciparay,2184ee18-dcbc-43ef-9bc8-fb9924a4a48c
+263,Morocco,MA,Jerada,b6a9ee54-f7bd-47de-b621-517a8cf2c1e8
+264,Qatar,QA,Ar Ru’ays,568ae0f6-d863-4fa2-9ffb-c105363a1a00
+265,Indonesia,ID,Uwa,814cd61b-f2ce-4c79-b53d-2ec255a48ef2
+266,Indonesia,ID,Selaawi,ad678e75-57c0-4b44-baee-8475885d17f6
+267,Portugal,PT,Várzea da Serra,23d1e854-442b-49da-a287-2af81e034c64
+268,France,FR,Gif-sur-Yvette,92b2a3c6-315f-4cf2-8ddd-3f7003973152
+269,Paraguay,PY,Unión,446d73aa-9037-4308-982e-15cd531a92bb
+270,Sweden,SE,Skellefteå,7bbbe6de-2ad1-401b-a8bf-85947942ecdc
+271,Russia,RU,Kayasula,13a32a83-d2d6-4ebd-b27c-274c43bacceb
+272,China,CN,Chengxi,14016580-41a2-40a1-8e02-ec16f2f4b71c
+273,Russia,RU,Gorodishche,43e5c4ca-3c89-4b8a-adc6-124a8f2bd1b9
+274,Ivory Coast,CI,Ferkessédougou,7b59a038-8b90-47cf-a148-9d3b4e20141d
+275,Serbia,RS,Jazovo,772b59bd-1ab7-409d-b0a5-f01a77a04d59
+276,Comoros,KM,Moya,a68c3fbf-97c0-4d4e-b932-a32abfd9ec1b
+277,Russia,RU,Svirsk,5de42873-66cc-4fd9-a8e0-97bf7169bb45
+278,Syria,SY,Khān Shaykhūn,eeda56fa-5f49-474d-910f-9bdec89848c8
+279,Argentina,AR,Ciervo Petiso,8d63890c-db70-45a8-84d2-e36af0194eeb
+280,Thailand,TH,Ban Na San,720c3aac-a4da-4bee-86a3-a67c78c648b4
+281,Indonesia,ID,Puteran Kidul,bdb167d1-17f7-4879-b3d3-2083cc0e14bf
+282,China,CN,Nangang,0a7a21aa-0c92-40f9-840e-f09c332ca249
+283,China,CN,Hongshanzui,1cfe3308-afe4-4c71-a292-8b5686192619
+284,United Kingdom,GB,Newton,5309299c-fd43-4b47-85ab-a6ea6aca7e2e
+285,China,CN,Fangtai,3da41ff8-3c33-4c8b-8c18-be3e1049feb0
+286,Portugal,PT,Vista Alegre,978da8d0-f985-41c0-83d3-73d0243d5afc
+287,China,CN,Yicheng,4f630c2b-0c2f-4c8a-b4ca-d12706eea41f
+288,Czech Republic,CZ,Rájec-Jestřebí,aa9a1c30-c1c6-41d9-954e-9bd54a4db864
+289,Norway,NO,Hamar,4df7d7d8-6dd1-4bd5-81d9-d0dc77bc6339
+290,Brazil,BR,Fernandópolis,b1f346d1-196d-4150-b6ae-be3e5b7a5641
+291,France,FR,Cergy-Pontoise,e9c0a7b2-445b-4814-8b47-564ecb13100f
+292,Russia,RU,Burmakino,09499c37-78a9-416c-b1ff-f8adbc4a681f
+293,Greece,GR,Provatás,04d858b5-66c5-46ba-b306-f7e965837a6b
+294,Indonesia,ID,Mafa,c0a78a82-36d7-44f9-8c96-f5673ef31c9f
+295,China,CN,Hutou,70f3dc05-bdb0-40f8-9489-b214cd1c9ac2
+296,Brazil,BR,Itabaiana,e3c99ef2-7689-4348-b37c-2aaa1492ae75
+297,Brazil,BR,Bela Vista,cb4de548-e122-4d1a-bf68-99d5b769d94b
+298,Philippines,PH,Sibulan,0000c532-fd31-4797-98ab-ed1e51dec7ad
+299,China,CN,Jiangbu,6720fa28-73cd-4722-90c7-ec571f9d8685
+300,Canada,CA,Rimouski,b06181af-d6ec-48ef-a234-4be2d654790b
+301,Russia,RU,Perfilovo,b63609ba-a2ea-45a6-a1f0-24ba377a3bf5
+302,Thailand,TH,Nong Ki,9cda27d9-3bf3-4aa5-92ef-59a73934d7a2
+303,Canada,CA,Victoriaville,d8e73b85-18c7-4d20-bc0e-31ab20806b29
+304,El Salvador,SV,Ciudad Barrios,7fba0c3f-db66-4fad-a4a5-73de47ecf658
+305,Egypt,EG,Quţūr,1cab44f5-9386-4c7b-b2ff-c2ab4cbb6dbe
+306,France,FR,Paris 08,90bff502-7c11-41c6-81b2-1fe246ee7a76
+307,Russia,RU,Grigoropolisskaya,2d8f8b67-c50c-4b97-8bf2-ab07a75014ac
+308,Sweden,SE,Mölndal,796507df-4d91-4cdf-bd49-7c484aaa2096
+309,Syria,SY,As Suqaylibīyah,e2e3ff04-2b12-4350-9d97-4fd3102d342c
+310,Philippines,PH,Langob,ccd2f704-08ef-4eee-b716-5805d4de16bf
+311,Poland,PL,Książki,d49bf00d-3f09-451b-97aa-6df0c1db9ddf
+312,Ecuador,EC,Pujilí,0a69576d-3510-4a9f-bfe6-a032be5fded2
+313,China,CN,Jianyi,0be68732-4416-4c2e-978d-1bf2689a33f2
+314,Poland,PL,Wola Jachowa,a201aaa3-9819-4bea-acc6-60ae4aa86b04
+315,China,CN,Dongfeng,369dba3b-b4aa-415c-9b32-a24808ee4080
+316,Syria,SY,Ar Riqāmā,02d046f1-e109-4a0b-a5d9-7803440d7641
+317,Sri Lanka,LK,Sri Jayewardenepura Kotte,076ddbe8-943f-4238-9658-1343f4f30267
+318,China,CN,Nanyue,5e4abc84-52dc-41dd-aed2-aad72ffcc5f7
+319,United States,US,Dallas,3a6ce3da-dc78-4ff5-96f4-d6a80aa32a10
+320,China,CN,Fengjia,79e58c89-91e6-42ad-8990-b5568d2cbc78
+321,France,FR,Paris La Défense,ef195f88-8f95-492e-a99d-7a642bd41dba
+322,Macedonia,MK,Negotino,cc74bb21-8e42-4258-8dfa-7c5e376aae4e
+323,China,CN,Wupu,0b3ca6c8-6c26-4676-83bd-e1230e73c9d7
+324,Brazil,BR,Grajaú,be498dc3-2e0f-41ce-b9c7-92cc00240ab4
+325,Afghanistan,AF,Shahr-e Şafā,7aef31f1-b50f-41aa-b0a3-7569fbf2bd96
+326,Canada,CA,Grimshaw,169bc7a7-7aa6-456a-a482-ac0511804da8
+327,Norway,NO,Bergen,f9391844-c955-49e1-9a52-b7c1aab850a4
+328,Philippines,PH,Narvacan,da88b13a-096e-4a45-8043-13c528058d29
+329,Malawi,MW,Kasungu,e8f0caf5-e486-42dc-b65e-46e381865851
+330,China,CN,Hekou,3e3110d1-1767-45c6-ab57-24cbac62244c
+331,Thailand,TH,Fao Rai,668185d2-1a2c-4bb6-beee-afd8b726673d
+332,Philippines,PH,Dadus,093756cb-eb80-4648-9bf4-f9f8b1aefb97
+333,France,FR,Le Raincy,e78ef547-510d-46ec-962b-c697eeab3c7b
+334,Greece,GR,Áyioi Apóstoloi,1cd82863-5616-4646-a629-db12e95be859
+335,Czech Republic,CZ,Jablonec nad Jizerou,4b2798da-8556-4921-a3fc-1707404a49f9
+336,China,CN,Qingxi,bbd37237-389d-4cf9-9ab4-fa0f9a04a457
+337,Afghanistan,AF,Kafir Qala,c76035bb-5b3f-4cf8-829b-a6e59285aeda
+338,Japan,JP,Fukuroi,1021d144-5251-4136-89cb-d7090160f0e6
+339,Indonesia,ID,Mbongawani,c1e0cd92-48cc-419b-97de-66d5e0c8f325
+340,China,CN,Menlou’ao,ea8e5057-9dda-419a-8731-64f34a9eb1d2
+341,France,FR,Tournan-en-Brie,c2d10872-3d60-4516-b33e-84fc74fd5b93
+342,Sweden,SE,Gävle,da7a2aac-caa4-4212-ba8b-35ef6ff2a7c7
+343,Malaysia,MY,Kota Kinabalu,3e296db4-ff54-40e6-b59d-825ab08edff3
+344,Philippines,PH,Culubasa,1a59aa17-10f6-4358-903f-9fdd99e28b79
+345,United States,US,Springfield,6a67f99b-072f-4772-b9a8-b9aa3e1be5b8
+346,Democratic Republic of the Congo,CD,Kipushi,7cef8eeb-5d46-48cb-be4b-05c6a1dae157
+347,Japan,JP,Ōarai,f694c8e7-6233-4eac-a9bb-9996520d2358
+348,French Polynesia,PF,Vaitape,8194b553-f222-475c-a84a-f3de86ca68bb
+349,Sweden,SE,Järfälla,1d97fc4f-5d58-4642-9a56-1e369b3e698c
+350,Nigeria,NG,Bomadi,974470db-66cc-4a18-b9e6-8c486daca8ac
+351,Peru,PE,Tabalosos,b839ad15-7ed8-4057-a1a7-9c3ea1bd75e4
+352,China,CN,Xinglin,d9a599f3-62cd-48fe-b710-9edd4ceea310
+353,Argentina,AR,Chamical,9ef607c6-734a-4951-b619-c95810b15e28
+354,China,CN,Xishan,b5296654-f43a-4324-acb0-901aadee9416
+355,China,CN,Jinhui,4d52dd69-d976-455a-9b9c-73b475a9bfe0
+356,Sweden,SE,Norsborg,8da4ba55-01ad-4bbb-b633-66ddb1dd429d
+357,Philippines,PH,Santa Marcela,7fc600e2-cf58-4dbc-83e4-5e31adb51053
+358,Mexico,MX,Loma Bonita,51e4790d-9d9e-4c5d-828b-4b0fdce12dfd
+359,Panama,PA,Tubualá,06ae1c52-458c-4041-b307-34dc8bd9116e
+360,Russia,RU,Khandagayty,d32f0819-24b0-4a7b-be71-a5bca99527de
+361,China,CN,Axili,445f1ecb-ee8b-4d5e-a513-85b76347128f
+362,Indonesia,ID,Banjarbaru,51fc973c-d940-4a9a-8ecf-8e9e14e2b525
+363,Indonesia,ID,Lawepakam,8a530ef3-98cd-4560-bbbf-dfd416792327
+364,Peru,PE,Tres Unidos,132b8157-ea74-4101-894b-3f751afb9a1b
+365,Philippines,PH,Langob,d583c1cd-2d06-4c39-96e3-903d9b23133d
+366,Russia,RU,Malysheva,142c7b92-581c-495a-a1bf-2f88532263ae
+367,Micronesia,FM,Eauripik,a079efcb-7a80-4664-bf8e-0b5c2e184687
+368,Canada,CA,New-Richmond,56bd8978-3f97-495c-874a-658b1ad1864d
+369,China,CN,Jinshan,a8b8f95f-300b-4819-b02f-8e9857adaa32
+370,Malaysia,MY,Kuantan,684c011e-fd36-418d-9161-6f133e3d9246
+371,Serbia,RS,Nova Varoš,70191a2b-83d7-470a-8775-cd437df8a50b
+372,Indonesia,ID,Potulando,8c08133f-a9d2-406f-ba0d-9435ce8140f5
+373,Brazil,BR,Caçapava do Sul,2cba5ed6-83c5-44c3-ad2b-4a3b6961ebe9
+374,China,CN,Beigang,8b75d71a-c7ac-4c38-82a5-7b2f9bcc4e26
+375,China,CN,Wenxing,458227a1-fe6e-451a-985e-dd8b0490ed7b
+376,Brazil,BR,Ijuí,b1bb4d98-4c6c-453a-b3b0-8bb69484192e
+377,Colombia,CO,Aquitania,1af52cac-79de-4228-880c-21bf7b2fe6e9
+378,Indonesia,ID,Pining,d4855d36-5997-4a72-8566-212f5af72c5e
+379,China,CN,Xiajiashan,2ff8fc2c-0934-48ad-bd33-eeebd276dd31
+380,Philippines,PH,Quinipot,c87c5eaf-cc43-4726-a721-db1f7bfdd4cf
+381,Saint Lucia,LC,Soufrière,8c6514f8-783b-453d-a576-2c755b446386
+382,Brazil,BR,Diamantino,a19ec540-0424-42dd-ab75-187fe4e05737
+383,Bosnia and Herzegovina,BA,Tasovčići,f8658b69-8446-4e5a-86aa-75b21a5debce
+384,Peru,PE,Buenos Aires,00658ffe-d078-4fe7-9dda-83197bf6a950
+385,China,CN,Yaxi,8ae6b29b-6c90-43d8-bdcf-dbb057a4d9a0
+386,Brazil,BR,Jacupiranga,fb1232b7-fcc2-42a9-8d2b-653152541cce
+387,Guatemala,GT,Morazán,0d849ed0-637c-4e4b-94ed-70e1e43f9ade
+388,Burkina Faso,BF,Yako,d2979310-9fa2-40a5-95f9-7c15ab959fc1
+389,Mexico,MX,San Jose,9c52bd06-eb72-44dd-809b-0ffff9060b76
+390,China,CN,Wangqinzhuang,e73ccc5a-0b01-4416-b993-58f08dab7685
+391,France,FR,Saint-Quentin-en-Yvelines,0e3a9267-ae92-4b5a-8a3c-63851bdf8d59
+392,Philippines,PH,Moog,f0349dba-78a2-4999-ac25-3d687ccb4cf9
+393,France,FR,La Roche-sur-Yon,90b1b1d1-ab50-4b18-a4f7-3d76e8f85226
+394,Indonesia,ID,Magepanda,b0ecf8aa-0d4b-42fb-a6db-bca6970b429e
+395,France,FR,Bobigny,a93064a7-a48c-44b2-9ec7-421c9bd1035b
+396,Georgia,GE,Gori,0f2a17c7-d78f-4c6b-833c-39a6ebbf317c
+397,Russia,RU,Pashkovskiy,edc9dbe0-8083-4d83-ab49-1f6ee810df15
+398,China,CN,Muzhijie,a9a78f26-34e2-4bb2-88f1-63516ff318ae
+399,Japan,JP,Inazawa,4a35b109-bf81-42a0-bde8-d73e16213cb2
+400,Colombia,CO,Medellín,e5a59bda-0195-4eb7-9d29-ff3842531f43
+401,Philippines,PH,Mauraro,4b29ce46-3569-491d-b6c2-930692c27779
+402,China,CN,Taixi,7e2c3767-643a-49d1-98db-d2e194df6eb7
+403,China,CN,Dasiping,9cec8003-5873-4a20-a9e1-66f1fe71c37b
+404,Portugal,PT,Sabugal,ba4b3dd3-0403-425d-b664-2dece97d7f55
+405,Czech Republic,CZ,Valašská Polanka,12cd08b2-4d01-4c14-8b0b-8f30dfc293ec
+406,France,FR,Thaon-les-Vosges,05430ffa-6718-4063-9706-3334bce74d1f
+407,Afghanistan,AF,Nayak,330b8446-5608-49a2-9262-89463581b70d
+408,Indonesia,ID,Kota Trieng,50b810cc-43a7-4fe8-ba45-22a275d9d204
+409,Brazil,BR,Maraã,916de78b-38a9-4f26-a031-dca269af812e
+410,Sweden,SE,Uppsala,56e86826-647c-4a26-a77c-20e24c227934
+411,Indonesia,ID,Condong,af82d671-5827-4dbc-85c7-f3a44a42f3c7
+412,United States,US,Topeka,a23a45de-06cd-4ac8-9b05-40627d1c70c0
+413,Canada,CA,Fairview,6938d39c-d4ba-4aed-8995-1989e0ac0071
+414,Netherlands,NL,Amersfoort,f083d6a0-07ce-4125-89b4-6df5b8082c46
+415,Indonesia,ID,Sogati,085f4caa-2a1e-4848-b45d-b04cbd25ac3a
+416,France,FR,Forbach,0f3074b5-4a2d-4392-892e-4f204ea57ff2
+417,Croatia,HR,Podstrana,ee55a7db-3f06-4a4b-b9fc-8cc6223efbfd
+418,Portugal,PT,Vale Mourão,05f51d65-2893-4124-ba5e-ce991c545d9e
+419,Croatia,HR,Brckovljani,6eb514a6-eff2-481d-813b-e678d158be49
+420,Sweden,SE,Askersund,3fd459b3-bb0e-4244-80d9-aca6c2863232
+421,Panama,PA,Alto de la Estancia,66667c87-dfc8-4248-be39-d0a5086d8ad4
+422,Saudi Arabia,SA,Ţubarjal,1115403f-d0dc-4023-88d8-2d219a4898c4
+423,Egypt,EG,Damanhūr,e8a0f78c-013e-4885-9452-1b98f9ca1bef
+424,Sweden,SE,Storuman,8a780e5a-8ea4-47ff-98e9-55c31c5d3d5a
+425,Russia,RU,Chernomorskiy,9aba071b-8a91-4909-bb0c-0b9541ca6f78
+426,China,CN,Huji,5bc8e176-56eb-4808-97a7-7e990ca940e9
+427,Portugal,PT,Vinha,28223c7f-07f4-45f5-aa35-a729076ba987
+428,Haiti,HT,Ouanaminthe,09f60a5d-f3bb-4ab2-ad05-c8c079c8545b
+429,Croatia,HR,Bilice,14ff607a-8bd4-4b82-96f4-521406b205e4
+430,China,CN,Waishan,6d2e5efa-d6e5-4b4d-8886-243d8f623c00
+431,Russia,RU,Pallasovka,09f2869e-284f-461c-92f6-2264990aaf1f
+432,Russia,RU,Slyudyanka,75ffc4a9-0db3-4a4b-bdb2-172b52b1469e
+433,Portugal,PT,Cotovia,9c77e8a0-a022-4da6-98ac-11c7a58fba99
+434,Philippines,PH,Alibunan,3fe4e7e5-86d0-4978-980d-77c96208c1cc
+435,Poland,PL,Czerwieńsk,fe43e8a2-7bf7-4a12-9e4e-374503546a99
+436,Ecuador,EC,Santa Rosa,c3d98be3-6d1b-4103-97a1-b65c53309c9b
+437,Czech Republic,CZ,Nýdek,9b264a26-5aae-401b-b531-0683fc0a4f12
+438,Indonesia,ID,Gupakan,5ecc045d-1963-4b4b-8dbc-bcdce44ccdae
+439,Poland,PL,Mirsk,efa81fd4-fa74-4945-b597-304757c3fd04
+440,Indonesia,ID,Tembau,f250168f-8e2e-4bc2-b33d-34a00a3e57df
+441,China,CN,Wanli,559a63cd-9d59-4b18-8191-b9dbfb13f33c
+442,Ukraine,UA,Volochys’k,33b36839-5119-4f45-9f03-ad7494f278eb
+443,Saint Vincent and the Grenadines,VC,Barrouallie,68c58e1c-73f4-4f21-94c6-e0edade7396e
+444,Madagascar,MG,Ambovombe,9a04d620-5754-49b1-b7cb-fe221c643238
+445,China,CN,Gaopai,098d32d3-4e7f-4b7b-803c-08811d3ca3d0
+446,China,CN,Liujia,ef0f7cfa-e95a-48fa-b809-4f95622853d4
+447,Argentina,AR,Curuzú Cuatiá,55e870ea-092d-4931-9d36-9852bb017294
+448,Macedonia,MK,Нераште,423f80cb-13ab-4f6a-be1e-d55354588d43
+449,Azerbaijan,AZ,Amirdzhan,e5042932-8617-44af-92c1-04d748e32700
+450,China,CN,Qiulu,5224bb82-588b-4b4f-b0e9-3f344c97f60b
+451,China,CN,Xiaowuzhan,45691124-14c8-4a5d-a734-64f039e6dfc0
+452,United Kingdom,GB,Ashley,e5fc696e-4d9a-4169-8cc9-23db6cbbd141
+453,France,FR,Niort,51edbd47-387e-4ef9-bd26-5b9fa7122ccf
+454,Mexico,MX,Solidaridad,3abdeb09-76c5-4c98-b48a-87a3fe004a21
+455,Russia,RU,Pikalëvo,dee4c865-dcab-448e-98c1-bdc369dc2b5c
+456,Reunion,RE,Saint-Denis,6d8c0887-fdb5-4fec-b670-76f388bb80f3
+457,Indonesia,ID,Birowo,bff832a3-f8f1-491c-9c38-298fce60a160
+458,South Africa,ZA,Tembisa,e923c3f4-aaa2-42c9-89af-74e7fb1701df
+459,Greece,GR,Skoútari,0c8e76d6-cbf1-4ee2-bc0d-d54150a4c338
+460,Greece,GR,Thymianá,0b06957a-c225-4c7d-9484-5c778a175d67
+461,Mexico,MX,Bellavista,e1d69c4a-398f-4f60-8d85-54b7d3a60f9c
+462,United States,US,Houston,107bec4e-3245-41d3-b487-ccaf79c8db99
+463,Colombia,CO,Albania,a1a0d739-7760-48c8-93fd-d4556e427580
+464,China,CN,Linshui,e69b94b5-16ce-4e15-86da-fa05116c34e3
+465,China,CN,Dawangzhuang,10aeb5fa-797a-4f48-979c-6eb634e5b812
+466,Finland,FI,Uusikaupunki,a4818a90-6409-48f5-ac14-9ddcd5250778
+467,Ethiopia,ET,Desē,16b61ebb-ee66-416c-9848-5760c5430fae
+468,Portugal,PT,Vilarinho das Cambas,a79ac45b-7c07-499a-8641-75d98f1a2219
+469,Portugal,PT,Casal,de978d16-4983-41e3-9d35-74658ff6fc87
+470,China,CN,Da’an,0bfd221d-ca92-4e64-b17b-1da27e1f529d
+471,Philippines,PH,Baliuag Nuevo,a74476eb-270a-4899-be18-a1d3711b3562
+472,Philippines,PH,Laoag,901fc1bb-3adf-4322-84e1-7b1bb709e315
+473,China,CN,Huangshui,ac637f58-74b8-4c4b-8348-132d8877a67e
+474,Morocco,MA,Skoura,541efbed-cd19-4af4-9813-07eb0172953a
+475,Norfolk Island,NF,Kingston,f41e13b3-ea02-46db-9fab-f6c3755e5ea8
+476,Mexico,MX,San Francisco,458c3907-1bd6-44e8-843e-845c33eec402
+477,Ukraine,UA,Ovidiopol’,64be1bc4-fe43-448f-868f-d95afe140e76
+478,Russia,RU,Staronizhestebliyevskaya,085ac8be-bb32-4ea0-8d5c-d00b1257a306
+479,Indonesia,ID,Ajung,b5c5f12a-bcf9-48ec-9904-c265b6e815aa
+480,Sweden,SE,Skövde,766fe5ed-0b23-4e38-90e3-afee05128ec7
+481,China,CN,Longfengba,95d52ecf-1252-472b-b4a1-74e1a7c05629
+482,Lebanon,LB,Ra’s Bayrūt,3be3357c-5f4f-472b-b31f-13651d645fff
+483,Chile,CL,Puerto Natales,4079bcab-d1d8-41db-a4ff-8c62e059261a
+484,Ukraine,UA,Synevyr,d96b3743-d118-4ca4-aad9-80a54724d5ec
+485,Poland,PL,Siemkowice,67a275b4-57bc-4922-9fce-4c313e2f3958
+486,Brazil,BR,Unaí,d87e16e0-8b92-4f85-9ba4-009dbf6ef9b5
+487,China,CN,Weiyang,651c6f9f-4202-42ff-9510-3a7fa39160e7
+488,Dominican Republic,DO,Punta Cana,f7857a26-173d-4438-b9a8-ba9f0c569bf4
+489,Russia,RU,Murmino,2a56f0ef-25b2-4616-943f-e237e4c79e8a
+490,Peru,PE,Longotea,6bcd876a-35cf-4282-99e1-ba2a67f2f6d2
+491,Indonesia,ID,Pahing Jalatrang,b77f0f30-fa44-45e2-96d6-ad635ca8e65a
+492,Argentina,AR,Huerta Grande,9ddb7a35-090e-474d-9e77-6d9d5dd5d0af
+493,China,CN,Tuanshansi,f263a1ba-a016-4b8f-a033-c434748b2ab8
+494,China,CN,Pukou,bed66b71-1cd8-4e8c-910d-4cf2f696eedc
+495,Sweden,SE,Timrå,ec5a0032-32e2-4c66-a62d-1e968b132277
+496,Mexico,MX,Santa Cruz,966a3777-4d27-4e9e-a17f-f2bdfaccfff7
+497,China,CN,Sanli,30ca6c57-2dd0-417d-990f-9a0f3053dbcf
+498,Philippines,PH,Isulan,b69b93c6-101c-41c4-927c-03701a4b16b2
+499,Indonesia,ID,Kolbano,539fda3d-ccc0-4efa-a976-d336ac598236
+500,China,CN,Chenjiaba,690089fe-2a04-49f2-a993-f6e2fcbeb324
+501,Indonesia,ID,Beskolen,52e0e88d-5660-4bf7-b3a0-720f211dc644
+502,Indonesia,ID,Manukaka,89866148-b06f-4439-b71a-783d0b5f930a
+503,Portugal,PT,Barrunchal,d449d034-b24e-4f7e-99dc-8b9c74ce800c
+504,Thailand,TH,Noen Maprang,53c46b3f-a598-477c-89fb-51f48b751a4c
+505,Brazil,BR,Propriá,74612a11-deb3-4673-aba4-7366ac1b3487
+506,United States,US,Seattle,35714bc3-7fa5-4aca-a880-db958e0fa439
+507,Indonesia,ID,Lasusua,9ec94e8d-dedf-456a-a9e0-8ecd2474fa2a
+508,Mongolia,MN,Jargalant,d48b646c-c9c0-485b-a294-541704d40be6
+509,Sri Lanka,LK,Unawatuna,248e1a80-f0ab-41c1-a664-86dde31c33e9
+510,Czech Republic,CZ,Lukavice,122e2535-7f83-4fd7-b1be-eb5f32d91b2a
+511,Russia,RU,Novopavlovsk,68a8addb-9cb5-4e48-bc53-89c6995adcb9
+512,China,CN,Yong’an,13441678-c2af-48b6-b65e-1aecf991e91c
+513,United States,US,Milwaukee,02235ad3-09cd-42f1-a7e1-fe9ee31de8c3
+514,China,CN,Baitouli,4817e7b2-abdc-4e84-996f-a2d87cd97514
+515,France,FR,Nevers,f47b4a0e-14e6-4a0b-bd4a-9c03de503a4c
+516,Malawi,MW,Luchenza,84f9d8e0-ab17-4980-8cbc-b4cb030de99f
+517,Colombia,CO,El Copey,994a26f7-fac0-46ac-bf48-cd7a5b6e7d07
+518,Japan,JP,Saiki,0ca4681a-bcc5-421a-b248-b295aff6fb53
+519,China,CN,Nanyang,cdbaadae-c8bb-498a-b2c8-8b330737208b
+520,United States,US,Houston,0ad19d0b-2b87-43fc-8e7b-661855a01a7c
+521,Sweden,SE,Årsta,6f2a24af-b958-4546-9c3c-8f35cc260da0
+522,Tuvalu,TV,Funafuti,c4e0e9c7-ded6-41de-8b8a-aca69cf55699
+523,France,FR,Caen,ce70c307-1d70-42df-80e6-e2a8148616fb
+524,China,CN,Yintang,53f30d5b-7dc8-403e-a9e2-2110e5dc42ea
+525,Indonesia,ID,Cigadung,313dd3cc-e627-4d12-9415-2d84d4a03692
+526,Netherlands,NL,Leidschendam,8bb0fb25-f9de-471c-8c27-0b81332ff129
+527,China,CN,Liangshan,d63078ac-da9b-44f9-a209-b582dcf5971f
+528,United States,US,Albuquerque,937a39ac-1138-4179-a62e-c2389d7214e9
+529,Greece,GR,Níkaia,a52a6746-dd81-4130-85e9-ee28c0f3f08b
+530,Philippines,PH,Lubao,71d8a188-25d4-40d0-af75-03d29a9e4c1d
+531,Brazil,BR,Mauá,5787ea4a-2e54-4e1f-a2c7-0bd806aa9bd9
+532,Philippines,PH,Balbalan,0b465e94-cdbf-415b-b784-f5ec975ed148
+533,Sri Lanka,LK,Sri Jayewardenepura Kotte,7ecc746f-d187-42e9-a512-bb242d8c4a19
+534,Russia,RU,Ivanishchi,f1992147-29b2-4211-b5e5-c76aa28dd258
+535,Israel,IL,Eṭ Ṭaiyiba,f7c200e7-dbd2-44ff-91c3-c29a4d642675
+536,Mexico,MX,Reforma,ba3e9174-1e92-4475-9e21-c6621bc43427
+537,United States,US,New York City,e47108f0-7845-4599-b290-6ce34ddd92f5
+538,China,CN,Shanghu,5fd16d65-6fc4-4bd8-aa5a-06401cdda740
+539,Portugal,PT,Monte da Boavista,80733def-e46d-4bcb-b1d2-2adf10322046
+540,Greece,GR,Pentéli,a40787da-83b2-421e-b8a8-f1eeba67a905
+541,Cuba,CU,Jatibonico,2a9534ab-78d8-4129-a5eb-2aa8cdb4d8b4
+542,Philippines,PH,Malinta,1d7dae42-57c8-458a-b4e6-ddd81ff8acab
+543,Pakistan,PK,Kanganpur,18efb565-dc54-43e5-9cb5-22d5d8d48126
+544,Brazil,BR,Santo Amaro,a8037958-a33e-4eb6-a691-eb5b51f6795d
+545,Indonesia,ID,Padangpanjang,846e75c6-f10b-4e63-b653-832530b42b99
+546,Panama,PA,Las Tablas,cb08c9b5-8a1d-4fbd-bcf0-e2806b5d1241
+547,Greece,GR,Káto Dhiminió,eb4aa7a4-7747-441a-8b20-dd86f4007131
+548,Japan,JP,Tōno,ad6f6fd2-03f1-4474-8303-c9f05b5abd45
+549,Indonesia,ID,Padasuka,98b9f9d5-648b-4ace-bf7b-f4be5095cb5e
+550,Poland,PL,Czarków,a64d5aec-5d87-4024-beb2-18922d6dd227
+551,France,FR,Vendargues,c1d203a5-0133-40b5-af88-06ddf093a1fb
+552,Greece,GR,Néa Péramos,e0be5a8c-7404-4585-bdf1-87d858e1c748
+553,Dominican Republic,DO,San Pedro de Macorís,815d2d33-4df2-4e2e-bd00-1b41e812279f
+554,Tanzania,TZ,Dongobesh,6f26e58b-3763-4954-9f61-61bd5a0a4b58
+555,Afghanistan,AF,Khūgyāṉī,b0b2b2c1-ea68-4bd2-8340-fda27d48f62d
+556,China,CN,Panshi,1b1a1218-5e52-4fe9-a6dc-6701874f500a
+557,China,CN,Wucheng,42780b29-f7e3-438b-b3bc-14b177138350
+558,China,CN,Shengshan,77b3d9ba-2c8a-47aa-b3ba-2954bc3c6633
+559,Russia,RU,Volgo-Kaspiyskiy,028cbed1-266b-44d4-a523-cb0812df4b99
+560,Vietnam,VN,Thuận Nam,6855574a-3ef3-43d8-a421-51d9d0489624
+561,Ukraine,UA,Melekyne,d3cabe45-bf3d-41ac-ab4b-c21f2a7f6765
+562,Thailand,TH,Mae Lao,50bc8439-8b85-4a8e-a004-413441d5d31b
+563,China,CN,Laoshawan,c13d6fcf-849e-48da-8b7b-5e84f95c223a
+564,Kazakhstan,KZ,Timiryazevo,5e503e05-4bf6-41fe-9463-6a8f6d3ba7d7
+565,Kenya,KE,Kakamega,9e86f8c3-e8d4-4f93-9811-1dcc7766c9e5
+566,Philippines,PH,Caibiran,607c6406-b0cf-4c05-b72e-ac1cb1351a78
+567,Ukraine,UA,Hlyboka,08c86844-683a-4f4b-afd1-fb71a7f06e7e
+568,Yemen,YE,Lawdar,89090898-8820-4093-9149-94580a1dc096
+569,Sierra Leone,SL,Masoyila,1700c54c-9497-4ae2-9d86-fbb3643f659e
+570,Brazil,BR,Jeremoabo,b8b734fd-588a-4c68-9ee3-93bdc999bfd7
+571,Japan,JP,Tondabayashichō,184a49d8-dcbe-4897-9a94-46e0de6679e5
+572,Peru,PE,Huamachuco,c959affd-2535-4be8-84d3-70932e0627b3
+573,China,CN,Quanzhou,4b0413c5-ea73-4d67-b52d-b4828cc44d8e
+574,Canada,CA,Aylmer,81041157-6bba-46d6-8624-758ad994d9c0
+575,Portugal,PT,Lameira,dcc6e9f1-d243-4d27-b927-ae0107aba61a
+576,Greece,GR,Ampeleíes,76471ec3-a0f0-49cd-8a7b-39d605882445
+577,Poland,PL,Puszczykowo,5b43647d-28f0-49de-b43c-277ad602387e
+578,Sweden,SE,Örebro,3c2e131d-c4dd-451b-adea-5760c2bd83f6
+579,Ukraine,UA,Verkhn’odniprovs’k,9ad87c90-3b94-4bbb-b4ee-41930d236245
+580,China,CN,Weitang,2b4f8ce9-4c71-4e14-a31c-4bc89a28d95e
+581,Indonesia,ID,Sebegen,2dbe36c8-854f-496f-bf34-7db2ae3d3d71
+582,China,CN,Taobei,3fd0d67e-4708-40cb-b0e7-a65a0019ce80
+583,Venezuela,VE,El Corozo,65a70ccf-d8e1-420a-92c1-c16ba9c1d563
+584,Argentina,AR,Garupá,6f9eb70a-b86c-49bc-8ab3-7e02def16406
+585,Ukraine,UA,Verbivka,b49fb045-afe1-4091-8f63-54800d09273e
+586,Lebanon,LB,El Hermel,b21a3264-8dad-429e-86ad-bde6790db7dd
+587,Sierra Leone,SL,Binkolo,bdde5072-219f-4824-af61-2c9c2758abe9
+588,Philippines,PH,Santa Teresa First,9df8946a-b90c-4ff3-b7a8-17902be3794c
+589,Philippines,PH,Pandan,ea866858-ff37-44ca-ad33-b2851c9fe9d9
+590,China,CN,Huangzhawan,e0f3dbc8-3c1d-4d36-bec8-9e9e854f257b
+591,Russia,RU,Tikhoretsk,53b3e326-3ac2-4fe1-9513-36939d976716
+592,Mexico,MX,Ignacio Zaragoza,4b79676f-a06a-480c-af9b-51a97714433c
+593,Greece,GR,Melíti,765c1781-649c-4b3c-894b-ef65dbc16ed7
+594,Central African Republic,CF,Sibut,09565fde-d896-4e7c-bff3-ec587614d655
+595,Sri Lanka,LK,Tangalla,0246161c-0e00-4549-bc28-6ad14d7f8771
+596,Russia,RU,Vatutino,0df7a8e5-14fd-453b-9a10-fef47ded228e
+597,China,CN,Yunlong,ddf8d0f6-277c-420f-8729-ea6e5de848c4
+598,Kazakhstan,KZ,Tasböget,685fbb5d-bd9a-40e8-a642-a95f775e5e78
+599,Indonesia,ID,Krajan Nglinggis,da5a226c-b467-4fb4-8b8d-715d297c7f63
+600,Poland,PL,Czerniewice,7021c522-6758-47fa-9e2b-52416a6f8c80
+601,Finland,FI,Tuusniemi,765a0b3d-c257-4904-b07e-71ad11fa66da
+602,China,CN,Dongbian,cf434cd3-a748-4cc3-85f9-99fa0732fcc1
+603,Vietnam,VN,Quỳ Châu,4b40a04e-481c-4a04-b39f-e1e27358febb
+604,China,CN,Huainan,73e00fb1-8690-4180-8a60-c83bd8514874
+605,Russia,RU,Dikson,3812fc8b-c841-45db-b42a-682356f99cac
+606,China,CN,Dongfanghong,5abed8a4-1332-4f21-8dd4-3266d632febc
+607,Poland,PL,Witkowo,69bbb794-f6b7-4e2c-a89e-3e9fc693061b
+608,Macedonia,MK,Матејче,7f15c62e-0194-4c9e-85be-4bc349fdae56
+609,Indonesia,ID,Baleber,4b1eaab3-900b-41d3-8e0f-8a7966b17c65
+610,South Africa,ZA,Margate,dd1fbf8d-df80-456f-8b37-1351e5751df8
+611,Afghanistan,AF,Khafizan,463d7804-e08a-4dbf-a086-888648b80b8d
+612,Iran,IR,Nūrābād,f4fb362c-eb00-42e6-9f60-cf2d4835b59a
+613,Russia,RU,Pitkyaranta,58fe887c-a703-430c-a6f4-63f2944593a3
+614,Pakistan,PK,Mīrpur Sakro,43f31f5a-4bb2-4ceb-b19e-7adc58ef5923
+615,Brazil,BR,São Miguel do Iguaçu,179d8e13-13ab-4fc9-9121-888787430ab1
+616,Luxembourg,LU,Mondorf-les-Bains,6146b32a-ffb8-436c-9910-755285dd4916
+617,Poland,PL,Dolsk,1dadb5c8-bd38-4ee9-b063-c95944c2c5b3
+618,Honduras,HN,Quebrada de Arena,94a2c7f9-75ad-4f52-a3b9-26b9f50f400d
+619,Macedonia,MK,Centar Župa,0c1fae2a-a7ac-49b5-a967-2ab4c2758209
+620,Portugal,PT,Sande São Lourenço,7dcc693c-8164-4a56-93c0-763d295635bf
+621,Indonesia,ID,Lewobelek,a866a017-c669-4c6b-8b0d-221ff4ed86c1
+622,Russia,RU,Bryukhovetskaya,b36e701f-7e43-4d03-b729-f9c01af80bde
+623,Spain,ES,Vitoria-Gasteiz,c49212da-f540-4ec8-9289-b135165af97e
+624,Philippines,PH,Bantogon,e14c672b-5c0d-47d5-8095-1443843ecf06
+625,United States,US,Cincinnati,b09af899-2179-4ba8-a35f-67073e51d2c1
+626,Senegal,SN,Nguékhokh,cc64208b-556e-426c-92a5-20203a7358be
+627,Portugal,PT,Portela,e29c90a5-55c0-4f87-af3d-583636682441
+628,Syria,SY,As Sab‘ Biyār,f4a03eae-cfc8-4d62-ac37-56c84a0cead8
+629,China,CN,Hede,c5dae0fb-0103-4bf8-beb8-a8312dcfb5db
+630,Croatia,HR,Pazin,b12d666a-7f19-436c-87af-c43ee394204b
+631,Philippines,PH,Mantampay,d2ca6c4d-4c18-4bb2-9e2c-280ef0907124
+632,France,FR,Tulle,b1167057-cbda-43fb-9d5e-d29f978a217c
+633,France,FR,Décines-Charpieu,50b7a18a-a53a-4b1b-ac6f-ccf6a3e03eee
+634,Thailand,TH,Ban Talat Bueng,2a211373-0d22-4a60-9d90-7778962c72bc
+635,Greece,GR,Kariaí,782ad89d-647a-464f-b708-d8c8255b95e0
+636,Portugal,PT,Castro Daire,46f1e477-ac86-4ad4-bc70-2736dc6bd609
+637,Brazil,BR,Sete Lagoas,5407471e-6d0b-4d2b-a736-a73e382e7947
+638,Poland,PL,Sietesz,cb6134aa-1b80-4845-b403-bd69257e8187
+639,Sweden,SE,Strömstad,a1f79c54-ba6e-4380-904d-f45b30c4894e
+640,Panama,PA,Sioguí Abajo,2167456e-0177-454e-a3e4-8683e96f68e6
+641,Japan,JP,Hamanoichi,a7c6f9de-58a1-4192-8f15-b2a9a90d659a
+642,Ethiopia,ET,Gorē,0a32df49-2c95-4a8f-af1b-2b873e775791
+643,Chile,CL,Santa Cruz,18e23b50-ef14-4580-8d74-6dbfefa86423
+644,Russia,RU,Revda,f50d5f40-3e2f-43ac-9ed4-45c3f3b1152e
+645,Indonesia,ID,Johogunung,303304fa-d7d7-4d49-8a64-b58aeb6c3fc4
+646,Ukraine,UA,Obroshyne,4f4e4a02-d4b2-48cc-9716-ffc285652dfd
+647,Brazil,BR,Guaíra,a22fcdf7-6e7c-4e81-bb89-0bfe075c1117
+648,Poland,PL,Darłowo,2c7f21b2-3b65-4d2d-815e-dd50e979b613
+649,Nigeria,NG,Lokoja,0da26792-d7c6-424d-9fa1-7cd108725f77
+650,Chile,CL,Panguipulli,88997e8d-ff11-4f0b-8db8-3a4b16193c97
+651,Japan,JP,Sagae,c4730254-8ff2-44be-be77-667303062cdb
+652,China,CN,Qijiang,382ab6dd-d0ff-433b-a09d-d6aae505ea45
+653,Indonesia,ID,Patrol,66a981c8-e6be-4e39-93db-cd082117a869
+654,China,CN,Hadabei,d4f63c47-97fc-403d-b539-2704b654300f
+655,Russia,RU,Medvedok,2e0f48ab-4ef6-49af-b9ee-52550af10551
+656,Indonesia,ID,Alak,b7847c1a-c569-4bdc-b369-062cf3a3df6c
+657,Poland,PL,Bobowa,fb1dfc70-20bc-4348-b52e-3ea3b4c8e463
+658,Poland,PL,Ludwin,6247169d-5471-4fdb-a179-32bda2ecb00d
+659,China,CN,Shi’ao,0919eaf3-b7f1-4763-ae70-50b1326360f4
+660,United States,US,Oklahoma City,0b0d6e05-b071-4e43-9b76-3b27d4ee4585
+661,China,CN,Guchang,7d547e38-b27c-45c1-a0f4-a885fdd9fbb6
+662,United States,US,West Palm Beach,472cdf7f-1635-4226-97ef-f49662154ebb
+663,Sweden,SE,Jönköping,9c97045c-6854-4437-9305-560c4cd646d5
+664,China,CN,Xikou,acbf1ffe-ef61-4659-92b8-54a2bc79be94
+665,Serbia,RS,Dublje,10a3032c-aa27-4660-a237-d5127611635d
+666,Nicaragua,NI,La Libertad,0cf8d981-a679-45dd-9136-dfdb8cb42aa1
+667,China,CN,Shaguotun,7d09f486-a783-4f88-9602-5c6879009e3f
+668,Russia,RU,Yam,ad70c5cc-7e66-4cb4-b8c6-d08a8b0f10e0
+669,China,CN,Guanlu,44cc01a7-0dd4-4530-92b6-b2c5a3faddf0
+670,Philippines,PH,Pudoc,63ff8896-6405-46d0-b551-e553f2718fe9
+671,Ireland,IE,Castlepollard,2adc0402-c42d-42e1-9764-df2eb07c38c0
+672,Peru,PE,Santa Rosa,1ae6715a-fa15-403a-a562-bf12d9c31c2a
+673,Kazakhstan,KZ,Aqtoghay,97cfe79f-8d28-48c5-bb14-71085fd8c0de
+674,China,CN,Fuyu,d0e28c30-36f7-4caa-b456-441d7abbc505
+675,Azerbaijan,AZ,Verkhniy Dashkesan,3906b5b9-45b3-4c50-b7d3-f158248f07db
+676,Greece,GR,Patitírion,444ca598-1d76-4d3b-b7f6-90eb55a696c8
+677,North Korea,KP,Kosan,51285cc8-1070-459a-afbb-8fdfcb2bc076
+678,Canada,CA,Martensville,2d189162-c57d-40d0-965a-d6279e6c051d
+679,Philippines,PH,Manaoag,ffb8e414-5e68-40d4-a7c6-bceef6788e59
+680,Thailand,TH,Wang Chan,a32138d2-7668-410f-b7b6-2deee013ca7a
+681,Philippines,PH,Capalayan,dc63418d-8ba9-4a77-9678-b98e010dda13
+682,China,CN,Futu,aca4f878-5291-4beb-b1f0-81b9721d51f9
+683,Myanmar,MM,Pathein,a2492719-bb18-44b3-a7a4-4d78fe6e2a71
+684,Indonesia,ID,Babakanlapang,2c4bfc62-0033-4fc5-9c2a-9088096fd7fc
+685,Sri Lanka,LK,Talawakele,0beae2dc-5e80-4dd7-ba3d-94eb8991bb5f
+686,Bolivia,BO,Huanuni,9c8c9e88-10de-48d4-9614-edd1671f88f3
+687,Indonesia,ID,Asembagus,e206e3dd-e0a1-42bc-9e7d-5d45f8bb463a
+688,Sweden,SE,Göteborg,39c5c126-d650-49c7-a40e-107221c3095e
+689,China,CN,Youfang,ffd28c2a-4419-474d-accd-be59a8744239
+690,Argentina,AR,La Poma,41d28458-2ec3-4b6d-b416-4eae54cd4196
+691,Colombia,CO,Baranoa,90eccd9f-ef9b-4780-b932-0298e19944f4
+692,Philippines,PH,Matabao,e870669d-6de8-4891-9255-376c0ccfbbae
+693,Japan,JP,Yamoto,69120961-f708-4a7a-b7a1-967c15baff8f
+694,Vietnam,VN,Thị Trấn Tân Yên,90129717-1b88-4f68-9b3d-42d32c383ad7
+695,Indonesia,ID,Karangasem,c5dab327-be8d-4063-81fe-663070a86454
+696,Thailand,TH,Phayakkhaphum Phisai,cbd640b0-099e-4891-9a20-4cac382dc54c
+697,Canada,CA,Orillia,c9ad0cab-367e-4932-9655-a72e3107a969
+698,South Korea,KR,Heung-hai,9e2a167c-fd96-456b-8df3-f9ca36906c0a
+699,Peru,PE,Muqui,e0753d82-7d0b-40bd-8a23-138b41be833d
+700,Venezuela,VE,La Esmeralda,fc08d979-d942-4b0e-904a-39e336aee15c
+701,China,CN,Qingyang,3b81db79-dcc1-4cbe-ac20-932fdb119e1d
+702,China,CN,Wan’an,e17f033b-1492-4f39-b9a7-b3410dcefb32
+703,France,FR,Montélimar,eff6140d-ddc9-449f-b492-91fd6032f988
+704,Brazil,BR,Londrina,2f402bb8-a1fb-449f-9be0-fcc50d8dbfb8
+705,Czech Republic,CZ,Rovensko pod Troskami,a67d9022-dced-45b1-a12f-b496bc2d2a73
+706,Portugal,PT,Midões,b83d17d1-4bf0-4c8e-abae-990080b65eeb
+707,Venezuela,VE,Sabana Grande,4e3d411d-e838-42b6-8b6b-abca7874df3f
+708,Afghanistan,AF,Kalān Deh,c51b8be9-2f6b-45c8-a7cf-d716998724fd
+709,New Caledonia,NC,Fayaoué,4748fea9-c315-4b3a-898f-47b0b47bba08
+710,Russia,RU,Kotlyarevskaya,f50b5c8f-7184-433e-9bc4-9fad4b502d8b
+711,China,CN,Wuluquele,570b7cda-58e6-4067-8469-7dd6bec53514
+712,Cuba,CU,Artemisa,8b1ea2e9-41b3-47ff-8935-71be930f0bbf
+713,Portugal,PT,Pego Longo,3cc0c655-b9d9-493d-89f4-efbe3eefa6b3
+714,China,CN,Sicheng,f7979e9e-d2cd-4831-9d1a-bfc0c2100e3d
+715,China,CN,Huangmao,b00aa79b-75ce-4d96-ad0f-17b695ad6fbe
+716,Russia,RU,Bystryanka,d986f53e-4f44-4c93-87c8-8fcba6a89083
+717,Ukraine,UA,Brailiv,b21cfbe2-c329-48b1-8507-eb0e764213f3
+718,China,CN,Shaoha,bab7e2fc-cad4-41e4-9a90-af289e262110
+719,Philippines,PH,Viejo Daan Banua,0179f27f-0f9f-40ad-bed2-58d7e56ae607
+720,Russia,RU,Poddor’ye,17433d6f-095b-4129-821f-babb71c48679
+721,China,CN,Nailung,a0727bbe-2ae1-42b3-a8cc-74e52c37d2b9
+722,Indonesia,ID,Kauhan,3a2a0d08-ef65-47c7-960e-deee4b688150
+723,Belgium,BE,Ninove,68c870b0-5ecf-47fc-8f79-e9e2993ca2ba
+724,Spain,ES,Pontevedra,e5649b4d-1e59-44ef-bfaa-fb85d3e5690d
+725,China,CN,Xindi,1349ceb9-cd15-444b-823a-dd771c84fa20
+726,Mauritius,MU,Ecroignard,05443bd5-04d7-430a-a0bc-0f39ff7e4c35
+727,Indonesia,ID,Pakalongan,8cb3e4e2-cc43-495b-8e84-d4b23294b413
+728,China,CN,Heichengzi,2f098027-cd97-43c7-9402-3b38f922acb8
+729,Brazil,BR,Frederico Westphalen,a0ba5f72-e146-451e-9d50-733c39ffbb13
+730,China,CN,Huangge,884485c0-e413-4d44-9769-3c53fe8ab114
+731,Portugal,PT,Gandra,523d3ff9-c16e-48c0-a274-2a09bace9d62
+732,Poland,PL,Jadowniki Mokre,d399c11e-1d1b-4708-bebf-0c680ddddd88
+733,Poland,PL,Końskowola,d5fbbfb0-97d1-4805-8305-d42842d155a7
+734,Czech Republic,CZ,Černá Hora,51d96104-86b6-4ea8-bd7a-3a3e4033b5ad
+735,Ukraine,UA,Zboriv,2284b0bf-465d-49a5-88ca-e4c83e4d6882
+736,France,FR,Noisy-le-Grand,6225927f-341d-441f-8da0-fecea6b9d0ed
+737,France,FR,Paris 12,47490b67-9edd-415f-b6a4-5ad1ff006c40
+738,China,CN,Bao’an,6c17ebbe-ca07-44b9-855e-66c7077539de
+739,Hungary,HU,Budapest,80db3b93-4a9f-4b58-90a7-062e0bff9afc
+740,China,CN,Wuluo,77a85f6f-5a21-4f23-8998-f7062f32e0be
+741,Mexico,MX,Obrera,7253eca8-07d5-4929-985b-06ea0aebb5e6
+742,China,CN,Panjiawan,369675e6-0a27-4ed1-a7cc-8bf13929b6da
+743,Sweden,SE,Stockholm,a9e3f9a7-c655-486b-814e-63cd62a8d952
+744,Portugal,PT,Vairão,5ddfed9f-b7fa-4201-8fa0-106168d68469
+745,Sweden,SE,Mariestad,66825365-6524-4b5f-8e05-557abe2b6f63
+746,Morocco,MA,Rabat,05bb2fd3-91c5-4588-82a9-df4fb5922a3d
+747,Thailand,TH,Pho Thong,c066b977-c355-46cf-ad4b-e6f764cd9f1f
+748,United States,US,Kansas City,2f590a8a-ddb7-463a-b9c6-22bceacf4ecc
+749,Russia,RU,Yurino,c5077154-e7e0-499e-a0cc-ffdcf5df28d0
+750,Greece,GR,Plomárion,d8fb6e3e-02da-4f30-953b-a4e26e17c7db
+751,Yemen,YE,Kushar,8fbb5f1d-1953-47a4-864d-5fec0f26437b
+752,Indonesia,ID,Lanta Timur,3690ec54-c836-4c39-9aa3-a06f7b79581e
+753,China,CN,Da’an,9aa5cfdf-15b5-4525-8f9e-34549903c6af
+754,China,CN,Beigang,8d4238f8-597a-45e2-b65a-0b2801e705da
+755,China,CN,Liutang,a20821e0-065d-4e8d-a63f-358ae2158e82
+756,Canada,CA,Amherstburg,784a2961-1834-4b20-adbb-8bf5a9b594ec
+757,France,FR,Strasbourg,56bc08bf-7f06-497e-a4af-8a782fd0ad6e
+758,Belarus,BY,Prawdzinski,12bbb7c5-ace1-4ca6-9cb8-3574546cda9c
+759,Indonesia,ID,Krajan Tengah,099069ea-8cf3-462c-88ec-91dbe570b9a6
+760,Greece,GR,Anávra,46d05c52-8ea5-4c9c-a93f-be77854e1b83
+761,Sweden,SE,Oxelösund,07d91897-9b61-4d4f-b305-42167b5651d2
+762,Netherlands,NL,Veghel,0fa2c978-2fdb-4902-8c73-2211623f5520
+763,China,CN,Jingxin,44c7ee62-d5c2-4ee4-a5cd-439aed706ffa
+764,Greece,GR,Pappádos,91bfda3b-b531-4ff8-98a3-53d89f62155e
+765,Thailand,TH,Phuket,f0fc7960-d8fc-409e-bac4-8b75aaaadff3
+766,Serbia,RS,Aradac,8cb479d7-98dd-4de9-9c6c-0234bd51461a
+767,Finland,FI,Kontiolahti,bb97221a-efa9-4007-a605-90e413083392
+768,China,CN,Jiancheng,1ea2aced-5a70-4da6-bef3-26d988aae9c7
+769,China,CN,Hanjia,07befcc7-ee29-4fd2-8d0e-1eac7a4467a7
+770,Indonesia,ID,Gunungsari,f75fc9bf-77e9-49c1-bd6b-06a38c03f899
+771,Indonesia,ID,Lhokkruet,12e4bfde-5de2-4956-af0f-38d7686f7576
+772,China,CN,Anren Chengguanzhen,4b448e1b-0d67-489a-ba5b-281e79ffcdef
+773,Philippines,PH,Tawala,7f6937a6-2753-4f45-a67c-14cf6e9d22e6
+774,Sweden,SE,Boliden,b0e64b6f-02bb-40a1-b876-5119c46fdbf5
+775,China,CN,Hadabei,1ae3d777-bb8d-4b41-a8d2-7974996a115b
+776,China,CN,Baisha,cf68b27e-938d-4779-9e2e-a377e0050ea4
+777,Vietnam,VN,Bình Thủy,bfbfc64d-bfd1-495c-971c-6974873ff986
+778,North Korea,KP,Sŏnbong,d59c5af8-d8cb-4b17-a983-36a6e0d54938
+779,Colombia,CO,Mompós,c0e6444b-3d13-4699-bae0-438923666bcc
+780,Brazil,BR,Humaitá,093f3da3-0a15-4ff8-90ed-ca0c7b00a5fa
+781,Philippines,PH,Kinalansan,865d08f1-5a6d-441b-98d4-492c39d1799d
+782,Thailand,TH,Lom Sak,2266ef82-c794-4436-bc67-1ad268c4f2ab
+783,Indonesia,ID,Lohayong,9e2d1e95-7537-42a7-8d05-44c59dcad2a9
+784,Brazil,BR,Tabatinga,c9aa0b1f-20bd-4435-9fb1-aae9103b89ff
+785,Sweden,SE,Gävle,0bbbd73b-eb06-4079-a29b-2e2434422029
+786,Latvia,LV,Ķegums,821430c8-0e30-4c39-8dfc-2be5a9226f58
+787,Indonesia,ID,Curug,8411c864-a369-4176-9cec-d5129286368c
+788,China,CN,Sanhe,e0cb8250-758d-41c2-9bac-389240babdf0
+789,Laos,LA,Ban Nahin,fe7a5c81-fe52-4bc3-9302-e4bba87e8d50
+790,Russia,RU,Sokol’skoye,d8ea506a-0006-44a3-a954-a1378328a03a
+791,Colombia,CO,Linares,6446cb4f-b257-4da5-9820-fe455a3196a9
+792,China,CN,Eshan,f3aed9ed-9963-4a3c-ac06-8548b7464dc2
+793,China,CN,Lutou,0a376c28-f7be-41ed-8051-b388800c8658
+794,China,CN,Xinxing,2ac60e92-920a-4641-bc1e-b82773a26104
+795,China,CN,Xintang,446b5b3b-4c0d-4aa8-9d04-d431292cda9d
+796,Indonesia,ID,Wonotirto,37c5b006-1c33-4294-aee0-a8cddaee202f
+797,Syria,SY,Sulūk,dd02fbbd-f233-40a4-b41f-128a66a68dde
+798,South Africa,ZA,Prince Albert,4856cfe3-4805-4d82-a785-4c264f6115c9
+799,Poland,PL,Kolsko,c212de34-30b7-4118-b486-3ee6b6703253
+800,Ireland,IE,Listowel,79c3e93c-0532-4b01-8f46-b40b97806919
+801,China,CN,Changyi,bf6d639f-a90a-41c7-a0b0-9d6f28f03185
+802,Dominican Republic,DO,Laguna Salada,81474c0c-c4fa-49a9-ada5-45deb2171d98
+803,France,FR,Orléans,e67a6b26-2835-4d43-90aa-061e5a60ad99
+804,Argentina,AR,General La Madrid,1404c81c-77d3-44c0-ac83-926d70e5ca8a
+805,France,FR,Vannes,3946c8d4-55b8-4415-841c-04ea7c96ec02
+806,Sweden,SE,Uppsala,62b3e92f-90da-48e0-996b-1fc5e6982626
+807,China,CN,Xuebu,fb2ccee9-c0fd-4795-bdf6-c87ab9fedef9
+808,France,FR,Argentan,47ec8a70-fec8-4a5c-814e-929186bddc76
+809,Portugal,PT,Luz de Tavira,c02131a2-cc87-46b7-83d3-171f0c177336
+810,Philippines,PH,Borbon,02bc4509-98b7-4957-8ce8-df9bc92e0094
+811,Poland,PL,Ryglice,194ad6e9-4f69-4076-b451-f0aa7a959810
+812,Bosnia and Herzegovina,BA,Karadaglije,71dcf4d3-23d0-4f7e-a8f7-714f2e3edc41
+813,China,CN,Xinan,e8d24b84-32e4-40f6-9139-04a2998aa849
+814,China,CN,Hefei,b3ff8f20-f47f-4b4a-ad38-d9861ac0a699
+815,China,CN,Yulin,2f1a2c8b-cd4c-4c14-bbb0-8876c7b7b309
+816,Iran,IR,Khalīlābād,1825ef35-53cb-46ae-8a34-e6bd720738fd
+817,Russia,RU,Koygorodok,2922d36b-c2d5-4817-a537-7802e89d2281
+818,Liechtenstein,LI,Schellenberg,d1bc142e-d35f-4175-867c-4fd07f145e59
+819,Uganda,UG,Wobulenzi,40840159-ab73-4cfb-8f40-af4e741d7ab9
+820,Jamaica,JM,Ewarton,d6bf768e-c311-4b87-ad9d-80bfbac9e8be
+821,Indonesia,ID,Karangpapak,5753c69d-f22e-4144-9a9c-da4f068964f2
+822,Germany,DE,Berlin,c5b24e86-571c-417f-9c9b-a1096c991b1b
+823,Russia,RU,Okhotsk,1acd70f0-77cf-4526-a441-dd67e721a88c
+824,Democratic Republic of the Congo,CD,Libenge,382596d8-64c0-4827-949b-2c2bd3a878db
+825,Indonesia,ID,Mojoroto,f9ca991f-ba69-4c69-a98e-a595859f4b53
+826,Mexico,MX,Guadalupe,b5168090-b2e2-43b9-880c-19ea77aaef19
+827,Ukraine,UA,Hlyboka,d54a81ce-b802-4a00-bb6a-b5aa55acda8a
+828,Finland,FI,Pyhäjoki,c226ebcc-f48e-471b-8fe0-7c81ef283f4f
+829,Serbia,RS,Bački Breg,3fd54aac-14ed-46a0-8cb1-f1c785357fc4
+830,Philippines,PH,Merida,02bfd70d-4f5d-497b-9a18-d74214972507
+831,Palestinian Territory,PS,Ţūbās,5c6bae05-1f9a-4fba-b3a9-ff394f488e3f
+832,Argentina,AR,Montecarlo,47df9366-3eca-46e7-b21a-12fbf5860e4f
+833,China,CN,Tanjiaqiao,8574baf5-ed72-4f54-9574-b98f6c972072
+834,Cyprus,CY,Erími,bfda76e5-84b8-44b4-b74f-7144658d4fcd
+835,Palestinian Territory,PS,Al Buq‘ah,971ffdcd-e193-42bf-98b0-8243a1cb3f8a
+836,Brazil,BR,Coronel Vivida,68dbc701-324f-42c0-bcf9-6583ec9c3a55
+837,Malta,MT,Marsaxlokk,bc0d35f6-71fe-4552-86fd-894ef10b98e5
+838,China,CN,Chengbei,16913ec0-b7b6-4392-8120-6c96328e81ce
+839,Indonesia,ID,Sumberbakti,d197af35-6408-4ba2-bc0e-a5b762ac485a
+840,China,CN,Huangbei,c1503607-b1df-4162-83a1-b279ab4feb44
+841,United States,US,Chicago,c7192000-32de-447f-8656-5047d2639691
+842,Ireland,IE,Gorey,49604f29-e671-451d-8dd1-4bd3bef5f6c7
+843,China,CN,Qagan Obo,4ebf4ec9-c462-42a7-b5d4-e53b586d38a2
+844,Brazil,BR,Cacequi,0d46ac14-5294-4113-b955-1d5b09e049f8
+845,Mexico,MX,Venustiano Carranza,ed4330b4-699e-4ba7-aff7-07a537324758
+846,Haiti,HT,Belle-Anse,95229dc2-82d3-4469-8747-7dcb691d9004
+847,Honduras,HN,Santa Rosa de Aguán,7a73cd2f-12c0-4106-9ffa-56c8d580aa8d
+848,China,CN,Sanlei,1e12d8e6-3306-4503-912c-e59541d5682a
+849,Bosnia and Herzegovina,BA,Kalenderovci Donji,2bc84303-7c7d-4518-aadb-e0dda8a7c11d
+850,China,CN,Changfeng,ac141f04-dccc-4756-8939-2a2bbdc28681
+851,Venezuela,VE,Aguasay,8bb7991c-2985-490a-8eb3-7df24087adb7
+852,United States,US,Las Vegas,42abd74f-3b9f-4bd8-94d2-29f13a347756
+853,Portugal,PT,Azueira,5e7f128d-d3c5-4b6f-8831-d34a04afed90
+854,Canada,CA,Whitehorse,d6098bdb-f71c-4c0d-8798-1d444908e9fd
+855,Liechtenstein,LI,Mauren,09860ed6-b2fc-429b-90c3-987207c603de
+856,Brazil,BR,Janaúba,d5c4c285-b162-4f0d-9a10-15185cc70daa
+857,Venezuela,VE,Barbacoas,ca1535a1-2d59-4022-a092-e20811d553d8
+858,Montenegro,ME,Ulcinj,572c3591-2851-49b6-bb5f-24a304e64876
+859,Indonesia,ID,Lengkongsari,1f731cc1-4891-4e2e-a601-101b485803d5
+860,China,CN,Juren,96d6ba84-18a4-4d70-9a76-ec250b4e9d8f
+861,Bulgaria,BG,Isperikh,76b6051a-666a-4c6c-92fc-6942ac057f78
+862,China,CN,Wujiashan,ccb10346-2207-4efb-8c47-8a7e7186999c
+863,Philippines,PH,Malilipot,f67381a4-3acf-4d41-81be-c2d034659f08
+864,United States,US,Pittsburgh,786298e5-268a-47d9-8540-8e013e901b74
+865,Philippines,PH,Guinticgan,fd31812f-da4b-48ee-951d-c1bc702d8897
+866,Nigeria,NG,Ipoti,33cfeec5-4501-4969-9779-cbef2b012d05
+867,China,CN,Wutan,8f9eb184-647a-4bbf-8f3d-ceaedf38cc64
+868,Poland,PL,Wasilków,dfd7b2ac-69ac-4943-9bb6-7ce0f97c0ea9
+869,Argentina,AR,Tinogasta,fc15d64d-70a8-4b02-ac2d-676a3e139c4c
+870,Tunisia,TN,Al Qarmadah,cd4f0225-6982-4e35-acaa-be45f90c9b31
+871,Bulgaria,BG,Zlataritsa,0cd35f35-f68b-4005-a775-88e1a04ddd8c
+872,Iran,IR,Manūjān,54000526-5e46-4e69-8fc6-18ada0cca5a7
+873,Bangladesh,BD,Maulavi Bāzār,e491f485-c97e-4185-8353-2dede4586be1
+874,Bulgaria,BG,Vratsa,407238bf-f6a1-4482-891d-d236d157c012
+875,Thailand,TH,Wang Chan,703b7a4f-3b9c-4c7a-9ace-442d2422f1b2
+876,China,CN,Shimen,ab7a39e7-f339-414f-8c0a-cb1fdb0f7316
+877,Albania,AL,Fier-Çifçi,d6bdf894-7fe3-42a7-b025-25fa5d6d032f
+878,China,CN,Hengdian,95d31630-c879-46ff-ba60-02df5ce7037b
+879,China,CN,Muye,091ff43a-798f-4369-8405-b2efb4da710b
+880,Bolivia,BO,Atocha,dcbc7318-53bb-438f-82f6-0acac17a583b
+881,Japan,JP,Asahikawa,5fe0dc98-23ec-4548-93fd-96db90c289c2
+882,Philippines,PH,Ambulong,fc380899-5f1c-4520-bc96-9c69055f25cc
+883,Chad,TD,Massaguet,566af41f-e30e-408e-aaf2-79487cc207f5
+884,Ukraine,UA,Kolodenka,1dfdb853-15ee-4439-a55f-f011d3b81543
+885,Canada,CA,Cache Creek,6b899ad2-a99c-45aa-8b28-e639763a8c7f
+886,France,FR,Hénin-Beaumont,9f4546de-2a6f-4bf5-a2f7-8ec78db617ba
+887,Poland,PL,Kaliska,e8e27ad5-5537-4140-8510-052b035d0c56
+888,China,CN,Zhendeqiao,4001ded9-9746-4a85-863b-b70e13d59083
+889,Philippines,PH,Longos,67614d2a-154e-4bd5-a107-a13549cf14d1
+890,France,FR,Versailles,54aeea97-53e9-4563-aa24-f700f7b3b58e
+891,China,CN,Zhamog,bb85f82c-cc13-4923-ac7f-5319fb4b132b
+892,Japan,JP,Hiroshima-shi,30abb99d-1890-44e2-8336-9f43aa56a535
+893,China,CN,Tuanshansi,9d352b56-7e98-41cb-9af2-772b54d9735d
+894,France,FR,Paris 15,5757bdb7-a48a-4e10-80f7-93e7c7d30e9d
+895,Indonesia,ID,Kalisari,ed55209d-a846-4723-bb30-d7b745eb6b80
+896,Czech Republic,CZ,Dobratice,52f7e206-2587-41d6-8291-82c9141554c9
+897,Indonesia,ID,Perbaungan,e89bc012-c3d6-4fa0-b62a-c938a926a210
+898,Brazil,BR,Gurupi,490db20e-17fe-47f0-975a-2ffa23fd2aa0
+899,Sweden,SE,Borås,ddef263c-ec79-4aa4-9f38-24fb16b213ea
+900,Japan,JP,Kitahiroshima,237b5034-5922-4b04-aa27-5b2a38719242
+901,Indonesia,ID,Mukun,e283b05d-6bb4-4e99-bd3a-3ebc5f118f2d
+902,Indonesia,ID,Pante Raja,435522d9-8361-4bfd-aa4f-f75f0e0a453a
+903,Croatia,HR,Karlobag,18bedfc8-bf07-4530-ad7b-4fde655373f9
+904,Czech Republic,CZ,Hostomice,0028c3ab-c7d2-494d-ba10-4f84ed588db3
+905,Palestinian Territory,PS,Kharbathā Banī Ḩārith,a9b20721-8e32-4ef1-868f-620f2b95a6d0
+906,Australia,AU,Sydney,eab8d9f0-3a6a-495c-af51-19f09b67ec2b
+907,Peru,PE,Ocuviri,976fce60-058a-4a4b-8782-273fd63aa5f5
+908,Mauritius,MU,Triolet,bd4f77a9-255d-4cef-b60b-2194479bfe5b
+909,Czech Republic,CZ,Sadská,0cca0157-2a85-44d7-8fb2-f75ca0e8b343
+910,China,CN,Zhuping,1cef44e9-54f2-45f8-b4d0-b509007121be
+911,China,CN,Gaoqiu,cde46f56-c0ef-432e-a088-2150086840ef
+912,Cuba,CU,Camajuaní,f1faa3e5-a907-4389-a9c1-cb9f4a416b67
+913,China,CN,Ma’an,498f93db-f0dc-4343-b596-0c4d8f85c5b2
+914,Spain,ES,Salamanca,3cbd494f-f3e2-4354-b224-9fd977b82847
+915,Sweden,SE,Örebro,0d1f066c-e027-4b53-8e71-2aab60d56af3
+916,Brazil,BR,Mateus Leme,8aa8f27c-34b7-49ac-a186-eb3451ae9199
+917,Netherlands,NL,Heemskerk,6f9ae698-9cc0-40a1-909e-62a66d2ede80
+918,Ireland,IE,Enniskerry,bafac223-81e0-4cf0-b773-7d4ddc0ccb1d
+919,South Korea,KR,Goyang-si,7e41b9da-3ece-4be0-9a0e-f87a25cd62e9
+920,Philippines,PH,San Vicente,6b8b4150-61c3-403f-80fa-161784ebfebd
+921,China,CN,Youchou,fdecb690-38c1-433d-a298-3eacd38fc254
+922,Russia,RU,Debesy,20d2f8d5-7c70-4c0c-a5fb-d92b08103abc
+923,Philippines,PH,Santa Rita,f249bbb5-13b6-4b3c-aaf1-10cdcb224563
+924,Mexico,MX,El Tejocote,40cc373b-3a1e-45fa-9ed4-11b554b099ce
+925,Indonesia,ID,Detupia,ccb40fbf-4227-455e-bb24-4928316356aa
+926,China,CN,Damaying,c9153055-759c-4407-8381-d035dc04f844
+927,Argentina,AR,Dolavón,126d36c5-f0b4-4106-841a-5d3ec6769b95
+928,Poland,PL,Czarnożyły,5e59e224-ff9a-4887-b5c8-42917e4e2776
+929,Poland,PL,Zebrzydowice,e0082c94-b956-414d-8e9b-cc4ee2eaf5d3
+930,Tajikistan,TJ,Vakhsh,1cfe2d35-6d73-4b77-a9b5-0675f8fdcf2c
+931,Indonesia,ID,Puncaksari,a06a5c22-1211-43d4-a986-73c03580b3be
+932,Czech Republic,CZ,Višňova,cf679383-4b90-448b-8878-433633a50104
+933,Chad,TD,Bitkine,9e83a0fd-22c7-4420-abab-f7fddfd5a4eb
+934,Japan,JP,Yūki,6db1c8af-325e-43cd-8e18-dab4bd5db1b3
+935,China,CN,Qifang,77a3ec79-1cb9-401c-bb03-123e021f6ca4
+936,Nicaragua,NI,Comalapa,8a6144ae-6edf-4450-acf0-22bd63118f88
+937,Honduras,HN,El Plan,b05655a3-5207-4cec-ae54-56c404bca778
+938,Russia,RU,Vyaz’ma,3df86404-a4d8-4a81-910a-03ef4eacdc2b
+939,Netherlands,NL,Lelystad,64a536e1-0c4b-4b38-83ef-e82e34f55937
+940,Russia,RU,Markovo,d1d0be4c-90f3-4f1e-b7c4-9b740b62e347
+941,France,FR,Lyon,17c1a7d3-e108-4ffc-94dc-275528fd629a
+942,Philippines,PH,Liloan,e0d381af-cdd7-47b1-b3f1-fe2ba45d41db
+943,Japan,JP,Itsukaichi,0caeac18-ae3e-4110-af3c-58d3a0cf324e
+944,Czech Republic,CZ,Poříčí nad Sázavou,19fdbc06-b7a6-417a-b708-e7e0a17f63df
+945,Indonesia,ID,Cungkal,6020edae-1927-412d-bd0d-0e4eb28ac938
+946,Mexico,MX,San Francisco,3c84f17c-be9a-40e0-aaf6-e7f1d3334503
+947,Cameroon,CM,Wum,0c54b474-8c62-46ac-98eb-6bfd002e76fa
+948,Russia,RU,Donskoye,d4a6421d-1ed2-4497-8dfd-f6b7f0c1a263
+949,China,CN,Huyuan,2e00e100-fbfe-4d96-b868-08ef0f2d7a0f
+950,Cambodia,KH,Smach Mean Chey,fb858ce2-60d8-4d7b-8cf1-77ac841e5233
+951,China,CN,Yima,bf3a1265-cf9d-4457-8e7a-396ab3713c25
+952,China,CN,Huangbei,e89c1575-2a79-452e-beb4-028bac8d0133
+953,Paraguay,PY,Colonia Minga Porá,4e109bd7-5df7-40fa-9bb9-6a3c8133afa9
+954,Portugal,PT,Nelas,df255160-5148-466f-a4d0-3c01570607cb
+955,Indonesia,ID,Kedungreja,0dfbfd94-2fb3-4c79-9eac-499186aea967
+956,Sweden,SE,Bromma,fcc537b6-4020-4b07-8e89-3f1c0de9dd98
+957,Czech Republic,CZ,Břasy,f2426c0e-68c1-43cd-a199-f2bcced53af8
+958,Nigeria,NG,Wudil,a7a50fd0-0819-4249-bc84-80813603fa61
+959,Indonesia,ID,Panimbang,83112da1-2a4b-47c3-a2bd-dfa3ca1dcf57
+960,Indonesia,ID,Sentani,921d7b92-8c7e-4531-b45a-7086e7930027
+961,China,CN,Bahe,ce01df25-2be2-403e-b195-0bf0724ab2f1
+962,Pakistan,PK,Pahārpur,92ffa1d7-aaba-4df4-9e9e-6a7bab2fb39a
+963,Peru,PE,Turpo,5d61e5f2-27f0-42aa-82ae-d48def6941b3
+964,Poland,PL,Żarki-Letnisko,3b332f22-e1a2-4eb9-94fc-64c9bd6848ef
+965,Afghanistan,AF,Ḩāfiz̧ Moghul,36e26ddc-4c17-4b28-968c-c798cc5b3f18
+966,France,FR,Marseille,0d8c4a73-49a1-49a1-b406-a6dbd3e331db
+967,Indonesia,ID,Radamata,a9ea4a1e-8231-4d63-a776-24f2f01ac7c2
+968,Poland,PL,Sączów,9ad238a5-55d2-4d99-8245-30fb862a28ec
+969,Indonesia,ID,Pasonobenu,e7817e61-ae1d-4b3e-ba0c-f2e25c47b754
+970,Russia,RU,Ryazhsk,c669dbef-25fa-4622-bd67-6736b7167c27
+971,China,CN,Ludu,1af60799-cb11-4881-b615-8ba5b606fa14
+972,Syria,SY,Şabbūrah,f537a8af-29fc-436d-969e-1c4f907c4f93
+973,Niger,NE,Tanout,6715e47c-35e8-4037-b7aa-e97a4fd20710
+974,Philippines,PH,Boston,b3ca31bd-45fc-48f3-adb7-276752f59f67
+975,Uganda,UG,Kyankwanzi,a01a4d98-4023-465f-85f5-9ab3e30defcb
+976,Iran,IR,Javānrūd,847aec1b-f7f1-417c-adb1-79232b9386ea
+977,Colombia,CO,Guacarí,fb10f72e-9a26-44a4-9646-f929e27a10c0
+978,United States,US,Wilmington,8338745f-bfef-42cf-9c04-14ff4992e8b7
+979,China,CN,Qingu,9397b124-17b0-4406-aef8-79568bc5c109
+980,China,CN,Jiang’an,33ef9e9c-300e-4a82-920e-b6d725d119a7
+981,Laos,LA,Muang Long,ce561cd4-e9ab-4cb6-9d17-9b9c23691cec
+982,Paraguay,PY,Carayaó,22652b4e-69ea-4a84-a0e3-5dcf99cd79ea
+983,Poland,PL,Wilkowice,833162e9-697b-4812-8d39-54854e6effe3
+984,Ukraine,UA,Vin’kivtsi,d2870604-e6d2-449c-be37-867ae2126f91
+985,China,CN,Ni’ao,04657859-17f2-4f17-b9a4-30e71aada1a6
+986,Iceland,IS,Seltjarnarnes,b70344b5-dc13-4f6e-8c2f-49f61fb918c1
+987,Macedonia,MK,Delcevo,7ac1ea08-4d9d-4fd7-9058-882a48bb1552
+988,Peru,PE,Masma,400087c3-1b37-4e6d-8fdf-851ac6f72594
+989,Russia,RU,Sim,b3b7292a-8753-4bbc-b034-f5f699fd8f2d
+990,Sweden,SE,Timrå,2e77f824-fcfc-47e1-99c4-a6d96de002e6
+991,Cyprus,CY,Ergates,aa94136b-5d85-48d2-b68c-f4cc8858570b
+992,Russia,RU,Rublëvo,14856105-e04c-46f7-acaa-f7982fc2f501
+993,Indonesia,ID,Lewo,364ea95d-ee79-48ce-9fbc-31bc2b52e614
+994,Ukraine,UA,Skalat,96bfcd89-0fdd-4e1e-b1ca-79fecc79cf00
+995,Myanmar,MM,Shwebo,01fe68e3-0e3a-4d68-8f2c-72c969db74fc
+996,Canada,CA,Richibucto,ff251dfe-57f7-464e-8772-5f8459e151c7
+997,Brazil,BR,Serrinha,c3cbe3be-f9b8-446d-ac61-b6f048492acb
+998,Belarus,BY,Il’ya,29992d97-c601-45cd-a83c-2ddd8a58e751
+999,Moldova,MD,Cahul,d2a3440d-8c91-4e65-a74b-a90944a7033f
+1000,Kosovo,XK,Pagaruša,74544495-29ea-40ea-b400-94c6a019572c

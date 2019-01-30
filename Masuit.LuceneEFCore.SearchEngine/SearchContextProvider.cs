@@ -1,0 +1,302 @@
+﻿using JiebaNet.Segmenter;
+using Lucene.Net.Analysis;
+using Lucene.Net.Analysis.JieBa;
+using Lucene.Net.Documents;
+using Lucene.Net.Store;
+using Masuit.LuceneEFCore.SearchEngine.Helpers;
+using Masuit.LuceneEFCore.SearchEngine.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+
+namespace Masuit.LuceneEFCore.SearchEngine
+{
+    /// <summary>
+    /// 搜索引擎
+    /// </summary>
+    /// <typeparam name="TContext"></typeparam>
+    public class SearchContextProvider<TContext> : ISearchContextProvider<TContext> where TContext : DbContext
+    {
+        /// <summary>
+        /// 数据库上下文
+        /// </summary>
+        public TContext Context { get; protected set; }
+
+        private static Directory directory;
+        private static Analyzer analyzer;
+        private static LuceneIndexer indexer;
+        private static LuceneIndexSearcher searcher;
+        private static bool isInitialized = false;
+
+        /// <summary>
+        /// 搜索引擎
+        /// </summary>
+        /// <param name="indexerOptions">索引选项</param>
+        /// <param name="context">数据库上下文</param>
+        /// <param name="overrideIfExists">是否被覆盖</param>
+        public SearchContextProvider(LuceneIndexerOptions indexerOptions, TContext context, bool overrideIfExists = false)
+        {
+            if (isInitialized == false || overrideIfExists)
+            {
+                InitializeLucene(indexerOptions);
+            }
+
+            Context = context;
+        }
+
+        /// <summary>
+        /// 初始化索引库
+        /// </summary>
+        /// <param name="options"></param>
+        private void InitializeLucene(LuceneIndexerOptions options)
+        {
+            if (options.UseRamDirectory)
+            {
+                directory = new RAMDirectory();
+            }
+            else
+            {
+                if (directory == null)
+                {
+                    directory = FSDirectory.Open(options.Path);
+                }
+            }
+
+            analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            indexer = new LuceneIndexer(directory, analyzer);
+            searcher = new LuceneIndexSearcher(directory, analyzer);
+        }
+
+        /// <summary>
+        /// 检查数据库上下文更改，并返回LuceneIndexChanges类型的集合
+        /// </summary>
+        /// <returns> LuceneIndexChangeset  - 转换为LuceneIndexChanges类型的实体更改集合</returns>
+        private LuceneIndexChangeset GetChangeset()
+        {
+            LuceneIndexChangeset changes = new LuceneIndexChangeset();
+
+            foreach (var entity in Context.ChangeTracker.Entries().Where(x => x.State != EntityState.Unchanged))
+            {
+                Type entityType = entity.Entity.GetType();
+                bool implementsILuceneIndexable = typeof(ILuceneIndexable).IsAssignableFrom(entityType);
+                if (implementsILuceneIndexable)
+                {
+                    MethodInfo method = entityType.GetMethod("ToDocument");
+                    if (method != null)
+                    {
+                        LuceneIndexChange change = new LuceneIndexChange(entity.Entity as ILuceneIndexable);
+
+                        switch (entity.State)
+                        {
+                            case EntityState.Added:
+                                change.State = LuceneIndexState.Added;
+                                break;
+                            case EntityState.Deleted:
+                                change.State = LuceneIndexState.Removed;
+                                break;
+                            case EntityState.Modified:
+                                change.State = LuceneIndexState.Updated;
+                                break;
+                            default:
+                                change.State = LuceneIndexState.Unchanged;
+                                break;
+                        }
+                        changes.Entries.Add(change);
+                    }
+                }
+            }
+
+            return changes;
+        }
+
+        /// <summary>
+        ///获取文档的具体版本
+        /// </summary>
+        /// <param name ="doc">要转换的文档</param>
+        /// <returns></returns>
+        private ILuceneIndexable GetConcreteFromDocument(Document doc)
+        {
+            Type t = Type.GetType(doc.Get("Type"));
+            var obj = t.Assembly.CreateInstance(t.FullName, true) as ILuceneIndexable;
+            foreach (var p in t.GetProperties())
+            {
+                if (p.GetCustomAttributes<LuceneIndexableAttribute>().Any())
+                {
+                    p.SetValue(obj, doc.Get(p.Name, p.PropertyType));
+                }
+            }
+            return obj;
+        }
+
+
+        /// <summary>
+        /// 保存数据更改并同步索引
+        /// </summary>
+        /// <returns></returns>
+        public int SaveChanges(bool index = true)
+        {
+            int result = 0;
+
+            if (Context.ChangeTracker.HasChanges())
+            {
+                // 获取要变更的实体集
+                LuceneIndexChangeset changes = GetChangeset();
+                result = Context.SaveChanges();
+                if (changes.HasChanges && index)
+                {
+                    indexer.Update(changes);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 保存数据更改并同步索引
+        /// </summary>
+        /// <param name="index">是否需要被重新索引</param>
+        /// <returns></returns>
+        public async Task<int> SaveChangesAsync(bool index = true)
+        {
+            int result = 0;
+
+            if (Context.ChangeTracker.HasChanges())
+            {
+                // 获取要变更的结果集
+                LuceneIndexChangeset changes = GetChangeset();
+                result = await Context.SaveChangesAsync();
+                if (changes.HasChanges && index)
+                {
+                    indexer.Update(changes);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 索引条数
+        /// </summary>
+        public int IndexCount => indexer.Count();
+
+        /// <summary>
+        /// 删除索引
+        /// </summary>
+        public void DeleteIndex()
+        {
+            indexer?.DeleteAll();
+        }
+
+        /// <summary>
+        /// 扫描数据库上下文并对所有已实现ILuceneIndexable的对象，并创建索引
+        /// </summary>
+        public void CreateIndex()
+        {
+            if (indexer != null)
+            {
+                List<ILuceneIndexable> index = new List<ILuceneIndexable>();
+                PropertyInfo[] properties = Context.GetType().GetProperties();
+                foreach (PropertyInfo pi in properties)
+                {
+                    if (typeof(IEnumerable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType))
+                    {
+                        var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null);
+                        index.AddRange(entities as IEnumerable<ILuceneIndexable>);
+                    }
+                }
+
+                if (index.Any())
+                {
+                    indexer.CreateIndex(index);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型，但不返回任何评分信息
+        /// </summary>
+        /// <typeparam name ="T">要搜索的实体类型 - 注意：必须实现ILuceneIndexable </typeparam>
+        /// <param name ="options">搜索选项</param>
+        /// <returns></returns>
+        public ISearchResultCollection<T> Search<T>(SearchOptions options)
+        {
+            options.Type = typeof(T);
+            var indexResults = searcher.ScoredSearch(options);
+
+            ISearchResultCollection<T> resultSet = new SearchResultCollection<T>()
+            {
+                TotalHits = indexResults.TotalHits
+            };
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            foreach (var indexResult in indexResults.Results)
+            {
+                T entity = (T)GetConcreteFromDocument(indexResult.Document);
+                resultSet.Results.Add(entity);
+            }
+            sw.Stop();
+            resultSet.Elapsed = indexResults.Elapsed + sw.ElapsedMilliseconds;
+
+            return resultSet;
+        }
+
+        /// <summary>
+        /// 执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型，但不返回任何评分信息
+        /// </summary>
+        /// <typeparam name ="T">要搜索的实体类型 - 注意：必须实现ILuceneIndexable </typeparam>
+        /// <param name ="options">搜索选项</param>
+        /// <returns></returns>
+        public IScoredSearchResultCollection<T> ScoredSearch<T>(SearchOptions options)
+        {
+            // 确保类型匹配
+            if (typeof(T) != typeof(ILuceneIndexable))
+            {
+                options.Type = typeof(T);
+            }
+
+            var indexResults = searcher.ScoredSearch(options);
+
+            IScoredSearchResultCollection<T> results = new ScoredSearchResultCollection<T>();
+            results.TotalHits = indexResults.TotalHits;
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            foreach (var indexResult in indexResults.Results)
+            {
+                IScoredSearchResult<T> result = new ScoredSearchResult<T>();
+                result.Score = indexResult.Score;
+                result.Entity = (T)GetConcreteFromDocument(indexResult.Document);
+                results.Results.Add(result);
+            }
+            sw.Stop();
+            results.Elapsed = indexResults.Elapsed + sw.ElapsedMilliseconds;
+
+            return results;
+        }
+
+        /// <summary>
+        /// 执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型
+        /// </summary>
+        /// <param name ="options">搜索选项</param>
+        /// <returns></returns>
+        public IScoredSearchResultCollection<ILuceneIndexable> ScoredSearch(SearchOptions options)
+        {
+            return ScoredSearch<ILuceneIndexable>(options);
+        }
+
+        /// <summary>
+        /// 执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型
+        /// </summary>
+        /// <param name ="options">搜索选项</param>
+        /// <returns></returns>
+        public ISearchResultCollection<ILuceneIndexable> Search(SearchOptions options)
+        {
+            return Search<ILuceneIndexable>(options);
+        }
+    }
+}
