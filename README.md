@@ -1,12 +1,18 @@
 ### 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎
 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。
 
+⭐⭐⭐喜欢这个项目的话就点个star关♂注一下吧⭐⭐⭐
+
 ### 快速开始
 #### EntityFrameworkCore基架搭建
 新建项目，并安装EntityFrameworkCore相关库以及全文检索包：
+
+根据你的项目情况，选择对应的后缀版本，提供了4个主键版本的库，后缀为int的代表主键是基于int自增类型的，后缀为Guid的代表主键是基于Guid类型的...
 ```shell
-Install-Package Masuit.LuceneEFCore.SearchEngine_int
-#根据你的项目情况，选择对应的后缀版本，提供了4个主键版本的库，后缀为int的代表主键是基于int自增类型的，后缀为Guid的代表主键是基于Guid自增类型的...
+PM> Install-Package Masuit.LuceneEFCore.SearchEngine_int
+PM> Install-Package Masuit.LuceneEFCore.SearchEngine_long
+PM> Install-Package Masuit.LuceneEFCore.SearchEngine_string
+PM> Install-Package Masuit.LuceneEFCore.SearchEngine_Guid
 ```
 按照套路我们需要首先搭建好EntityFrameworkCore的基架，即数据库上下文和实体对象；
 
@@ -86,6 +92,44 @@ LuceneIndexAttribute对应的4个自定义参数：
 2.Index：索引行为，默认为Field.Index.ANALYZED；
 3.Store：是否被存储到索引库，默认为Field.Store.YES；
 4.IsHtml：是否是html，默认为false，若标记为true，则在索引解析时会先清空其中的html标签。
+#### 为什么实体类要继承LuceneIndexableBaseEntity？
+LuceneIndexableBaseEntity源代码如下：
+```csharp
+/// <summary>
+/// 需要被索引的实体基类
+/// </summary>
+public abstract class LuceneIndexableBaseEntity : ILuceneIndexable
+{
+    /// <summary>
+    /// 主键id
+    /// </summary>
+    [LuceneIndex(Name = "Id", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED), Key]
+    public int Id { get; set; }
+
+    /// <summary>
+    /// 索引唯一id
+    /// </summary>
+    [LuceneIndex(Name = "IndexId", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED)]
+    [NotMapped]
+    public string IndexId
+    {
+        get => GetType().Name + ":" + Id;
+        set
+        {
+        }
+    }
+
+    /// <summary>
+    /// 转换成Lucene文档
+    /// </summary>
+    /// <returns></returns>
+    public virtual Document ToDocument()
+    {
+        // 将实体对象转换成Lucene文档的逻辑
+    }
+}
+```
+实体继承自LuceneIndexableBaseEntity后，方便封装的Lucene可以直接调用ToDocument方法进行存储，同时，主键Id和IndexId需要参与Lucene索引文档的唯一标识(但IndexId不会生成到数据库)。
 #### 搜索引擎配置
 Startup.cs
 ```csharp
