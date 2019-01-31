@@ -191,3 +191,6 @@ public class HomeController : Controller
 搜索返回IScoredSearchResultCollection<T>，其中包括执行搜索所花费的时间，命中总数以及每个包含的对象的结果集以及在搜索中匹配度的数量。
 
 <font color=#f00>特别注意：单元测试中使用内存RAM目录进行索引和搜索，但这仅用于测试目的，真实生产环境应使用物理磁盘的目录。</font>
+
+#### 演示项目
+[点击这里](/WebSearchDemo "demo")
