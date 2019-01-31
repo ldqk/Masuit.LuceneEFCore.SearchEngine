@@ -92,6 +92,44 @@ LuceneIndexAttribute对应的4个自定义参数：
 2.Index：索引行为，默认为Field.Index.ANALYZED；
 3.Store：是否被存储到索引库，默认为Field.Store.YES；
 4.IsHtml：是否是html，默认为false，若标记为true，则在索引解析时会先清空其中的html标签。
+#### 为什么实体类要继承LuceneIndexableBaseEntity？
+LuceneIndexableBaseEntity源代码如下：
+```csharp
+/// <summary>
+/// 需要被索引的实体基类
+/// </summary>
+public abstract class LuceneIndexableBaseEntity : ILuceneIndexable
+{
+    /// <summary>
+    /// 主键id
+    /// </summary>
+    [LuceneIndex(Name = "Id", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED), Key]
+    public int Id { get; set; }
+
+    /// <summary>
+    /// 索引唯一id
+    /// </summary>
+    [LuceneIndex(Name = "IndexId", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED)]
+    [NotMapped]
+    public string IndexId
+    {
+        get => GetType().Name + ":" + Id;
+        set
+        {
+        }
+    }
+
+    /// <summary>
+    /// 转换成Lucene文档
+    /// </summary>
+    /// <returns></returns>
+    public virtual Document ToDocument()
+    {
+        // 将实体对象转换成Lucene文档的逻辑
+    }
+}
+```
+实体继承自LuceneIndexableBaseEntity后，方便封装的Lucene可以直接调用ToDocument方法进行存储，同时，主键Id和IndexId需要参与Lucene索引文档的唯一标识(但IndexId不会生成到数据库)。
 #### 搜索引擎配置
 Startup.cs
 ```csharp
