@@ -7,7 +7,7 @@
 #### EntityFrameworkCore基架搭建
 新建项目，并安装EntityFrameworkCore相关库以及全文检索包：
 
-根据你的项目情况，选择对应的后缀版本，提供了4个主键版本的库，后缀为int的代表主键是基于int自增类型的，后缀为Guid的代表主键是基于Guid自增类型的...
+根据你的项目情况，选择对应的后缀版本，提供了4个主键版本的库，后缀为int的代表主键是基于int自增类型的，后缀为Guid的代表主键是基于Guid类型的...
 ```shell
 PM> Install-Package Masuit.LuceneEFCore.SearchEngine_int
 PM> Install-Package Masuit.LuceneEFCore.SearchEngine_long
