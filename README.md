@@ -9,10 +9,10 @@
 
 根据你的项目情况，选择对应的后缀版本，提供了4个主键版本的库，后缀为int的代表主键是基于int自增类型的，后缀为Guid的代表主键是基于Guid自增类型的...
 ```shell
-Install-Package Masuit.LuceneEFCore.SearchEngine_int
-Install-Package Masuit.LuceneEFCore.SearchEngine_long
-Install-Package Masuit.LuceneEFCore.SearchEngine_string
-Install-Package Masuit.LuceneEFCore.SearchEngine_Guid
+PM> Install-Package Masuit.LuceneEFCore.SearchEngine_int
+PM> Install-Package Masuit.LuceneEFCore.SearchEngine_long
+PM> Install-Package Masuit.LuceneEFCore.SearchEngine_string
+PM> Install-Package Masuit.LuceneEFCore.SearchEngine_Guid
 ```
 按照套路我们需要首先搭建好EntityFrameworkCore的基架，即数据库上下文和实体对象；
 
