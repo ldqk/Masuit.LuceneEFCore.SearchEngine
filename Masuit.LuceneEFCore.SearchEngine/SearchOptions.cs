@@ -168,7 +168,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="size">页大小</param>
         /// <param name="page">第几页</param>
         /// <param name="t">需要被全文检索的类型</param>
-        public SearchOptions(string keywords, int page, int size, Type t) : this(keywords, string.Join(",", t.GetProperties().Where(p => p.GetCustomAttributes<LuceneIndexableAttribute>().Any()).Select(p => p.Name)), int.MaxValue, null, null, null, (page - 1) * size, size)
+        public SearchOptions(string keywords, int page, int size, Type t) : this(keywords, string.Join(",", t.GetProperties().Where(p => p.GetCustomAttributes<LuceneIndexAttribute>().Any()).Select(p => p.Name)), int.MaxValue, null, null, null, (page - 1) * size, size)
         {
             if (page < 1)
             {

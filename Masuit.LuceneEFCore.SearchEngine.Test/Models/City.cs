@@ -2,12 +2,12 @@
 {
     public class City : LuceneIndexableBaseEntity
     {
-        [LuceneIndexable]
+        [LuceneIndex]
         public string Name { get; set; }
 
         public string Code { get; set; }
 
-        [LuceneIndexable]
+        [LuceneIndex]
         public string Country { get; set; }
 
     }

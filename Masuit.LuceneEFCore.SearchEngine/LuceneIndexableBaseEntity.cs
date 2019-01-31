@@ -16,13 +16,13 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 主键id
         /// </summary>
-        [LuceneIndexable(Name = "Id", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED), Key]
+        [LuceneIndex(Name = "Id", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED), Key]
         public int Id { get; set; }
 
         /// <summary>
         /// 索引唯一id
         /// </summary>
-        [LuceneIndexable(Name = "IndexId", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED)]
+        [LuceneIndex(Name = "IndexId", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED)]
         [NotMapped]
         public string IndexId
         {
@@ -46,8 +46,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 object propertyValue = propertyInfo.GetValue(this);
                 if (propertyValue != null)
                 {
-                    IEnumerable<LuceneIndexableAttribute> attrs = propertyInfo.GetCustomAttributes<LuceneIndexableAttribute>();
-                    foreach (LuceneIndexableAttribute attr in attrs)
+                    IEnumerable<LuceneIndexAttribute> attrs = propertyInfo.GetCustomAttributes<LuceneIndexAttribute>();
+                    foreach (LuceneIndexAttribute attr in attrs)
                     {
                         string name = !string.IsNullOrEmpty(attr.Name) ? attr.Name : propertyInfo.Name;
                         string value = attr.IsHtml ? StringHelpers.RemoveUnwantedTags(propertyValue.ToString()) : propertyValue.ToString();

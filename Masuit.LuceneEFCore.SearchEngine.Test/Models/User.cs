@@ -2,16 +2,16 @@
 {
     public class User : LuceneIndexableBaseEntity
     {
-        [LuceneIndexable]
+        [LuceneIndex]
         public string FirstName { get; set; }
 
-        [LuceneIndexable]
+        [LuceneIndex]
         public string Surname { get; set; }
 
-        [LuceneIndexable]
+        [LuceneIndex]
         public string Email { get; set; }
 
-        [LuceneIndexable]
+        [LuceneIndex]
         public string JobTitle { get; set; }
 
     }

@@ -7,9 +7,9 @@ namespace Masuit.LuceneEFCore.SearchEngine
     /// 标记该字段可被索引
     /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
-    public class LuceneIndexableAttribute : Attribute
+    public class LuceneIndexAttribute : Attribute
     {
-        public LuceneIndexableAttribute()
+        public LuceneIndexAttribute()
         {
             Index = Field.Index.ANALYZED;
             Store = Field.Store.YES;

@@ -126,7 +126,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             var obj = t.Assembly.CreateInstance(t.FullName, true) as ILuceneIndexable;
             foreach (var p in t.GetProperties())
             {
-                if (p.GetCustomAttributes<LuceneIndexableAttribute>().Any())
+                if (p.GetCustomAttributes<LuceneIndexAttribute>().Any())
                 {
                     p.SetValue(obj, doc.Get(p.Name, p.PropertyType));
                 }
