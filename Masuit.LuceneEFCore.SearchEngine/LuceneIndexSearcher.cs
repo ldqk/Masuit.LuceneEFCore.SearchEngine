@@ -23,6 +23,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         private static Directory _directory;
         private static Analyzer _analyzer;
         private readonly IMemoryCache _memoryCache;
+
         private static readonly HttpClient HttpClient = new HttpClient()
         {
             BaseAddress = new Uri("http://zhannei.baidu.com")
@@ -113,7 +114,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
         {
             // 结果集
             ILuceneSearchResultCollection results = new LuceneSearchResultCollection();
-
             using (var reader = DirectoryReader.Open(_directory))
             {
                 var searcher = new IndexSearcher(reader);
@@ -216,10 +216,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public ILuceneSearchResultCollection ScoredSearch(SearchOptions options)
         {
             Stopwatch sw = new Stopwatch();
-            sw.Start();
-
             ILuceneSearchResultCollection results;
-
+            sw.Start();
             try
             {
                 results = PerformSearch(options, false);
@@ -231,7 +229,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
 
             sw.Stop();
             results.Elapsed = sw.ElapsedMilliseconds;
-
             return results;
         }
 
@@ -250,7 +247,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public ILuceneSearchResultCollection ScoredSearch(string keywords, string fields, int maximumNumberOfHits, Dictionary<string, float> boosts, Type type, string sortBy, int? skip, int? take)
         {
             SearchOptions options = new SearchOptions(keywords, fields, maximumNumberOfHits, boosts, type, sortBy, skip, take);
-
             return ScoredSearch(options);
         }
     }

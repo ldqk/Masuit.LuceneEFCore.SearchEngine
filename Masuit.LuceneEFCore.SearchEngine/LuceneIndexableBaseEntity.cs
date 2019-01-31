@@ -1,6 +1,7 @@
 ﻿using Lucene.Net.Documents;
 using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -39,8 +40,13 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public virtual Document ToDocument()
         {
             Document doc = new Document();
-            PropertyInfo[] classProperties = GetType().GetProperties();
-            doc.Add(new Field("Type", GetType().AssemblyQualifiedName, Field.Store.YES, Field.Index.NOT_ANALYZED));
+            Type type = GetType();
+            if (type.Assembly.IsDynamic && type.FullName.Contains("Prox"))
+            {
+                type = type.BaseType;
+            }
+            PropertyInfo[] classProperties = type.GetProperties();
+            doc.Add(new Field("Type", type.AssemblyQualifiedName, Field.Store.YES, Field.Index.NOT_ANALYZED));
             foreach (PropertyInfo propertyInfo in classProperties)
             {
                 object propertyValue = propertyInfo.GetValue(this);

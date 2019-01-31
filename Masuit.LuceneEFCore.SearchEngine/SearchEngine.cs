@@ -124,16 +124,12 @@ namespace Masuit.LuceneEFCore.SearchEngine
         {
             Type t = Type.GetType(doc.Get("Type"));
             var obj = t.Assembly.CreateInstance(t.FullName, true) as ILuceneIndexable;
-            foreach (var p in t.GetProperties())
+            foreach (var p in t.GetProperties().Where(p => p.GetCustomAttributes<LuceneIndexAttribute>().Any()))
             {
-                if (p.GetCustomAttributes<LuceneIndexAttribute>().Any())
-                {
-                    p.SetValue(obj, doc.Get(p.Name, p.PropertyType));
-                }
+                p.SetValue(obj, doc.Get(p.Name, p.PropertyType));
             }
             return obj;
         }
-
 
         /// <summary>
         /// 保存数据更改并同步索引
@@ -319,6 +315,26 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public ISearchResultCollection<ILuceneIndexable> Search(SearchOptions options)
         {
             return Search<ILuceneIndexable>(options);
+        }
+
+        /// <summary>
+        /// 搜索一条匹配度最高的记录
+        /// </summary>
+        /// <param name ="options">搜索选项</param>
+        /// <returns></returns>
+        public ILuceneIndexable SearchOne(SearchOptions options)
+        {
+            return GetConcreteFromDocument(_searcher.ScoredSearchSingle(options));
+        }
+
+        /// <summary>
+        /// 搜索一条匹配度最高的记录
+        /// </summary>
+        /// <param name ="options">搜索选项</param>
+        /// <returns></returns>
+        public T SearchOne<T>(SearchOptions options) where T : class
+        {
+            return GetConcreteFromDocument(_searcher.ScoredSearchSingle(options)) as T;
         }
     }
 }

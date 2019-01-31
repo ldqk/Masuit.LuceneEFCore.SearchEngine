@@ -72,5 +72,17 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// <param name ="options">搜索选项</param>
         /// <returns></returns>
         ISearchResultCollection<T> Search<T>(SearchOptions options);
+
+        /// <summary>
+        /// 搜索一条匹配度最高的记录
+        /// </summary>
+        /// <param name ="options">搜索选项</param>
+        ILuceneIndexable SearchOne(SearchOptions options);
+
+        /// <summary>
+        /// 搜索一条匹配度最高的记录
+        /// </summary>
+        /// <param name ="options">搜索选项</param>
+        T SearchOne<T>(SearchOptions options) where T : class;
     }
 }

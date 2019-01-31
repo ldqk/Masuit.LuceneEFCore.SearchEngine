@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lucene.Net.Documents;
+using System;
 using System.Collections.Generic;
 
 namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
@@ -8,6 +9,20 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
     /// </summary>
     public interface ILuceneIndexSearcher
     {
+        /// <summary>
+        /// 分词
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        List<string> CutKeywords(string keyword);
+
+        /// <summary>
+        /// 搜索单条记录
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        Document ScoredSearchSingle(SearchOptions options);
+
         /// <summary>
         /// 按权重搜索
         /// </summary>
