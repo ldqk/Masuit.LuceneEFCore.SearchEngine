@@ -3,7 +3,7 @@
 
 ⭐⭐⭐喜欢这个项目的话就点个star关♂注一下吧⭐⭐⭐
 ### 为什么没有集成到Masuit.Tools这个库？
-因为这个项目又引入了几个Lucene相关的库，如果集成到Masuit.Tools，这必将给原来的项目增加了更多的引用包，使用过程中也有可能没有使用Lucene的场景，这就造成了项目更加的臃肿，所以做了个新的项目。
+因为这个项目又引入了几个Lucene相关的库，如果集成到[Masuit.Tools](https://github.com/ldqk/Masuit.Tools "Masuit.Tools")，这必将给原来的项目增加了更多的引用包，使用过程中也有可能没有使用Lucene的场景，这就造成了项目更加的臃肿，所以做了个新的项目。
 ### 快速开始
 #### EntityFrameworkCore基架搭建
 新建项目，并安装EntityFrameworkCore相关库以及全文检索包：
