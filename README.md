@@ -239,3 +239,5 @@ public class HomeController : Controller
 
 #### 演示项目
 [点击这里](/WebSearchDemo "demo")
+### 推荐项目
+[Masuit.Tools](https://github.com/ldqk/Masuit.Tools "Masuit.Tools")
