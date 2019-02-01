@@ -241,4 +241,5 @@ public class HomeController : Controller
 [点击这里](/WebSearchDemo "demo")
 ### 推荐项目
 .NET万能框架：[Masuit.Tools](https://github.com/ldqk/Masuit.Tools "Masuit.Tools")
+
 开源博客系统：[Masuit.MyBlogs](https://github.com/ldqk/Masuit.MyBlogs "Masuit.MyBlogs")
