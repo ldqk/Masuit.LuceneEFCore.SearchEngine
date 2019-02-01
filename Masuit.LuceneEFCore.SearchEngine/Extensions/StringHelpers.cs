@@ -1,6 +1,6 @@
-﻿using HtmlAgilityPack;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Masuit.LuceneEFCore.SearchEngine.Extensions
 {
@@ -22,45 +22,15 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
         }
 
         /// <summary>
-        /// 移除html标签
+        /// 去除html标签后并截取字符串
         /// </summary>
-        /// <param name="html"></param>
+        /// <param name="html">源html</param>
         /// <returns></returns>
-        public static string RemoveUnwantedTags(this string html)
+        public static string RemoveHtmlTag(this string html)
         {
-            if (string.IsNullOrEmpty(html))
-            {
-                return string.Empty;
-            }
-
-            var document = new HtmlDocument();
-            document.LoadHtml(html);
-
-            var nodes = new Queue<HtmlNode>(document.DocumentNode.SelectNodes("./*|./text()"));
-
-            while (nodes.Count > 0)
-            {
-                var node = nodes.Dequeue();
-                var parentNode = node.ParentNode;
-
-                if (node.Name != "#text")
-                {
-                    var childNodes = node.SelectNodes("./*|./text()");
-
-                    if (childNodes != null)
-                    {
-                        foreach (var child in childNodes)
-                        {
-                            nodes.Enqueue(child);
-                            parentNode.InsertBefore(child, node);
-                        }
-                    }
-
-                    parentNode.RemoveChild(node);
-                }
-            }
-
-            return document.DocumentNode.InnerHtml;
+            string strText = Regex.Replace(html, "<[^>]+>", "");
+            strText = Regex.Replace(strText, "&[^;]+;", "");
+            return strText;
         }
     }
 }

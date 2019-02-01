@@ -56,7 +56,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                     foreach (LuceneIndexAttribute attr in attrs)
                     {
                         string name = !string.IsNullOrEmpty(attr.Name) ? attr.Name : propertyInfo.Name;
-                        string value = attr.IsHtml ? propertyValue.ToString().RemoveUnwantedTags() : propertyValue.ToString();
+                        string value = attr.IsHtml ? propertyValue.ToString().RemoveHtmlTag() : propertyValue.ToString();
                         doc.Add(new Field(name, value, attr.Store, attr.Index));
                     }
                 }

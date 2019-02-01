@@ -12,7 +12,6 @@
     <PackageId>Masuit.LuceneEFCore.SearchEngine_int</PackageId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.8.14" />
     <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />
     <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
     <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00005" />
