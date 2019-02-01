@@ -30,7 +30,7 @@ namespace WebSearchDemo
         {
             services.AddDbContext<DataContext>(db =>
             {
-                db.UseInMemoryDatabase();
+                db.UseInMemoryDatabase("test");
                 //db.UseSqlServer("Data Source=.;Initial Catalog=MyBlogs;Integrated Security=True");
             });
             services.AddSearchEngine<DataContext>(new LuceneIndexerOptions()

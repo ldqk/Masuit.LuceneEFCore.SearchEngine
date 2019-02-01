@@ -2,7 +2,6 @@
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using WebSearchDemo.Database;
 
 namespace WebSearchDemo.Controllers
@@ -25,7 +24,7 @@ namespace WebSearchDemo.Controllers
         /// <param name="size">页大小</param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Index(string s, int page, int size)
+        public IActionResult Index(string s, int page, int size)
         {
             //var result = _searchEngine.ScoredSearch<Post>(new SearchOptions(s, page, size, "Title,Content,Email,Author"));
             var result = _searchEngine.ScoredSearch<Post>(new SearchOptions(s, page, size, typeof(Post)));
