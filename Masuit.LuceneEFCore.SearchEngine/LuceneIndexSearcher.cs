@@ -6,12 +6,14 @@ using Lucene.Net.Search;
 using Lucene.Net.Store;
 using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
+using Masuit.LuceneEFCore.SearchEngine.Linq;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
@@ -150,46 +152,35 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 }
 
                 Sort sort = new Sort(sortFields.ToArray());
-                ScoreDoc[] matches = searcher.Search(query, null, options.MaximumNumberOfHits, sort, true, true).ScoreDocs;
-                results.TotalHits = matches.Length;
+                Expression<Func<ScoreDoc, bool>> where = _ => true;
+                if (options.Type != null)
+                {
+                    // 过滤掉已经设置了类型的对象
+                    where = where.And(m => options.Type.AssemblyQualifiedName == searcher.Doc(m.Doc).Get("Type"));
+                }
+                var matches = searcher.Search(query, null, options.MaximumNumberOfHits, sort, true, true).ScoreDocs.Where(where.Compile());
+                results.TotalHits = matches.Count();
 
                 // 分页处理
                 if (options.Skip.HasValue)
                 {
-                    matches = matches.Skip(options.Skip.Value).ToArray();
+                    matches = matches.Skip(options.Skip.Value);
                 }
                 if (options.Take.HasValue)
                 {
-                    matches = matches.Take(options.Take.Value).ToArray();
+                    matches = matches.Take(options.Take.Value);
                 }
 
+                var docs = matches.ToList();
                 // 创建结果集
-                foreach (var match in matches)
+                foreach (var match in docs)
                 {
-                    var id = match.Doc;
-                    var doc = searcher.Doc(id);
-
-                    // 过滤掉已经设置了类型的对象
-                    if (options.Type != null)
+                    var doc = searcher.Doc(match.Doc);
+                    results.Results.Add(new LuceneSearchResult()
                     {
-                        var t = doc.Get("Type");
-                        if (options.Type.AssemblyQualifiedName == t)
-                        {
-                            results.Results.Add(new LuceneSearchResult()
-                            {
-                                Score = match.Score,
-                                Document = doc
-                            });
-                        }
-                    }
-                    else
-                    {
-                        results.Results.Add(new LuceneSearchResult()
-                        {
-                            Score = match.Score,
-                            Document = doc
-                        });
-                    }
+                        Score = match.Score,
+                        Document = doc
+                    });
                 }
             }
 
