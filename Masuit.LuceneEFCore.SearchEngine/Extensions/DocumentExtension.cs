@@ -36,6 +36,8 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
                     return float.Parse(value);
                 case Type _ when t.IsAssignableFrom(typeof(bool)):
                     return bool.Parse(value);
+                case Type _ when t.BaseType == typeof(Enum):
+                    return Enum.Parse(t, value);
                 case Type _ when t.IsAssignableFrom(typeof(string)):
                     return value;
                 default:
@@ -72,6 +74,8 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
                     return float.Parse(value);
                 case Type _ when typeof(T).IsAssignableFrom(typeof(bool)):
                     return bool.Parse(value);
+                case Type _ when typeof(T).BaseType == typeof(Enum):
+                    return Enum.Parse(typeof(T), value);
                 case Type _ when typeof(T).IsAssignableFrom(typeof(string)):
                     return value;
                 default:
