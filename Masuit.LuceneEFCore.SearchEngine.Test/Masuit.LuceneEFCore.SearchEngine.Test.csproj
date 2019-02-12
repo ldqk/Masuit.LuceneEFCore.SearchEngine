@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

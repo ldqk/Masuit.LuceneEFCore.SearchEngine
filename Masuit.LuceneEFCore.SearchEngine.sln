@@ -7,26 +7,47 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masuit.LuceneEFCore.SearchE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masuit.LuceneEFCore.SearchEngine.Test", "Masuit.LuceneEFCore.SearchEngine.Test\Masuit.LuceneEFCore.SearchEngine.Test.csproj", "{0E1A15E2-174C-4FE3-A4CC-A77B9BC326E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSearchDemo", "WebSearchDemo\WebSearchDemo.csproj", "{12EF81D1-26CF-417C-A814-BB49A0F87AFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSearchDemo", "WebSearchDemo\WebSearchDemo.csproj", "{12EF81D1-26CF-417C-A814-BB49A0F87AFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Guid版本|Any CPU = Guid版本|Any CPU
+		Long版本|Any CPU = Long版本|Any CPU
 		Release|Any CPU = Release|Any CPU
+		String版本|Any CPU = String版本|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1A9A907B-8254-40EF-BB80-47B716919B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1A9A907B-8254-40EF-BB80-47B716919B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A9A907B-8254-40EF-BB80-47B716919B07}.Guid版本|Any CPU.ActiveCfg = Guid版本|Any CPU
+		{1A9A907B-8254-40EF-BB80-47B716919B07}.Guid版本|Any CPU.Build.0 = Guid版本|Any CPU
+		{1A9A907B-8254-40EF-BB80-47B716919B07}.Long版本|Any CPU.ActiveCfg = Long版本|Any CPU
+		{1A9A907B-8254-40EF-BB80-47B716919B07}.Long版本|Any CPU.Build.0 = Long版本|Any CPU
 		{1A9A907B-8254-40EF-BB80-47B716919B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A9A907B-8254-40EF-BB80-47B716919B07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A9A907B-8254-40EF-BB80-47B716919B07}.String版本|Any CPU.ActiveCfg = String版本|Any CPU
+		{1A9A907B-8254-40EF-BB80-47B716919B07}.String版本|Any CPU.Build.0 = String版本|Any CPU
 		{0E1A15E2-174C-4FE3-A4CC-A77B9BC326E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E1A15E2-174C-4FE3-A4CC-A77B9BC326E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E1A15E2-174C-4FE3-A4CC-A77B9BC326E8}.Guid版本|Any CPU.ActiveCfg = Guid版本|Any CPU
+		{0E1A15E2-174C-4FE3-A4CC-A77B9BC326E8}.Guid版本|Any CPU.Build.0 = Guid版本|Any CPU
+		{0E1A15E2-174C-4FE3-A4CC-A77B9BC326E8}.Long版本|Any CPU.ActiveCfg = Long版本|Any CPU
+		{0E1A15E2-174C-4FE3-A4CC-A77B9BC326E8}.Long版本|Any CPU.Build.0 = Long版本|Any CPU
 		{0E1A15E2-174C-4FE3-A4CC-A77B9BC326E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E1A15E2-174C-4FE3-A4CC-A77B9BC326E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E1A15E2-174C-4FE3-A4CC-A77B9BC326E8}.String版本|Any CPU.ActiveCfg = String版本|Any CPU
+		{0E1A15E2-174C-4FE3-A4CC-A77B9BC326E8}.String版本|Any CPU.Build.0 = String版本|Any CPU
 		{12EF81D1-26CF-417C-A814-BB49A0F87AFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{12EF81D1-26CF-417C-A814-BB49A0F87AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12EF81D1-26CF-417C-A814-BB49A0F87AFE}.Guid版本|Any CPU.ActiveCfg = Guid版本|Any CPU
+		{12EF81D1-26CF-417C-A814-BB49A0F87AFE}.Guid版本|Any CPU.Build.0 = Guid版本|Any CPU
+		{12EF81D1-26CF-417C-A814-BB49A0F87AFE}.Long版本|Any CPU.ActiveCfg = Long版本|Any CPU
+		{12EF81D1-26CF-417C-A814-BB49A0F87AFE}.Long版本|Any CPU.Build.0 = Long版本|Any CPU
 		{12EF81D1-26CF-417C-A814-BB49A0F87AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12EF81D1-26CF-417C-A814-BB49A0F87AFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12EF81D1-26CF-417C-A814-BB49A0F87AFE}.String版本|Any CPU.ActiveCfg = String版本|Any CPU
+		{12EF81D1-26CF-417C-A814-BB49A0F87AFE}.String版本|Any CPU.Build.0 = String版本|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

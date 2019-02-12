@@ -11,6 +11,30 @@
     <PackageProjectUrl>https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine</PackageProjectUrl>
     <PackageId>Masuit.LuceneEFCore.SearchEngine_int</PackageId>
     <Version>1.0.1.1</Version>
+    <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;Int</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;Int</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Long版本|AnyCPU'">
+    <DefineConstants>TRACE;Long</DefineConstants>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Guid版本|AnyCPU'">
+    <DefineConstants>TRACE;Guid</DefineConstants>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='String版本|AnyCPU'">
+    <DefineConstants>TRACE;String</DefineConstants>
+    <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />

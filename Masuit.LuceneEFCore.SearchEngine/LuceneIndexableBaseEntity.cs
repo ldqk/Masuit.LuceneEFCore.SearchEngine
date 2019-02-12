@@ -18,7 +18,18 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// 主键id
         /// </summary>
         [LuceneIndex(Name = "Id", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED), Key]
+#if Int
         public int Id { get; set; }
+#endif
+#if Long
+        public long Id { get; set; } 
+#endif
+#if String
+        public string Id { get; set; } 
+#endif
+#if Guid
+        public Guid Id { get; set; } 
+#endif
 
         /// <summary>
         /// 索引唯一id
