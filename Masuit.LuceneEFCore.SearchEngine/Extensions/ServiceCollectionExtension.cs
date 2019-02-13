@@ -21,8 +21,8 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
         {
             services.AddSingleton(s => option);
             services.AddMemoryCache();
-            services.TryAddTransient<Directory>(s => FSDirectory.Open(option.Path));
-            services.TryAddTransient<Analyzer>(s => new JieBaAnalyzer(TokenizerMode.Search));
+            services.TryAddSingleton<Directory>(s => FSDirectory.Open(option.Path));
+            services.TryAddSingleton<Analyzer>(s => new JieBaAnalyzer(TokenizerMode.Search));
             services.TryAddTransient<ILuceneIndexer, LuceneIndexer>();
             services.TryAddTransient<ILuceneIndexSearcher, LuceneIndexSearcher>();
             services.TryAddTransient(typeof(ISearchEngine<>), typeof(SearchEngine<>));

@@ -22,8 +22,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
 {
     public class LuceneIndexSearcher : ILuceneIndexSearcher
     {
-        private static Directory _directory;
-        private static Analyzer _analyzer;
+        private readonly Directory _directory;
+        private readonly Analyzer _analyzer;
         private readonly IMemoryCache _memoryCache;
 
         private static readonly HttpClient HttpClient = new HttpClient()
@@ -36,6 +36,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// </summary>
         /// <param name="directory">索引目录</param>
         /// <param name="analyzer">索引分析器</param>
+        /// <param name="memoryCache">内存缓存</param>
         public LuceneIndexSearcher(Directory directory, Analyzer analyzer, IMemoryCache memoryCache)
         {
             _directory = directory;
