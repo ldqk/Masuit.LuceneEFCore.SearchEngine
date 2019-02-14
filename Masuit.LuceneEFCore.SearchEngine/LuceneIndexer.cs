@@ -12,12 +12,12 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 索引目录
         /// </summary>
-        private static Directory _directory;
+        private readonly Directory _directory;
 
         /// <summary>
         /// 索引分析器
         /// </summary>
-        private static Analyzer _analyzer;
+        private readonly Analyzer _analyzer;
 
         /// <summary>
         /// 构造函数

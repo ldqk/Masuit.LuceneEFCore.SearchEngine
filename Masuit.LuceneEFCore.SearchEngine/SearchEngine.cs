@@ -1,6 +1,4 @@
-﻿using JiebaNet.Segmenter;
-using Lucene.Net.Analysis;
-using Lucene.Net.Analysis.JieBa;
+﻿using Lucene.Net.Analysis;
 using Lucene.Net.Documents;
 using Lucene.Net.Store;
 using Masuit.LuceneEFCore.SearchEngine.Extensions;
@@ -25,14 +23,11 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 数据库上下文
         /// </summary>
-        public TContext Context { get; protected set; }
+        public TContext Context { get; }
 
-        private static Directory _directory;
-        private static Analyzer _analyzer;
-        private static LuceneIndexer _indexer;
-        private static LuceneIndexSearcher _searcher;
-        private static bool isInitialized = false;
-        private readonly IMemoryCache _memoryCache;
+        private readonly LuceneIndexer _indexer;
+        private readonly LuceneIndexSearcher _searcher;
+
         /// <summary>
         /// 索引条数
         /// </summary>
@@ -41,37 +36,37 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 搜索引擎
         /// </summary>
-        /// <param name="indexerOptions">索引选项</param>
         /// <param name="context">数据库上下文</param>
-        /// <param name="overrideIfExists">是否被覆盖</param>
-        public SearchEngine(LuceneIndexerOptions indexerOptions, TContext context, IMemoryCache memoryCache, bool overrideIfExists = false)
+        /// <param name="directory"></param>
+        /// <param name="analyzer"></param>
+        /// <param name="memoryCache"></param>
+        public SearchEngine(TContext context, Directory directory, Analyzer analyzer, IMemoryCache memoryCache)
         {
             Context = context;
-            _memoryCache = memoryCache;
-            if (isInitialized == false || overrideIfExists)
-            {
-                InitializeLucene(indexerOptions);
-                isInitialized = true;
-            }
-
+            _indexer = new LuceneIndexer(directory, analyzer);
+            _searcher = new LuceneIndexSearcher(directory, analyzer, memoryCache);
+            //if (isInitialized == false || overrideIfExists)
+            //{
+            //    InitializeLucene(indexerOptions);
+            //    isInitialized = true;
+            //}
         }
 
-        /// <summary>
-        /// 初始化索引库
-        /// </summary>
-        /// <param name="options"></param>
-        private void InitializeLucene(LuceneIndexerOptions options)
-        {
-            if (_directory == null)
-            {
-                _directory = FSDirectory.Open(options.Path);
-            }
+        ///// <summary>
+        ///// 初始化索引库
+        ///// </summary>
+        ///// <param name="options"></param>
+        //private void InitializeLucene(LuceneIndexerOptions options)
+        //{
+        //    if (_directory == null)
+        //    {
+        //        _directory = FSDirectory.Open(options.Path);
+        //    }
 
-            _analyzer = new JieBaAnalyzer(TokenizerMode.Search);
-            _indexer = new LuceneIndexer(_directory, _analyzer);
-            _searcher = new LuceneIndexSearcher(_directory, _analyzer, _memoryCache);
-
-        }
+        //    _analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+        //    _indexer = new LuceneIndexer(_directory, _analyzer);
+        //    _searcher = new LuceneIndexSearcher(_directory, _analyzer, _memoryCache);
+        //}
 
         /// <summary>
         /// 检查数据库上下文更改，并返回LuceneIndexChanges类型的集合

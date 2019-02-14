@@ -1,4 +1,7 @@
-﻿using Masuit.LuceneEFCore.SearchEngine.Interfaces;
+﻿using JiebaNet.Segmenter;
+using Lucene.Net.Analysis.JieBa;
+using Lucene.Net.Store;
+using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Masuit.LuceneEFCore.SearchEngine.Test.Helpers;
 using Masuit.LuceneEFCore.SearchEngine.Test.Models;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +39,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 Path = "lucene"
             };
-            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
+            var memoryCache = new MemoryCache(new MemoryCacheOptions());
+            var directory = FSDirectory.Open(options.Path);
+            JieBaAnalyzer analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(_context, directory, analyzer, memoryCache);
 
             searchProvider.CreateIndex();
 
@@ -53,7 +59,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 Path = "lucene"
             };
-            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
+            var memoryCache = new MemoryCache(new MemoryCacheOptions());
+            var directory = FSDirectory.Open(options.Path);
+            JieBaAnalyzer analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(_context, directory, analyzer, memoryCache);
             searchProvider.CreateIndex();
             SearchOptions searchOptions = new SearchOptions("John", "FirstName");
 
@@ -71,7 +80,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 Path = "lucene"
             };
-            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
+            var memoryCache = new MemoryCache(new MemoryCacheOptions());
+            var directory = FSDirectory.Open(options.Path);
+            JieBaAnalyzer analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(_context, directory, analyzer, memoryCache);
             searchProvider.CreateIndex();
             SearchOptions searchOptions = new SearchOptions("John", "FirstName");
 
@@ -100,7 +112,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 Path = "lucene"
             };
-            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
+            var memoryCache = new MemoryCache(new MemoryCacheOptions());
+            var directory = FSDirectory.Open(options.Path);
+            JieBaAnalyzer analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(_context, directory, analyzer, memoryCache);
             searchProvider.CreateIndex();
             SearchOptions searchOptions = new SearchOptions("Joh*", "FirstName");
 
@@ -122,7 +137,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 Path = "lucene"
             };
-            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
+            var memoryCache = new MemoryCache(new MemoryCacheOptions());
+            var directory = FSDirectory.Open(options.Path);
+            JieBaAnalyzer analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(_context, directory, analyzer, memoryCache);
             searchProvider.CreateIndex();
             SearchOptions searchOptions = new SearchOptions("Joh*", "FirstName");
 
@@ -142,7 +160,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 Path = "lucene"
             };
-            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
+            var memoryCache = new MemoryCache(new MemoryCacheOptions());
+            var directory = FSDirectory.Open(options.Path);
+            JieBaAnalyzer analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(_context, directory, analyzer, memoryCache);
             searchProvider.CreateIndex();
             SearchOptions searchOptions = new SearchOptions("Burns", "FirstName,Surname");
 
@@ -166,7 +187,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 Path = "lucene"
             };
-            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
+            var memoryCache = new MemoryCache(new MemoryCacheOptions());
+            var directory = FSDirectory.Open(options.Path);
+            JieBaAnalyzer analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(_context, directory, analyzer, memoryCache);
             searchProvider.CreateIndex();
             SearchOptions searchOptions = new SearchOptions("Jeremy Burns", "FirstName,Surname");
 
@@ -187,8 +211,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 Path = "lucene"
             };
-            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
-
+            var memoryCache = new MemoryCache(new MemoryCacheOptions());
+            var directory = FSDirectory.Open(options.Path);
+            JieBaAnalyzer analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(_context, directory, analyzer, memoryCache);
             User jc = new User()
             {
                 FirstName = "John",
@@ -219,7 +245,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 Path = "lucene"
             };
-            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
+            var memoryCache = new MemoryCache(new MemoryCacheOptions());
+            var directory = FSDirectory.Open(options.Path);
+            JieBaAnalyzer analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(_context, directory, analyzer, memoryCache);
             searchProvider.CreateIndex();
             var newUser = new User()
             {
@@ -248,7 +277,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
             {
                 Path = "lucene"
             };
-            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(options, _context, new MemoryCache(new MemoryCacheOptions()));
+            var memoryCache = new MemoryCache(new MemoryCacheOptions());
+            var directory = FSDirectory.Open(options.Path);
+            JieBaAnalyzer analyzer = new JieBaAnalyzer(TokenizerMode.Search);
+            SearchEngine<TestDbContext> searchProvider = new SearchEngine<TestDbContext>(_context, directory, analyzer, memoryCache);
 
             searchProvider.CreateIndex();
 

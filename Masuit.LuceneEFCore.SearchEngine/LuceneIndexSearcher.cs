@@ -26,7 +26,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         private readonly Analyzer _analyzer;
         private readonly IMemoryCache _memoryCache;
 
-        private static readonly HttpClient HttpClient = new HttpClient()
+        private static readonly HttpClient HttpClient = new HttpClient
         {
             BaseAddress = new Uri("http://zhannei.baidu.com")
         };
