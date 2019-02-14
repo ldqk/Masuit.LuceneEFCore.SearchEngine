@@ -1,4 +1,5 @@
-﻿using Lucene.Net.Analysis;
+﻿using JiebaNet.Segmenter;
+using Lucene.Net.Analysis;
 using Lucene.Net.Documents;
 using Lucene.Net.Index;
 using Lucene.Net.QueryParsers.Classic;
@@ -83,6 +84,12 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 {
                     // ignored
                 }
+            }
+
+            var segmenter = new JiebaSegmenter();
+            foreach (string word in segmenter.CutForSearch(keyword))
+            {
+                set.Add(word);
             }
             set.RemoveWhere(s => s.Length < 2 || Regex.IsMatch(s, @"^\p{P}.*"));
             list = set.OrderByDescending(s => s.Length).ToList();
