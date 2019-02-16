@@ -12,6 +12,16 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         TContext Context { get; }
 
         /// <summary>
+        /// 索引器
+        /// </summary>
+        LuceneIndexer LuceneIndexer { get; }
+
+        /// <summary>
+        /// 索引搜索器
+        /// </summary>
+        LuceneIndexSearcher LuceneIndexSearcher { get; }
+
+        /// <summary>
         /// 索引总数
         /// </summary>
         int IndexCount { get; }

@@ -24,6 +24,12 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         void Delete(ILuceneIndexable entity);
 
         /// <summary>
+        /// 删除索引
+        /// </summary>
+        /// <param name="entries">实体集</param>
+        void Delete<T>(List<T> entries) where T : ILuceneIndexable;
+
+        /// <summary>
         /// 删除所有索引
         /// </summary>
         /// <param name="commit">是否提交</param>

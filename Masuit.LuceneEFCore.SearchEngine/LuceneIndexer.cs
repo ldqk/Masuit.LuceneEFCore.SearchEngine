@@ -4,6 +4,7 @@ using Lucene.Net.Store;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Masuit.LuceneEFCore.SearchEngine
 {
@@ -73,6 +74,19 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public void Delete(ILuceneIndexable entity)
         {
             Update(new LuceneIndexChange(entity, LuceneIndexState.Removed));
+        }
+
+        /// <summary>
+        /// 删除索引
+        /// </summary>
+        /// <param name="entries">实体集</param>
+        public void Delete<T>(List<T> entries) where T : ILuceneIndexable
+        {
+            var set = new LuceneIndexChangeset
+            {
+                Entries = entries.Select(e => new LuceneIndexChange(e, LuceneIndexState.Removed)).ToList()
+            };
+            Update(set);
         }
 
         /// <summary>

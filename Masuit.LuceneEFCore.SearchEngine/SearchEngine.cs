@@ -25,13 +25,20 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// </summary>
         public TContext Context { get; }
 
-        private readonly LuceneIndexer _indexer;
-        private readonly LuceneIndexSearcher _searcher;
+        /// <summary>
+        /// 索引器
+        /// </summary>
+        public LuceneIndexer LuceneIndexer { get; }
+
+        /// <summary>
+        /// 索引搜索器
+        /// </summary>
+        public LuceneIndexSearcher LuceneIndexSearcher { get; }
 
         /// <summary>
         /// 索引条数
         /// </summary>
-        public int IndexCount => _indexer.Count();
+        public int IndexCount => LuceneIndexer.Count();
 
         /// <summary>
         /// 搜索引擎
@@ -43,8 +50,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public SearchEngine(TContext context, Directory directory, Analyzer analyzer, IMemoryCache memoryCache)
         {
             Context = context;
-            _indexer = new LuceneIndexer(directory, analyzer);
-            _searcher = new LuceneIndexSearcher(directory, analyzer, memoryCache);
+            LuceneIndexer = new LuceneIndexer(directory, analyzer);
+            LuceneIndexSearcher = new LuceneIndexSearcher(directory, analyzer, memoryCache);
             //if (isInitialized == false || overrideIfExists)
             //{
             //    InitializeLucene(indexerOptions);
@@ -64,8 +71,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
         //    }
 
         //    _analyzer = new JieBaAnalyzer(TokenizerMode.Search);
-        //    _indexer = new LuceneIndexer(_directory, _analyzer);
-        //    _searcher = new LuceneIndexSearcher(_directory, _analyzer, _memoryCache);
+        //    LuceneIndexer = new LuceneIndexer(_directory, _analyzer);
+        //    LuceneIndexSearcher = new LuceneIndexSearcher(_directory, _analyzer, _memoryCache);
         //}
 
         /// <summary>
@@ -141,7 +148,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 result = Context.SaveChanges();
                 if (changes.HasChanges && index)
                 {
-                    _indexer.Update(changes);
+                    LuceneIndexer.Update(changes);
                 }
             }
 
@@ -164,7 +171,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 result = await Context.SaveChangesAsync();
                 if (changes.HasChanges && index)
                 {
-                    _indexer.Update(changes);
+                    LuceneIndexer.Update(changes);
                 }
             }
 
@@ -176,7 +183,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// </summary>
         public void CreateIndex()
         {
-            if (_indexer != null)
+            if (LuceneIndexer != null)
             {
                 List<ILuceneIndexable> index = new List<ILuceneIndexable>();
                 PropertyInfo[] properties = Context.GetType().GetProperties();
@@ -191,7 +198,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
 
                 if (index.Any())
                 {
-                    _indexer.CreateIndex(index);
+                    LuceneIndexer.CreateIndex(index);
                 }
             }
         }
@@ -201,7 +208,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// </summary>
         public void CreateIndex(List<string> tables)
         {
-            if (_indexer != null)
+            if (LuceneIndexer != null)
             {
                 List<ILuceneIndexable> index = new List<ILuceneIndexable>();
                 PropertyInfo[] properties = Context.GetType().GetProperties();
@@ -216,7 +223,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
 
                 if (index.Any())
                 {
-                    _indexer.CreateIndex(index);
+                    LuceneIndexer.CreateIndex(index);
                 }
             }
         }
@@ -226,7 +233,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// </summary>
         public void DeleteIndex()
         {
-            _indexer?.DeleteAll();
+            LuceneIndexer?.DeleteAll();
         }
 
         /// <summary>
@@ -238,7 +245,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public ISearchResultCollection<T> Search<T>(SearchOptions options)
         {
             options.Type = typeof(T);
-            var indexResults = _searcher.ScoredSearch(options);
+            var indexResults = LuceneIndexSearcher.ScoredSearch(options);
 
             ISearchResultCollection<T> resultSet = new SearchResultCollection<T>()
             {
@@ -272,7 +279,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 options.Type = typeof(T);
             }
 
-            var indexResults = _searcher.ScoredSearch(options);
+            var indexResults = LuceneIndexSearcher.ScoredSearch(options);
 
             IScoredSearchResultCollection<T> results = new ScoredSearchResultCollection<T>();
             results.TotalHits = indexResults.TotalHits;
@@ -319,7 +326,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <returns></returns>
         public ILuceneIndexable SearchOne(SearchOptions options)
         {
-            return GetConcreteFromDocument(_searcher.ScoredSearchSingle(options));
+            return GetConcreteFromDocument(LuceneIndexSearcher.ScoredSearchSingle(options));
         }
 
         /// <summary>
@@ -329,7 +336,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <returns></returns>
         public T SearchOne<T>(SearchOptions options) where T : class
         {
-            return GetConcreteFromDocument(_searcher.ScoredSearchSingle(options)) as T;
+            return GetConcreteFromDocument(LuceneIndexSearcher.ScoredSearchSingle(options)) as T;
         }
     }
 }
