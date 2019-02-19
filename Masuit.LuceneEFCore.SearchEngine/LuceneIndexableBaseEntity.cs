@@ -1,6 +1,7 @@
 ﻿using Lucene.Net.Documents;
 using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -35,7 +36,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// 索引唯一id
         /// </summary>
         [LuceneIndex(Name = "IndexId", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED)]
-        [NotMapped]
+        [NotMapped, JsonIgnore]
         public string IndexId
         {
             get => GetType().Name + ":" + Id;

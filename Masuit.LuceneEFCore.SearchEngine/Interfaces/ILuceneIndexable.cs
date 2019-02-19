@@ -2,6 +2,9 @@
 using System; 
 #endif
 using Lucene.Net.Documents;
+using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
 {
@@ -13,6 +16,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// <summary>
         /// 主键id
         /// </summary>
+        [LuceneIndex(Name = "Id", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED), Key]
 #if Int
         int Id { get; set; }
 #endif
@@ -29,6 +33,8 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// <summary>
         /// 索引id
         /// </summary>
+        [LuceneIndex(Name = "IndexId", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED)]
+        [JsonIgnore, NotMapped]
         string IndexId { get; set; }
 
         /// <summary>
