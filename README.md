@@ -1,6 +1,7 @@
 ### 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎
 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。
-[官网页面](http://masuit.com/1437)
+
+[官网页面](http://masuit.com/1437) | [应用案例](https://masuit.com/s)
 
 ⭐⭐⭐喜欢这个项目的话就点个star关♂注一下吧⭐⭐⭐
 ### 为什么没有集成到Masuit.Tools这个库？
