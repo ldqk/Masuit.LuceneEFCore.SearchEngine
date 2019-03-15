@@ -40,7 +40,7 @@
     <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />
     <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
     <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00005" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
