@@ -20,9 +20,11 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// </summary>
         [LuceneIndex(Name = "Id", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED), Key]
 #if Int
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 #endif
 #if Long
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; } 
 #endif
 #if String
