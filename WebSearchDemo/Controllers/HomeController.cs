@@ -10,11 +10,10 @@ namespace WebSearchDemo.Controllers
     public class HomeController : Controller
     {
         private readonly ISearchEngine<DataContext> _searchEngine;
-        private readonly ILuceneIndexer _luceneIndexer;
-        public HomeController(ISearchEngine<DataContext> searchEngine, ILuceneIndexer luceneIndexer)
+
+        public HomeController(ISearchEngine<DataContext> searchEngine)
         {
             _searchEngine = searchEngine;
-            _luceneIndexer = luceneIndexer;
         }
         /// <summary>
         /// 搜索
@@ -26,7 +25,6 @@ namespace WebSearchDemo.Controllers
         [HttpGet]
         public IActionResult Index(string s, int page, int size)
         {
-            //var result = _searchEngine.ScoredSearch<Post>(new SearchOptions(s, page, size, "Title,Content,Email,Author"));
             var result = _searchEngine.ScoredSearch<Post>(new SearchOptions(s, page, size, typeof(Post)));
             return Ok(result);
         }

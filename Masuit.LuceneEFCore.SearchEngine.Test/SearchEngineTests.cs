@@ -12,7 +12,6 @@ using Xunit.Abstractions;
 
 namespace Masuit.LuceneEFCore.SearchEngine.Test
 {
-    [Trait("Category", "SearchContext")]
     public class SearchEngineTests
     {
         private TestDbContext _context;

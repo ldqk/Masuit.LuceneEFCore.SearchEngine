@@ -15,7 +15,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test.Helpers
             if (allTestUsers == null)
             {
                 allTestUsers = new List<User>();
-                TextReader reader = new StreamReader("Helpers\\TestData\\MOCK_USERS.csv");
+                TextReader reader = new StreamReader("Helpers\\TestData\\MOCK_USERS.csv");//网上下载的用户模拟数据
 
                 string data = reader.ReadLine();
 

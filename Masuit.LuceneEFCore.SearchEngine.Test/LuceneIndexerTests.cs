@@ -5,15 +5,13 @@ using Lucene.Net.Store;
 using Masuit.LuceneEFCore.SearchEngine.Test.Helpers;
 using Masuit.LuceneEFCore.SearchEngine.Test.Models;
 using Microsoft.Extensions.Caching.Memory;
-using System;
 using System.Linq;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Masuit.LuceneEFCore.SearchEngine.Test
 {
-    [Trait("Category", "LuceneIndexer")]
-    public class LuceneIndexerTests : IDisposable
+    public class LuceneIndexerTests
     {
         private readonly ITestOutputHelper _output;
         private LuceneIndexer _indexer;
@@ -21,10 +19,6 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test
         public LuceneIndexerTests(ITestOutputHelper output)
         {
             _output = output;
-        }
-
-        public void Dispose()
-        {
         }
 
         [Fact]

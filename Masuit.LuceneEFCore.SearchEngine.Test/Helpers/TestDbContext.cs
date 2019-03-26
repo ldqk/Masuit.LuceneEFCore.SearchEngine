@@ -23,7 +23,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test.Helpers
         {
             if (!Users.Any())
             {
-                TextReader reader = new StreamReader("Helpers\\TestData\\MOCK_USERS.csv");
+                TextReader reader = new StreamReader("Helpers\\TestData\\MOCK_USERS.csv");//网上下载的用户模拟数据
 
                 string data = reader.ReadLine();
 
@@ -44,7 +44,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Test.Helpers
 
             if (!Cities.Any())
             {
-                TextReader reader = new StreamReader("Helpers\\TestData\\MOCK_CITIES.csv");
+                TextReader reader = new StreamReader("Helpers\\TestData\\MOCK_CITIES.csv");//网上下载的城市模拟数据
 
                 string data = reader.ReadLine();
                 while ((data = reader.ReadLine()) != null)
