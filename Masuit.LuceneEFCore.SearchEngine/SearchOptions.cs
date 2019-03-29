@@ -27,12 +27,12 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public int MaximumNumberOfHits { get; set; }
 
         /// <summary>
-        /// 加速器
+        /// 多字段搜索时，给字段的搜索加速
         /// </summary>
         private Dictionary<string, float> boosts;
 
         /// <summary>
-        /// 加速器
+        /// 多字段搜索时，给字段的搜索加速
         /// </summary>
         public Dictionary<string, float> Boosts
         {
@@ -71,7 +71,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public Type Type { get; set; }
 
         /// <summary>
-        /// 清除加速器
+        /// 清除多字段搜索时，给字段的搜索加速
         /// </summary>
         public void ClearBoosts()
         {
@@ -79,7 +79,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         }
 
         /// <summary>
-        /// 添加加速器
+        /// 添加多字段搜索时，给字段的搜索加速
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
@@ -89,7 +89,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         }
 
         /// <summary>
-        /// 设置加速器
+        /// 设置多字段搜索时，给字段的搜索加速
         /// </summary>
         /// <param name="boosts"></param>
         public void SetBoosts(Dictionary<string, float> boosts)
@@ -103,7 +103,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="keywords">关键词</param>
         /// <param name="fields">限定检索字段</param>
         /// <param name="maximumNumberOfHits">最大检索量</param>
-        /// <param name="boosts">加速器</param>
+        /// <param name="boosts">多字段搜索时，给字段的搜索加速</param>
         /// <param name="type">文档类型</param>
         /// <param name="orderBy">排序字段</param>
         /// <param name="skip">跳过多少条</param>

@@ -1,0 +1,1004 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Masuit.LuceneEFCore.SearchEngine</name>
+    </assembly>
+    <members>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Extensions.DocumentExtension.Get(Lucene.Net.Documents.Document,System.String,System.Type)">
+            <summary>
+            获取文档的值
+            </summary>
+            <param name="doc">Lucene文档</param>
+            <param name="key">键</param>
+            <param name="t">类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Extensions.DocumentExtension.Get``1(Lucene.Net.Documents.Document,System.String)">
+            <summary>
+            获取文档的值
+            </summary>
+            <param name="doc">Lucene文档</param>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Extensions.ServiceCollectionExtension.AddSearchEngine``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Masuit.LuceneEFCore.SearchEngine.LuceneIndexerOptions)">
+            <summary>
+            依赖注入
+            </summary>
+            <typeparam name="TContext"></typeparam>
+            <param name="services"></param>
+            <param name="option"></param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Extensions.StringHelpers.RemoveCharacters(System.String,System.Collections.Generic.IEnumerable{System.Char})">
+            <summary>
+            移除字符串的指定字符
+            </summary>
+            <param name="s"></param>
+            <param name="chars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Extensions.StringHelpers.RemoveHtmlTag(System.String)">
+            <summary>
+            去除html标签后并截取字符串
+            </summary>
+            <param name="html">源html</param>
+            <returns></returns>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable">
+            <summary>
+            需要被索引的实体基类
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable.Id">
+            <summary>
+            主键id
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable.IndexId">
+            <summary>
+            索引id
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable.ToDocument">
+            <summary>
+            转换成Lucene文档
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexer.Add(Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable)">
+            <summary>
+            添加到索引
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexer.CreateIndex(System.Collections.Generic.IEnumerable{Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable},System.Boolean)">
+            <summary>
+            创建索引
+            </summary>
+            <param name="entities">实体集</param>
+            <param name="recreate">是否需要覆盖</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexer.Delete(Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable)">
+            <summary>
+            删除索引
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexer.Delete``1(System.Collections.Generic.List{``0})">
+            <summary>
+            删除索引
+            </summary>
+            <param name="entries">实体集</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexer.DeleteAll(System.Boolean)">
+            <summary>
+            删除所有索引
+            </summary>
+            <param name="commit">是否提交</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexer.Update(Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable)">
+            <summary>
+            更新索引
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexer.Update(Masuit.LuceneEFCore.SearchEngine.LuceneIndexChange)">
+            <summary>
+            更新索引
+            </summary>
+            <param name="change">实体</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexer.Update(Masuit.LuceneEFCore.SearchEngine.LuceneIndexChangeset)">
+            <summary>
+            更新索引
+            </summary>
+            <param name="changeset">实体</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexer.Count">
+            <summary>
+            索引库数量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexSearcher">
+            <summary>
+            搜索引擎
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexSearcher.CutKeywords(System.String)">
+            <summary>
+            分词
+            </summary>
+            <param name="keyword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexSearcher.ScoredSearchSingle(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            搜索单条记录
+            </summary>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexSearcher.ScoredSearch(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            按权重搜索
+            </summary>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexSearcher.ScoredSearch(System.String,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.Single},System.Type,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            按权重搜索
+            </summary>
+            <param name="keywords">关键词</param>
+            <param name="fields">限定检索字段</param>
+            <param name="maximumNumberOfHits">最大检索量</param>
+            <param name="boosts">多字段搜索时，给字段的搜索加速</param>
+            <param name="type">文档类型</param>
+            <param name="sortBy">排序字段</param>
+            <param name="skip">跳过多少条</param>
+            <param name="take">取多少条</param>
+            <returns></returns>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneSearchResult">
+            <summary>
+            搜索结果
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneSearchResult.Score">
+            <summary>
+            匹配度
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneSearchResult.Document">
+            <summary>
+            文档
+            </summary>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneSearchResultCollection">
+            <summary>
+            搜索结果集
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneSearchResultCollection.TotalHits">
+            <summary>
+            总条数
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneSearchResultCollection.Elapsed">
+            <summary>
+            耗时
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneSearchResultCollection.Results">
+            <summary>
+            结果集
+            </summary>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.Interfaces.IScoredSearchResult`1">
+            <summary>
+            结果项
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.IScoredSearchResult`1.Score">
+            <summary>
+            匹配度
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.IScoredSearchResult`1.Entity">
+            <summary>
+            实体
+            </summary>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.Interfaces.IScoredSearchResultCollection`1">
+            <summary>
+            搜索结果集
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.IScoredSearchResultCollection`1.TotalHits">
+            <summary>
+            总条数
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.IScoredSearchResultCollection`1.Elapsed">
+            <summary>
+            耗时
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.IScoredSearchResultCollection`1.Results">
+            <summary>
+            结果集
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.Context">
+            <summary>
+            数据库上下文
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.LuceneIndexer">
+            <summary>
+            索引器
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.LuceneIndexSearcher">
+            <summary>
+            索引搜索器
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.IndexCount">
+            <summary>
+            索引总数
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.CreateIndex">
+            <summary>
+            创建索引
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.CreateIndex(System.Collections.Generic.List{System.String})">
+            <summary>
+            创建指定数据表的索引
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.DeleteIndex">
+            <summary>
+            删除索引
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.SaveChanges(System.Boolean)">
+            <summary>
+            保存数据更改并同步索引
+            </summary>
+            <param name="index">创建索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.SaveChangesAsync(System.Boolean)">
+            <summary>
+            保存数据更改并同步索引
+            </summary>
+            <param name="index">创建索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.ScoredSearch(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型
+            </summary>
+            <param name ="options">搜索选项</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.ScoredSearch``1(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型
+            </summary>
+            <typeparam name ="T">要搜索的实体类型 - 注意：必须实现ILuceneIndexable </typeparam>
+            <param name ="options">搜索选项</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.Search(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型，但不返回任何评分信息
+            </summary>
+            <param name ="options">搜索选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.Search``1(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型，但不返回任何评分信息
+            </summary>
+            <typeparam name ="T">要搜索的实体类型 - 注意：必须实现ILuceneIndexable </typeparam>
+            <param name ="options">搜索选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.SearchOne(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            搜索一条匹配度最高的记录
+            </summary>
+            <param name ="options">搜索选项</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchEngine`1.SearchOne``1(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            搜索一条匹配度最高的记录
+            </summary>
+            <param name ="options">搜索选项</param>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchResultCollection`1">
+            <summary>
+            搜索结果集
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchResultCollection`1.TotalHits">
+            <summary>
+            总条数
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchResultCollection`1.Elapsed">
+            <summary>
+            耗时
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Interfaces.ISearchResultCollection`1.Results">
+            <summary>
+            结果集
+            </summary>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.Linq.LinqExtension">
+            <summary>
+            linq扩展类
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Linq.LinqExtension.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            与连接
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="left">左条件</param>
+            <param name="right">右条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Linq.LinqExtension.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            或连接
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="left">左条件</param>
+            <param name="right">右条件</param>
+            <returns></returns>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.Linq.ParameterReplacer">
+            <summary>
+            linq参数替换器
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Linq.ParameterReplacer.#ctor(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            linq参数替换器
+            </summary>
+            <param name="paramExpr"></param>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.Linq.ParameterReplacer.ParameterExpression">
+            <summary>
+            参数表达式
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Linq.ParameterReplacer.Replace(System.Linq.Expressions.Expression)">
+            <summary>
+            表达式替换
+            </summary>
+            <param name="expr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.Linq.ParameterReplacer.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            表达式参数访问
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.LuceneIndexableBaseEntity">
+            <summary>
+            需要被索引的实体基类
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexableBaseEntity.Id">
+            <summary>
+            主键id
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexableBaseEntity.IndexId">
+            <summary>
+            索引唯一id
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexableBaseEntity.ToDocument">
+            <summary>
+            转换成Lucene文档
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.LuceneIndexAttribute">
+            <summary>
+            标记该字段可被索引
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexAttribute.Name">
+            <summary>
+            索引字段名
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexAttribute.Index">
+            <summary>
+            索引行为
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexAttribute.Store">
+            <summary>
+            是否被存储到索引库
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexAttribute.IsHtml">
+            <summary>
+            是否是html
+            </summary>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChange">
+            <summary>
+            索引修改实体
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChange.Entity">
+            <summary>
+            实体类
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChange.State">
+            <summary>
+            变更状态
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChange.#ctor(Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChange.#ctor(Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable,Masuit.LuceneEFCore.SearchEngine.LuceneIndexState)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="entity">实体</param>
+            <param name="state">变更状态</param>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChangeset">
+            <summary>
+            索引变更集
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChangeset.Entries">
+            <summary>
+            实体集
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChangeset.EntriesHaveState(Masuit.LuceneEFCore.SearchEngine.LuceneIndexState)">
+            <summary>
+            实体是否有某种状态
+            </summary>
+            <param name="state">状态</param>
+            <returns></returns>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChangeset.HasAdds">
+            <summary>
+            已经被添加？
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChangeset.HasUpdates">
+            <summary>
+            已经被更新？
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChangeset.HasDeletes">
+            <summary>
+            已经被删除？
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChangeset.HasChanges">
+            <summary>
+            已经被修改
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChangeset.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexChangeset.#ctor(Masuit.LuceneEFCore.SearchEngine.LuceneIndexChange)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="change">被修改的实体</param>
+        </member>
+        <member name="F:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer._directory">
+            <summary>
+            索引目录
+            </summary>
+        </member>
+        <member name="F:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer._analyzer">
+            <summary>
+            索引分析器
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer.#ctor(Lucene.Net.Store.Directory,Lucene.Net.Analysis.Analyzer)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="directory"></param>
+            <param name="analyzer"></param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer.Add(Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable)">
+            <summary>
+            添加到索引
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer.CreateIndex(System.Collections.Generic.IEnumerable{Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable},System.Boolean)">
+            <summary>
+            创建索引
+            </summary>
+            <param name="entities">实体集</param>
+            <param name="recreate">是否需要覆盖</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer.Delete(Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable)">
+            <summary>
+            删除索引
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer.Delete``1(System.Collections.Generic.List{``0})">
+            <summary>
+            删除索引
+            </summary>
+            <param name="entries">实体集</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer.DeleteAll(System.Boolean)">
+            <summary>
+            删除所有索引
+            </summary>
+            <param name="commit">是否提交</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer.Update(Masuit.LuceneEFCore.SearchEngine.Interfaces.ILuceneIndexable)">
+            <summary>
+            更新索引
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer.Update(Masuit.LuceneEFCore.SearchEngine.LuceneIndexChange)">
+            <summary>
+            更新索引
+            </summary>
+            <param name="change">实体</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer.Update(Masuit.LuceneEFCore.SearchEngine.LuceneIndexChangeset)">
+            <summary>
+            更新索引
+            </summary>
+            <param name="changeset">实体</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexer.Count">
+            <summary>
+            索引库数量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.LuceneIndexerOptions">
+            <summary>
+            索引器选项
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexerOptions.Path">
+            <summary>
+            索引路径
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexSearcher.#ctor(Lucene.Net.Store.Directory,Lucene.Net.Analysis.Analyzer,Microsoft.Extensions.Caching.Memory.IMemoryCache)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="directory">索引目录</param>
+            <param name="analyzer">索引分析器</param>
+            <param name="memoryCache">内存缓存</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexSearcher.CutKeywords(System.String)">
+            <summary>
+            分词
+            </summary>
+            <param name="keyword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexSearcher.GetFuzzyquery(Lucene.Net.QueryParsers.Classic.MultiFieldQueryParser,System.String)">
+            <summary>
+            分词模糊查询
+            </summary>
+            <param name="parser">条件</param>
+            <param name="keywords">关键词</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexSearcher.PerformSearch(Masuit.LuceneEFCore.SearchEngine.SearchOptions,System.Boolean)">
+            <summary>
+            执行搜索
+            </summary>
+            <param name="options">搜索选项</param>
+            <param name="safeSearch">启用安全搜索</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexSearcher.ScoredSearchSingle(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            搜索单条记录
+            </summary>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexSearcher.ScoredSearch(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            按权重搜索
+            </summary>
+            <param name="options">搜索选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexSearcher.ScoredSearch(System.String,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.Single},System.Type,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            按权重搜索
+            </summary>
+            <param name="keywords">关键词</param>
+            <param name="fields">限定检索字段</param>
+            <param name="maximumNumberOfHits">最大检索量</param>
+            <param name="boosts">多字段搜索时，给字段的搜索加速</param>
+            <param name="type">文档类型</param>
+            <param name="sortBy">排序规则</param>
+            <param name="skip">跳过多少条</param>
+            <param name="take">取多少条</param>
+            <returns></returns>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.LuceneIndexState">
+            <summary>
+            索引状态枚举
+            </summary>
+        </member>
+        <member name="F:Masuit.LuceneEFCore.SearchEngine.LuceneIndexState.Added">
+            <summary>
+            已添加
+            </summary>
+        </member>
+        <member name="F:Masuit.LuceneEFCore.SearchEngine.LuceneIndexState.Removed">
+            <summary>
+            被删除
+            </summary>
+        </member>
+        <member name="F:Masuit.LuceneEFCore.SearchEngine.LuceneIndexState.Updated">
+            <summary>
+            被更新
+            </summary>
+        </member>
+        <member name="F:Masuit.LuceneEFCore.SearchEngine.LuceneIndexState.Unchanged">
+            <summary>
+            未作修改
+            </summary>
+        </member>
+        <member name="F:Masuit.LuceneEFCore.SearchEngine.LuceneIndexState.NotSet">
+            <summary>
+            不需要修改
+            </summary>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.LuceneSearchResult">
+            <summary>
+            搜索结果
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneSearchResult.Score">
+            <summary>
+            匹配度
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneSearchResult.Document">
+            <summary>
+            文档
+            </summary>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.LuceneSearchResultCollection">
+            <summary>
+            搜索结果集
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneSearchResultCollection.Results">
+            <summary>
+            结果集
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneSearchResultCollection.Elapsed">
+            <summary>
+            耗时
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneSearchResultCollection.TotalHits">
+            <summary>
+            总条数
+            </summary>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.ScoredSearchResult`1">
+            <summary>
+            搜索结果项
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.ScoredSearchResult`1.Score">
+            <summary>
+            匹配度
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.ScoredSearchResult`1.Entity">
+            <summary>
+            物理实体
+            </summary>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.ScoredSearchResultCollection`1">
+            <summary>
+            搜索结果集
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.ScoredSearchResultCollection`1.Results">
+            <summary>
+            结果集
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.ScoredSearchResultCollection`1.Elapsed">
+            <summary>
+            耗时
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.ScoredSearchResultCollection`1.TotalHits">
+            <summary>
+            总条数
+            </summary>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1">
+            <summary>
+            搜索引擎
+            </summary>
+            <typeparam name="TContext"></typeparam>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.Context">
+            <summary>
+            数据库上下文
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.LuceneIndexer">
+            <summary>
+            索引器
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.LuceneIndexSearcher">
+            <summary>
+            索引搜索器
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.IndexCount">
+            <summary>
+            索引条数
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.#ctor(`0,Lucene.Net.Store.Directory,Lucene.Net.Analysis.Analyzer,Microsoft.Extensions.Caching.Memory.IMemoryCache)">
+            <summary>
+            搜索引擎
+            </summary>
+            <param name="context">数据库上下文</param>
+            <param name="directory"></param>
+            <param name="analyzer"></param>
+            <param name="memoryCache"></param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.GetChangeset">
+            <summary>
+            检查数据库上下文更改，并返回LuceneIndexChanges类型的集合
+            </summary>
+            <returns> LuceneIndexChangeset  - 转换为LuceneIndexChanges类型的实体更改集合</returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.GetConcreteFromDocument(Lucene.Net.Documents.Document)">
+             <summary>
+            获取文档的具体版本
+             </summary>
+             <param name ="doc">要转换的文档</param>
+             <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.SaveChanges(System.Boolean)">
+            <summary>
+            保存数据更改并同步索引
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.SaveChangesAsync(System.Boolean)">
+            <summary>
+            保存数据更改并同步索引
+            </summary>
+            <param name="index">是否需要被重新索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.CreateIndex">
+            <summary>
+            扫描数据库上下文并对所有已实现ILuceneIndexable的对象，并创建索引
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.CreateIndex(System.Collections.Generic.List{System.String})">
+            <summary>
+            创建指定数据表的索引
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.DeleteIndex">
+            <summary>
+            删除索引
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.Search``1(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型，但不返回任何评分信息
+            </summary>
+            <typeparam name ="T">要搜索的实体类型 - 注意：必须实现ILuceneIndexable </typeparam>
+            <param name ="options">搜索选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.ScoredSearch``1(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型，但不返回任何评分信息
+            </summary>
+            <typeparam name ="T">要搜索的实体类型 - 注意：必须实现ILuceneIndexable </typeparam>
+            <param name ="options">搜索选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.ScoredSearch(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型
+            </summary>
+            <param name ="options">搜索选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.Search(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            执行搜索并将结果限制为特定类型，在返回之前，搜索结果将转换为相关类型
+            </summary>
+            <param name ="options">搜索选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.SearchOne(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            搜索一条匹配度最高的记录
+            </summary>
+            <param name ="options">搜索选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchEngine`1.SearchOne``1(Masuit.LuceneEFCore.SearchEngine.SearchOptions)">
+            <summary>
+            搜索一条匹配度最高的记录
+            </summary>
+            <param name ="options">搜索选项</param>
+            <returns></returns>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.SearchOptions">
+            <summary>
+            搜索选项
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchOptions.Keywords">
+            <summary>
+            关键词
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchOptions.Fields">
+            <summary>
+            限定搜索字段
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchOptions.MaximumNumberOfHits">
+            <summary>
+            最大检索量
+            </summary>
+        </member>
+        <member name="F:Masuit.LuceneEFCore.SearchEngine.SearchOptions.boosts">
+            <summary>
+            多字段搜索时，给字段的搜索加速
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchOptions.Boosts">
+            <summary>
+            多字段搜索时，给字段的搜索加速
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchOptions.OrderBy">
+            <summary>
+            排序字段
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchOptions.Skip">
+            <summary>
+            跳过多少条
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchOptions.Take">
+            <summary>
+            取多少条
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchOptions.Type">
+            <summary>
+            文档类型
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchOptions.ClearBoosts">
+            <summary>
+            清除多字段搜索时，给字段的搜索加速
+            </summary>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchOptions.SetBoost(System.String,System.Single)">
+            <summary>
+            添加多字段搜索时，给字段的搜索加速
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchOptions.SetBoosts(System.Collections.Generic.Dictionary{System.String,System.Single})">
+            <summary>
+            设置多字段搜索时，给字段的搜索加速
+            </summary>
+            <param name="boosts"></param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchOptions.#ctor(System.String,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.Single},System.Type,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            搜索选项
+            </summary>
+            <param name="keywords">关键词</param>
+            <param name="fields">限定检索字段</param>
+            <param name="maximumNumberOfHits">最大检索量</param>
+            <param name="boosts">多字段搜索时，给字段的搜索加速</param>
+            <param name="type">文档类型</param>
+            <param name="orderBy">排序字段</param>
+            <param name="skip">跳过多少条</param>
+            <param name="take">取多少条</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchOptions.#ctor(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            搜索选项
+            </summary>
+            <param name="keywords">关键词</param>
+            <param name="size">页大小</param>
+            <param name="fields">限定检索字段</param>
+            <param name="page">第几页</param>
+        </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchOptions.#ctor(System.String,System.Int32,System.Int32,System.Type)">
+            <summary>
+            搜索选项
+            </summary>
+            <param name="keywords">关键词</param>
+            <param name="size">页大小</param>
+            <param name="page">第几页</param>
+            <param name="t">需要被全文检索的类型</param>
+        </member>
+        <member name="T:Masuit.LuceneEFCore.SearchEngine.SearchResultCollection`1">
+            <summary>
+            搜索结果集
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchResultCollection`1.Results">
+            <summary>
+            实体集
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchResultCollection`1.Elapsed">
+            <summary>
+            耗时
+            </summary>
+        </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchResultCollection`1.TotalHits">
+            <summary>
+            总条数
+            </summary>
+        </member>
+    </members>
+</doc>
