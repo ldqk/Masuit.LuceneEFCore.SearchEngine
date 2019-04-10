@@ -1,10 +1,12 @@
 ### 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎
 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。
 
+[官网页面](http://masuit.com/1437) | [实际应用案例体验](https://masuit.com/s/会声会影TeamViewer)
+
 项目开发模式：日常代码积累+网络搜集
 
-
-[官网页面](http://masuit.com/1437) | [实际应用案例体验](https://masuit.com/s/会声会影TeamViewer)
+[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+请注意：一旦使用本开源项目以及引用了本项目或包含本项目代码的公司因为违反劳动法（包括但不限定非法裁员、超时用工、雇佣童工等）在任何法律诉讼中败诉的，项目作者有权利追讨本项目的使用费，或者直接不允许使用任何包含本项目的源代码！
 
 ⭐⭐⭐喜欢这个项目的话就Star、Fork、Follow素质三连关♂注一下吧⭐⭐⭐
 ### 为什么没有集成到Masuit.Tools这个库？
