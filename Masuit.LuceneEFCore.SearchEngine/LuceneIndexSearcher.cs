@@ -5,18 +5,14 @@ using Lucene.Net.Index;
 using Lucene.Net.QueryParsers.Classic;
 using Lucene.Net.Search;
 using Lucene.Net.Store;
-using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Masuit.LuceneEFCore.SearchEngine.Linq;
 using Microsoft.Extensions.Caching.Memory;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Net;
-using System.Net.Http;
 using System.Text.RegularExpressions;
 
 namespace Masuit.LuceneEFCore.SearchEngine
@@ -26,11 +22,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
         private readonly Directory _directory;
         private readonly Analyzer _analyzer;
         private readonly IMemoryCache _memoryCache;
-
-        private static readonly HttpClient HttpClient = new HttpClient
-        {
-            BaseAddress = new Uri("http://zhannei.baidu.com")
-        };
 
         /// <summary>
         /// 构造函数
@@ -56,6 +47,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             {
                 return list;
             }
+
             var set = new HashSet<string>
             {
                 keyword
@@ -67,22 +59,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 foreach (Group g in m.Groups)
                 {
                     set.Add(g.Value);
-                }
-            }
-            if (keyword.Length >= 6)
-            {
-                try
-                {
-                    var res = HttpClient.GetAsync($"/api/customsearch/keywords?title={keyword}").Result;
-                    if (res.StatusCode == HttpStatusCode.OK)
-                    {
-                        BaiduAnalysisModel model = JsonConvert.DeserializeObject<BaiduAnalysisModel>(res.Content.ReadAsStringAsync().Result);
-                        model.Result.Res.KeywordList?.ForEach(s => set.Add(s));
-                    }
-                }
-                catch
-                {
-                    // ignored
                 }
             }
 
