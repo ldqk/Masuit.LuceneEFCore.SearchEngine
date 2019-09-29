@@ -157,6 +157,26 @@ public void ConfigureServices(IServiceCollection services)
     });// 依赖注入搜索引擎，并配置索引库路径
     // ...
 }
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ISearchEngine searchEngine, LuceneIndexerOptions luceneIndexerOptions)
+{
+    // ...
+    // 初始化索引库，建议结合定时任务使用，定期刷新索引库
+    string lucenePath = Path.Combine(env.ContentRootPath, luceneIndexerOptions.Path);
+    if (!Directory.Exists(lucenePath) || Directory.GetFiles(lucenePath).Length < 1)
+    {
+        Console.WriteLine("索引库不存在，开始自动创建Lucene索引库...");
+        searchEngine.CreateIndex(new List<string>()
+        {
+           nameof(DataContext.Post),
+        });
+        var list = searchEngine.Context.Post.Where(i => i.Status != Status.Pended).ToList(); // 删除不需要被索引的数据
+        searchEngine.LuceneIndexer.Delete(list);
+        Console.WriteLine("索引库创建完成！");
+    }    
+    // ...
+}
+
 ```
 HomeController.cs
 ```csharp
