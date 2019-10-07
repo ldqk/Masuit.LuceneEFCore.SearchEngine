@@ -2,8 +2,6 @@
 using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
@@ -53,21 +51,22 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <returns></returns>
         public virtual Document ToDocument()
         {
-            Document doc = new Document();
-            Type type = GetType();
+            var doc = new Document();
+            var type = GetType();
             if (type.Assembly.IsDynamic && type.FullName.Contains("Prox"))
             {
                 type = type.BaseType;
             }
-            PropertyInfo[] classProperties = type.GetProperties();
+
+            var classProperties = type.GetProperties();
             doc.Add(new Field("Type", type.AssemblyQualifiedName, Field.Store.YES, Field.Index.NOT_ANALYZED));
-            foreach (PropertyInfo propertyInfo in classProperties)
+            foreach (var propertyInfo in classProperties)
             {
-                object propertyValue = propertyInfo.GetValue(this);
+                var propertyValue = propertyInfo.GetValue(this);
                 if (propertyValue != null)
                 {
-                    IEnumerable<LuceneIndexAttribute> attrs = propertyInfo.GetCustomAttributes<LuceneIndexAttribute>();
-                    foreach (LuceneIndexAttribute attr in attrs)
+                    var attrs = propertyInfo.GetCustomAttributes<LuceneIndexAttribute>();
+                    foreach (var attr in attrs)
                     {
                         string name = !string.IsNullOrEmpty(attr.Name) ? attr.Name : propertyInfo.Name;
                         string value = attr.IsHtml ? propertyValue.ToString().RemoveHtmlTag() : propertyValue.ToString();

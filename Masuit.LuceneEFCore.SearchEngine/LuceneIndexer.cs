@@ -47,7 +47,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="recreate">是否需要覆盖</param>
         public void CreateIndex(IEnumerable<ILuceneIndexable> entities, bool recreate = true)
         {
-            IndexWriterConfig config = new IndexWriterConfig(Lucene.Net.Util.LuceneVersion.LUCENE_48, _analyzer);
+            var config = new IndexWriterConfig(Lucene.Net.Util.LuceneVersion.LUCENE_48, _analyzer);
 
             using (var writer = new IndexWriter(_directory, config))
             {
@@ -95,7 +95,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="commit">是否提交</param>
         public void DeleteAll(bool commit = true)
         {
-            IndexWriterConfig config = new IndexWriterConfig(Lucene.Net.Util.LuceneVersion.LUCENE_48, _analyzer);
+            var config = new IndexWriterConfig(Lucene.Net.Util.LuceneVersion.LUCENE_48, _analyzer);
 
             using (var writer = new IndexWriter(_directory, config))
             {
@@ -130,7 +130,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="change">实体</param>
         public void Update(LuceneIndexChange change)
         {
-            LuceneIndexChangeset changeset = new LuceneIndexChangeset(change);
+            var changeset = new LuceneIndexChangeset(change);
             Update(changeset);
         }
 
@@ -140,7 +140,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="changeset">实体</param>
         public void Update(LuceneIndexChangeset changeset)
         {
-            IndexWriterConfig config = new IndexWriterConfig(Lucene.Net.Util.LuceneVersion.LUCENE_48, _analyzer);
+            var config = new IndexWriterConfig(Lucene.Net.Util.LuceneVersion.LUCENE_48, _analyzer);
             using (var writer = new IndexWriter(_directory, config))
             {
                 foreach (var change in changeset.Entries)

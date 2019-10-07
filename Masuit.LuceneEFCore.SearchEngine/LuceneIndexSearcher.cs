@@ -114,28 +114,25 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 if (options.Fields.Count == 1)
                 {
                     // 单字段搜索
-                    QueryParser queryParser = new QueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields[0], _analyzer);
+                    var queryParser = new QueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields[0], _analyzer);
                     query = queryParser.Parse(options.Keywords);
                 }
                 else
                 {
                     // 多字段搜索
-                    MultiFieldQueryParser multiFieldQueryParser = new MultiFieldQueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields.ToArray(), _analyzer, options.Boosts);
+                    var multiFieldQueryParser = new MultiFieldQueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields.ToArray(), _analyzer, options.Boosts);
                     query = GetFuzzyquery(multiFieldQueryParser, options.Keywords);
                 }
 
-                List<SortField> sortFields = new List<SortField>
+                var sortFields = new List<SortField>
                 {
                     SortField.FIELD_SCORE
                 };
+                sortFields.AddRange(options.OrderBy.Select(sortField => new SortField(sortField, SortFieldType.STRING)));
 
                 // 排序规则处理
-                foreach (var sortField in options.OrderBy)
-                {
-                    sortFields.Add(new SortField(sortField, SortFieldType.STRING));
-                }
 
-                Sort sort = new Sort(sortFields.ToArray());
+                var sort = new Sort(sortFields.ToArray());
                 Expression<Func<ScoreDoc, bool>> where = _ => true;
                 if (options.Type != null)
                 {
@@ -190,9 +187,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <returns></returns>
         public ILuceneSearchResultCollection ScoredSearch(SearchOptions options)
         {
-            Stopwatch sw = new Stopwatch();
             ILuceneSearchResultCollection results;
-            sw.Start();
+            var sw = Stopwatch.StartNew();
             try
             {
                 results = PerformSearch(options, false);
@@ -221,7 +217,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <returns></returns>
         public ILuceneSearchResultCollection ScoredSearch(string keywords, string fields, int maximumNumberOfHits, Dictionary<string, float> boosts, Type type, string sortBy, int? skip, int? take)
         {
-            SearchOptions options = new SearchOptions(keywords, fields, maximumNumberOfHits, boosts, type, sortBy, skip, take);
+            var options = new SearchOptions(keywords, fields, maximumNumberOfHits, boosts, type, sortBy, skip, take);
             return ScoredSearch(options);
         }
     }

@@ -52,28 +52,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             Context = context;
             LuceneIndexer = new LuceneIndexer(directory, analyzer);
             LuceneIndexSearcher = new LuceneIndexSearcher(directory, analyzer, memoryCache);
-            //if (isInitialized == false || overrideIfExists)
-            //{
-            //    InitializeLucene(indexerOptions);
-            //    isInitialized = true;
-            //}
         }
-
-        ///// <summary>
-        ///// 初始化索引库
-        ///// </summary>
-        ///// <param name="options"></param>
-        //private void InitializeLucene(LuceneIndexerOptions options)
-        //{
-        //    if (_directory == null)
-        //    {
-        //        _directory = FSDirectory.Open(options.Path);
-        //    }
-
-        //    _analyzer = new JieBaAnalyzer(TokenizerMode.Search);
-        //    LuceneIndexer = new LuceneIndexer(_directory, _analyzer);
-        //    LuceneIndexSearcher = new LuceneIndexSearcher(_directory, _analyzer, _memoryCache);
-        //}
 
         /// <summary>
         /// 检查数据库上下文更改，并返回LuceneIndexChanges类型的集合
@@ -81,37 +60,34 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <returns> LuceneIndexChangeset  - 转换为LuceneIndexChanges类型的实体更改集合</returns>
         private LuceneIndexChangeset GetChangeset()
         {
-            LuceneIndexChangeset changes = new LuceneIndexChangeset();
-
+            var changes = new LuceneIndexChangeset();
             foreach (var entity in Context.ChangeTracker.Entries().Where(x => x.State != EntityState.Unchanged))
             {
-                Type entityType = entity.Entity.GetType();
-                bool implementsILuceneIndexable = typeof(ILuceneIndexable).IsAssignableFrom(entityType);
-                if (implementsILuceneIndexable)
+                var entityType = entity.Entity.GetType();
+                if (!typeof(ILuceneIndexable).IsAssignableFrom(entityType) || entityType.GetMethod("ToDocument") is null)
                 {
-                    MethodInfo method = entityType.GetMethod("ToDocument");
-                    if (method != null)
-                    {
-                        LuceneIndexChange change = new LuceneIndexChange(entity.Entity as ILuceneIndexable);
-
-                        switch (entity.State)
-                        {
-                            case EntityState.Added:
-                                change.State = LuceneIndexState.Added;
-                                break;
-                            case EntityState.Deleted:
-                                change.State = LuceneIndexState.Removed;
-                                break;
-                            case EntityState.Modified:
-                                change.State = LuceneIndexState.Updated;
-                                break;
-                            default:
-                                change.State = LuceneIndexState.Unchanged;
-                                break;
-                        }
-                        changes.Entries.Add(change);
-                    }
+                    continue;
                 }
+
+                var change = new LuceneIndexChange(entity.Entity as ILuceneIndexable);
+
+                switch (entity.State)
+                {
+                    case EntityState.Added:
+                        change.State = LuceneIndexState.Added;
+                        break;
+                    case EntityState.Deleted:
+                        change.State = LuceneIndexState.Removed;
+                        break;
+                    case EntityState.Modified:
+                        change.State = LuceneIndexState.Updated;
+                        break;
+                    default:
+                        change.State = LuceneIndexState.Unchanged;
+                        break;
+                }
+
+                changes.Entries.Add(change);
             }
 
             return changes;
@@ -124,7 +100,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <returns></returns>
         private ILuceneIndexable GetConcreteFromDocument(Document doc)
         {
-            Type t = Type.GetType(doc.Get("Type"));
+            var t = Type.GetType(doc.Get("Type"));
             var obj = t.Assembly.CreateInstance(t.FullName, true) as ILuceneIndexable;
             foreach (var p in t.GetProperties().Where(p => p.GetCustomAttributes<LuceneIndexAttribute>().Any()))
             {
@@ -144,7 +120,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             if (Context.ChangeTracker.HasChanges())
             {
                 // 获取要变更的实体集
-                LuceneIndexChangeset changes = GetChangeset();
+                var changes = GetChangeset();
                 result = Context.SaveChanges();
                 if (changes.HasChanges && index)
                 {
@@ -167,7 +143,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             if (Context.ChangeTracker.HasChanges())
             {
                 // 获取要变更的结果集
-                LuceneIndexChangeset changes = GetChangeset();
+                var changes = GetChangeset();
                 result = await Context.SaveChangesAsync();
                 if (changes.HasChanges && index)
                 {
@@ -183,23 +159,25 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// </summary>
         public void CreateIndex()
         {
-            if (LuceneIndexer != null)
+            if (LuceneIndexer == null)
             {
-                List<ILuceneIndexable> index = new List<ILuceneIndexable>();
-                PropertyInfo[] properties = Context.GetType().GetProperties();
-                foreach (PropertyInfo pi in properties)
-                {
-                    if (typeof(IEnumerable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType))
-                    {
-                        var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null);
-                        index.AddRange(entities as IEnumerable<ILuceneIndexable>);
-                    }
-                }
+                return;
+            }
 
-                if (index.Any())
+            var index = new List<ILuceneIndexable>();
+            var properties = Context.GetType().GetProperties();
+            foreach (var pi in properties)
+            {
+                if (typeof(IEnumerable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType))
                 {
-                    LuceneIndexer.CreateIndex(index);
+                    var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null);
+                    index.AddRange(entities as IEnumerable<ILuceneIndexable>);
                 }
+            }
+
+            if (index.Any())
+            {
+                LuceneIndexer.CreateIndex(index);
             }
         }
 
@@ -208,23 +186,25 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// </summary>
         public void CreateIndex(List<string> tables)
         {
-            if (LuceneIndexer != null)
+            if (LuceneIndexer == null)
             {
-                List<ILuceneIndexable> index = new List<ILuceneIndexable>();
-                PropertyInfo[] properties = Context.GetType().GetProperties();
-                foreach (PropertyInfo pi in properties)
-                {
-                    if (typeof(IEnumerable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType) && tables.Contains(pi.Name))
-                    {
-                        var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null);
-                        index.AddRange(entities as IEnumerable<ILuceneIndexable>);
-                    }
-                }
+                return;
+            }
 
-                if (index.Any())
+            var index = new List<ILuceneIndexable>();
+            var properties = Context.GetType().GetProperties();
+            foreach (var pi in properties)
+            {
+                if (typeof(IEnumerable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType) && tables.Contains(pi.Name))
                 {
-                    LuceneIndexer.CreateIndex(index);
+                    var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null);
+                    index.AddRange(entities as IEnumerable<ILuceneIndexable>);
                 }
+            }
+
+            if (index.Any())
+            {
+                LuceneIndexer.CreateIndex(index);
             }
         }
 
@@ -246,22 +226,20 @@ namespace Masuit.LuceneEFCore.SearchEngine
         {
             options.Type = typeof(T);
             var indexResults = LuceneIndexSearcher.ScoredSearch(options);
-
-            ISearchResultCollection<T> resultSet = new SearchResultCollection<T>()
+            ISearchResultCollection<T> resultSet = new SearchResultCollection<T>
             {
                 TotalHits = indexResults.TotalHits
             };
 
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
+            var sw = Stopwatch.StartNew();
             foreach (var indexResult in indexResults.Results)
             {
-                T entity = (T)GetConcreteFromDocument(indexResult.Document);
+                var entity = (T)GetConcreteFromDocument(indexResult.Document);
                 resultSet.Results.Add(entity);
             }
+
             sw.Stop();
             resultSet.Elapsed = indexResults.Elapsed + sw.ElapsedMilliseconds;
-
             return resultSet;
         }
 
@@ -280,12 +258,9 @@ namespace Masuit.LuceneEFCore.SearchEngine
             }
 
             var indexResults = LuceneIndexSearcher.ScoredSearch(options);
-
             IScoredSearchResultCollection<T> results = new ScoredSearchResultCollection<T>();
             results.TotalHits = indexResults.TotalHits;
-
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
+            var sw = Stopwatch.StartNew();
             foreach (var indexResult in indexResults.Results)
             {
                 IScoredSearchResult<T> result = new ScoredSearchResult<T>();
@@ -293,9 +268,9 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 result.Entity = (T)GetConcreteFromDocument(indexResult.Document);
                 results.Results.Add(result);
             }
+
             sw.Stop();
             results.Elapsed = indexResults.Elapsed + sw.ElapsedMilliseconds;
-
             return results;
         }
 

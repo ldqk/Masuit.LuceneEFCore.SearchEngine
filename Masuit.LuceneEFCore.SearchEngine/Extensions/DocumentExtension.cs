@@ -5,7 +5,6 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
 {
     public static class DocumentExtension
     {
-
         /// <summary>
         /// 获取文档的值
         /// </summary>
@@ -82,6 +81,5 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
                     return Convert.ChangeType(value, typeof(T));
             }
         }
-
     }
 }

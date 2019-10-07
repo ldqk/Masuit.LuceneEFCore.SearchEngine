@@ -14,11 +14,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
         /// <returns></returns>
         public static string RemoveCharacters(this string s, IEnumerable<char> chars)
         {
-            if (string.IsNullOrEmpty(s))
-            {
-                return string.Empty;
-            }
-            return new string(s.Where(c => !chars.Contains(c)).ToArray());
+            return string.IsNullOrEmpty(s) ? string.Empty : new string(s.Where(c => !chars.Contains(c)).ToArray());
         }
 
         /// <summary>
@@ -28,7 +24,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
         /// <returns></returns>
         public static string RemoveHtmlTag(this string html)
         {
-            string strText = Regex.Replace(html, "<[^>]+>", "");
+            var strText = Regex.Replace(html, "<[^>]+>", "");
             strText = Regex.Replace(strText, "&[^;]+;", "");
             return strText;
         }

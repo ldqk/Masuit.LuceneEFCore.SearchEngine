@@ -55,12 +55,9 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// 构造函数
         /// </summary>
         /// <param name="change">被修改的实体</param>
-        public LuceneIndexChangeset(LuceneIndexChange change)
+        public LuceneIndexChangeset(LuceneIndexChange change) => Entries = new List<LuceneIndexChange>
         {
-            Entries = new List<LuceneIndexChange>
-            {
-                change
-            };
-        }
+            change
+        };
     }
 }
