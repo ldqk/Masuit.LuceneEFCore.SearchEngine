@@ -77,5 +77,35 @@ namespace Masuit.LuceneEFCore.SearchEngine
 
             return doc;
         }
+
+        /// <summary>Determines whether the specified object is equal to the current object.</summary>
+        /// <param name="obj">The object to compare with the current object.</param>
+        /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
+        public override bool Equals(object obj)
+        {
+            return Id == ((ILuceneIndexable)obj).Id;
+        }
+
+        /// <summary>
+        /// 判等
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public static bool operator ==(LuceneIndexableBaseEntity x, LuceneIndexableBaseEntity y)
+        {
+            return x?.Id == y?.Id;
+        }
+
+        /// <summary>
+        /// 判不等
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public static bool operator !=(LuceneIndexableBaseEntity x, LuceneIndexableBaseEntity y)
+        {
+            return x?.Id != y?.Id;
+        }
     }
 }
