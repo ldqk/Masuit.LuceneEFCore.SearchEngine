@@ -63,49 +63,21 @@ namespace Masuit.LuceneEFCore.SearchEngine
             foreach (var propertyInfo in classProperties)
             {
                 var propertyValue = propertyInfo.GetValue(this);
-                if (propertyValue != null)
+                if (propertyValue == null)
                 {
-                    var attrs = propertyInfo.GetCustomAttributes<LuceneIndexAttribute>();
-                    foreach (var attr in attrs)
-                    {
-                        string name = !string.IsNullOrEmpty(attr.Name) ? attr.Name : propertyInfo.Name;
-                        string value = attr.IsHtml ? propertyValue.ToString().RemoveHtmlTag() : propertyValue.ToString();
-                        doc.Add(new Field(name, value, attr.Store, attr.Index));
-                    }
+                    continue;
+                }
+
+                var attrs = propertyInfo.GetCustomAttributes<LuceneIndexAttribute>();
+                foreach (var attr in attrs)
+                {
+                    string name = !string.IsNullOrEmpty(attr.Name) ? attr.Name : propertyInfo.Name;
+                    string value = attr.IsHtml ? propertyValue.ToString().RemoveHtmlTag() : propertyValue.ToString();
+                    doc.Add(new Field(name, value, attr.Store, attr.Index));
                 }
             }
 
             return doc;
-        }
-
-        /// <summary>Determines whether the specified object is equal to the current object.</summary>
-        /// <param name="obj">The object to compare with the current object.</param>
-        /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
-        public override bool Equals(object obj)
-        {
-            return Id == ((ILuceneIndexable)obj).Id;
-        }
-
-        /// <summary>
-        /// 判等
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        public static bool operator ==(LuceneIndexableBaseEntity x, LuceneIndexableBaseEntity y)
-        {
-            return x?.Id == y?.Id;
-        }
-
-        /// <summary>
-        /// 判不等
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        public static bool operator !=(LuceneIndexableBaseEntity x, LuceneIndexableBaseEntity y)
-        {
-            return x?.Id != y?.Id;
         }
     }
 }
