@@ -14,12 +14,12 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// <summary>
         /// 索引器
         /// </summary>
-        LuceneIndexer LuceneIndexer { get; }
+        ILuceneIndexer LuceneIndexer { get; }
 
         /// <summary>
         /// 索引搜索器
         /// </summary>
-        LuceneIndexSearcher LuceneIndexSearcher { get; }
+        ILuceneIndexSearcher LuceneIndexSearcher { get; }
 
         /// <summary>
         /// 索引总数
