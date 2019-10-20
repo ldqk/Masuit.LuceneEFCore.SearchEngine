@@ -15,7 +15,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// </summary>
         /// <param name="entities">实体集</param>
         /// <param name="recreate">是否需要覆盖</param>
-        void CreateIndex(IEnumerable<ILuceneIndexable> entities, bool recreate);
+        void CreateIndex(IEnumerable<ILuceneIndexable> entities, bool recreate = true);
 
         /// <summary>
         /// 删除索引
@@ -33,7 +33,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// 删除所有索引
         /// </summary>
         /// <param name="commit">是否提交</param>
-        void DeleteAll(bool commit);
+        void DeleteAll(bool commit = true);
 
         /// <summary>
         /// 更新索引

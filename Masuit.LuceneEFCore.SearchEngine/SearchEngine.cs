@@ -28,12 +28,12 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 索引器
         /// </summary>
-        public LuceneIndexer LuceneIndexer { get; }
+        public ILuceneIndexer LuceneIndexer { get; }
 
         /// <summary>
         /// 索引搜索器
         /// </summary>
-        public LuceneIndexSearcher LuceneIndexSearcher { get; }
+        public ILuceneIndexSearcher LuceneIndexSearcher { get; }
 
         /// <summary>
         /// 索引条数
