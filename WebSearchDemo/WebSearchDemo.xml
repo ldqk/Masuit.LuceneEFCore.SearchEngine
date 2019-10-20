@@ -4,6 +4,36 @@
         <name>WebSearchDemo</name>
     </assembly>
     <members>
+        <member name="M:WebSearchDemo.Controllers.HomeController.Index(System.String,System.Int32,System.Int32)">
+            <summary>
+            搜索
+            </summary>
+            <param name="s">关键词</param>
+            <param name="page">第几页</param>
+            <param name="size">页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebSearchDemo.Controllers.HomeController.CreateIndex">
+            <summary>
+            创建索引
+            </summary>
+        </member>
+        <member name="M:WebSearchDemo.Controllers.HomeController.AddIndex(WebSearchDemo.Database.Post)">
+            <summary>
+            添加索引
+            </summary>
+        </member>
+        <member name="M:WebSearchDemo.Controllers.HomeController.DeleteIndex(WebSearchDemo.Database.Post)">
+            <summary>
+            删除索引
+            </summary>
+        </member>
+        <member name="M:WebSearchDemo.Controllers.HomeController.UpdateIndex(WebSearchDemo.Database.Post)">
+            <summary>
+            更新索引库
+            </summary>
+            <param name="post"></param>
+        </member>
         <member name="T:WebSearchDemo.Database.Post">
             <summary>
             文章

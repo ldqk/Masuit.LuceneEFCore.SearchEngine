@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
-using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,15 +39,18 @@ namespace WebSearchDemo
             });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info
+                c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "API文档",
-                    Version = "v1"
+                    Version = "v1",
+                    Title = $"接口文档",
+                    Description = $"HTTP API ",
+                    Contact = new OpenApiContact { Name = "懒得勤快", Email = "admin@masuit.com", Url = new Uri("https://masuit.coom") },
+                    License = new OpenApiLicense { Name = "懒得勤快", Url = new Uri("https://masuit.com") }
                 });
-                c.DescribeAllEnumsAsStrings();
                 c.IncludeXmlComments(AppContext.BaseDirectory + "WebSearchDemo.xml");
             }); //配置swagger
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllers();
+            services.AddControllersWithViews().SetCompatibilityVersion(CompatibilityVersion.Latest);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +69,11 @@ namespace WebSearchDemo
             {
                 c.SwaggerEndpoint($"/swagger/v1/swagger.json", "懒得勤快的博客，搜索引擎测试");
             }); //配置swagger
-            app.UseMvcWithDefaultRoute();
+            app.UseRouting().UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers(); // 属性路由
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"); // 默认路由
+            });
         }
     }
 }
