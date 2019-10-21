@@ -100,69 +100,67 @@ namespace Masuit.LuceneEFCore.SearchEngine
         {
             // 结果集
             ILuceneSearchResultCollection results = new LuceneSearchResultCollection();
-            using (var reader = DirectoryReader.Open(_directory))
+            using var reader = DirectoryReader.Open(_directory);
+            var searcher = new IndexSearcher(reader);
+            Query query;
+
+            // 启用安全搜索
+            if (safeSearch)
             {
-                var searcher = new IndexSearcher(reader);
-                Query query;
+                options.Keywords = QueryParserBase.Escape(options.Keywords);
+            }
 
-                // 启用安全搜索
-                if (safeSearch)
-                {
-                    options.Keywords = QueryParserBase.Escape(options.Keywords);
-                }
+            if (options.Fields.Count == 1)
+            {
+                // 单字段搜索
+                var queryParser = new QueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields[0], _analyzer);
+                query = queryParser.Parse(options.Keywords);
+            }
+            else
+            {
+                // 多字段搜索
+                var multiFieldQueryParser = new MultiFieldQueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields.ToArray(), _analyzer, options.Boosts);
+                query = GetFuzzyquery(multiFieldQueryParser, options.Keywords);
+            }
 
-                if (options.Fields.Count == 1)
-                {
-                    // 单字段搜索
-                    var queryParser = new QueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields[0], _analyzer);
-                    query = queryParser.Parse(options.Keywords);
-                }
-                else
-                {
-                    // 多字段搜索
-                    var multiFieldQueryParser = new MultiFieldQueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields.ToArray(), _analyzer, options.Boosts);
-                    query = GetFuzzyquery(multiFieldQueryParser, options.Keywords);
-                }
+            var sortFields = new List<SortField>
+            {
+                SortField.FIELD_SCORE
+            };
+            sortFields.AddRange(options.OrderBy.Select(sortField => new SortField(sortField, SortFieldType.STRING)));
 
-                var sortFields = new List<SortField>
-                {
-                    SortField.FIELD_SCORE
-                };
-                sortFields.AddRange(options.OrderBy.Select(sortField => new SortField(sortField, SortFieldType.STRING)));
+            // 排序规则处理
 
-                // 排序规则处理
+            var sort = new Sort(sortFields.ToArray());
+            Expression<Func<ScoreDoc, bool>> where = _ => true;
+            if (options.Type != null)
+            {
+                // 过滤掉已经设置了类型的对象
+                @where = @where.And(m => options.Type.AssemblyQualifiedName == searcher.Doc(m.Doc).Get("Type"));
+            }
+            var matches = searcher.Search(query, null, options.MaximumNumberOfHits, sort, true, true).ScoreDocs.Where(@where.Compile());
+            results.TotalHits = matches.Count();
 
-                var sort = new Sort(sortFields.ToArray());
-                Expression<Func<ScoreDoc, bool>> where = _ => true;
-                if (options.Type != null)
-                {
-                    // 过滤掉已经设置了类型的对象
-                    where = where.And(m => options.Type.AssemblyQualifiedName == searcher.Doc(m.Doc).Get("Type"));
-                }
-                var matches = searcher.Search(query, null, options.MaximumNumberOfHits, sort, true, true).ScoreDocs.Where(where.Compile());
-                results.TotalHits = matches.Count();
+            // 分页处理
+            if (options.Skip.HasValue)
+            {
+                matches = matches.Skip(options.Skip.Value);
+            }
+            if (options.Take.HasValue)
+            {
+                matches = matches.Take(options.Take.Value);
+            }
 
-                // 分页处理
-                if (options.Skip.HasValue)
+            var docs = matches.ToList();
+            // 创建结果集
+            foreach (var match in docs)
+            {
+                var doc = searcher.Doc(match.Doc);
+                results.Results.Add(new LuceneSearchResult()
                 {
-                    matches = matches.Skip(options.Skip.Value);
-                }
-                if (options.Take.HasValue)
-                {
-                    matches = matches.Take(options.Take.Value);
-                }
-
-                var docs = matches.ToList();
-                // 创建结果集
-                foreach (var match in docs)
-                {
-                    var doc = searcher.Doc(match.Doc);
-                    results.Results.Add(new LuceneSearchResult()
-                    {
-                        Score = match.Score,
-                        Document = doc
-                    });
-                }
+                    Score = match.Score,
+                    Document = doc
+                });
             }
 
             return results;
