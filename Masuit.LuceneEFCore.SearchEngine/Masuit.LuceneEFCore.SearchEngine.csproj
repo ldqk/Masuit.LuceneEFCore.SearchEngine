@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>懒得勤快</Authors>
     <Company>懒得勤快懒得勤快</Company>
     <Product>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，主键int版本</Product>
@@ -10,10 +10,12 @@
     <Copyright>懒得勤快</Copyright>
     <PackageProjectUrl>https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine</PackageProjectUrl>
     <PackageId>Masuit.LuceneEFCore.SearchEngine_int</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+    <PackageReleaseNotes>更新索引时使用生产者消费者模式</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -47,6 +49,7 @@
     <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />
     <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
     <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00005" />
+    <PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.10.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
