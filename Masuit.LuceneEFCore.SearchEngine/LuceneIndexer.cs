@@ -3,10 +3,8 @@ using Lucene.Net.Index;
 using Lucene.Net.Store;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 
 namespace Masuit.LuceneEFCore.SearchEngine
 {
@@ -21,8 +19,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// 索引分析器
         /// </summary>
         private readonly Analyzer _analyzer;
-
-        private static readonly ConcurrentQueue<LuceneIndexChangeset> IndexChangesetQueue = new ConcurrentQueue<LuceneIndexChangeset>();
 
         /// <summary>
         /// 构造函数
@@ -98,7 +94,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public void DeleteAll(bool commit = true)
         {
             var config = new IndexWriterConfig(Lucene.Net.Util.LuceneVersion.LUCENE_48, _analyzer);
-
             using var writer = new IndexWriter(_directory, config);
             try
             {
@@ -140,8 +135,25 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="changeset">实体</param>
         public void Update(LuceneIndexChangeset changeset)
         {
-            IndexChangesetQueue.Enqueue(changeset);
-            UpdateIndexQueue();
+            var config = new IndexWriterConfig(Lucene.Net.Util.LuceneVersion.LUCENE_48, _analyzer);
+            using var writer = new IndexWriter(_directory, config);
+            foreach (var change in changeset.Entries)
+            {
+                switch (change.State)
+                {
+                    case LuceneIndexState.Added:
+                        writer.AddDocument(change.Entity.ToDocument());
+                        break;
+                    case LuceneIndexState.Removed:
+                        writer.DeleteDocuments(new Term("IndexId", change.Entity.IndexId));
+                        break;
+                    case LuceneIndexState.Updated:
+                        writer.UpdateDocument(new Term("IndexId", change.Entity.IndexId), change.Entity.ToDocument());
+                        break;
+                }
+            }
+
+            writer.Flush(true, changeset.HasDeletes);
         }
 
         /// <summary>
@@ -153,7 +165,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
             try
             {
                 IndexReader reader = DirectoryReader.Open(_directory);
-
                 return reader.NumDocs;
             }
             catch (IndexNotFoundException ex)
@@ -162,40 +173,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 Console.WriteLine(ex.Message);
                 return 0;
             }
-        }
-
-        private void UpdateIndexQueue()
-        {
-            ThreadPool.QueueUserWorkItem(state =>
-            {
-                if (!IndexChangesetQueue.Any())
-                {
-                    return;
-                }
-
-                while (IndexChangesetQueue.TryDequeue(out var changeset))
-                {
-                    var config = new IndexWriterConfig(Lucene.Net.Util.LuceneVersion.LUCENE_48, _analyzer);
-                    using var writer = new IndexWriter(_directory, config);
-                    foreach (var change in changeset.Entries)
-                    {
-                        switch (change.State)
-                        {
-                            case LuceneIndexState.Added:
-                                writer.AddDocument(change.Entity.ToDocument());
-                                break;
-                            case LuceneIndexState.Removed:
-                                writer.DeleteDocuments(new Term("IndexId", change.Entity.IndexId));
-                                break;
-                            case LuceneIndexState.Updated:
-                                writer.UpdateDocument(new Term("IndexId", change.Entity.IndexId), change.Entity.ToDocument());
-                                break;
-                        }
-                    }
-
-                    writer.Flush(true, changeset.HasDeletes);
-                }
-            });
         }
     }
 }
