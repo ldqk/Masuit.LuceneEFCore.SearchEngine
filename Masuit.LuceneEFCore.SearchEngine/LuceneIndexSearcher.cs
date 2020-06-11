@@ -5,6 +5,7 @@ using Lucene.Net.Index;
 using Lucene.Net.QueryParsers.Classic;
 using Lucene.Net.Search;
 using Lucene.Net.Store;
+using Lucene.Net.Support;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Masuit.LuceneEFCore.SearchEngine.Linq;
 using Microsoft.Extensions.Caching.Memory;
@@ -43,32 +44,26 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <returns></returns>
         public List<string> CutKeywords(string keyword)
         {
-            if (_memoryCache.TryGetValue(keyword, out List<string> list))
+            var list = new List<string>
+            {
+                keyword
+            };
+            if (keyword.Length <= 2)
             {
                 return list;
             }
 
-            var set = new HashSet<string>
+            if (_memoryCache.TryGetValue(keyword, out List<string> value))
             {
-                keyword
-            };
-            var mc = Regex.Matches(keyword, @"(([A-Z]*[a-z]*)[\d]*)([\u4E00-\u9FA5]+)*((?!\p{P}).)*");
-            foreach (Match m in mc)
-            {
-                set.Add(m.Value);
-                foreach (Group g in m.Groups)
-                {
-                    set.Add(g.Value);
-                }
+                return value;
             }
 
-            var segmenter = new JiebaSegmenter();
-            foreach (string word in segmenter.CutForSearch(keyword))
-            {
-                set.Add(word);
-            }
-            set.RemoveWhere(s => s.Length < 2 || Regex.IsMatch(s, @"^\p{P}.*"));
-            list = set.OrderByDescending(s => s.Length).ToList();
+            list.AddRange(Regex.Matches(keyword, @"[\u4e00-\u9fa5]+").Select(m => m.ToString()));//中文
+            list.AddRange(Regex.Matches(keyword, @"\p{P}?[A-Z]*[a-z]*[\p{P}|\p{S}]*").Select(m => m.Value));//英文单词
+            list.AddRange(Regex.Matches(keyword, "([A-z]+)([0-9.]+)").SelectMany(m => m.Groups.Select(g => g.Value)));//英文+数字
+            list.AddRange(new JiebaSegmenter().CutForSearch(keyword));//结巴分词
+            list.RemoveAll(s => s.Length < 2);
+            list = list.Distinct().OrderByDescending(s => s.Length).Take(10).ToList();
             _memoryCache.Set(keyword, list, TimeSpan.FromHours(1));
             return list;
         }
