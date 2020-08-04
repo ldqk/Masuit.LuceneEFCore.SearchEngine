@@ -900,6 +900,11 @@
             文档类型
             </summary>
         </member>
+        <member name="P:Masuit.LuceneEFCore.SearchEngine.SearchOptions.Score">
+            <summary>
+            匹配度，0-1，数值越大结果越精确
+            </summary>
+        </member>
         <member name="M:Masuit.LuceneEFCore.SearchEngine.SearchOptions.ClearBoosts">
             <summary>
             清除多字段搜索时，给字段的搜索加速

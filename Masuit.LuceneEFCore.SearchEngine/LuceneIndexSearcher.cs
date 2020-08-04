@@ -127,7 +127,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             // 排序规则处理
 
             var sort = new Sort(sortFields.ToArray());
-            Expression<Func<ScoreDoc, bool>> where = _ => true;
+            Expression<Func<ScoreDoc, bool>> where = m => m.Score >= options.Score;
             if (options.Type != null)
             {
                 // 过滤掉已经设置了类型的对象

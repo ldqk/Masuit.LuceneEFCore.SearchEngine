@@ -71,6 +71,11 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public Type Type { get; set; }
 
         /// <summary>
+        /// 匹配度，0-1，数值越大结果越精确
+        /// </summary>
+        public float Score { get; set; } = 0.5f;
+
+        /// <summary>
         /// 清除多字段搜索时，给字段的搜索加速
         /// </summary>
         public void ClearBoosts()
