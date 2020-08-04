@@ -14,7 +14,7 @@
     <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-    <PackageReleaseNotes>更新索引时使用生产者消费者模式</PackageReleaseNotes>
+    <PackageReleaseNotes>搜索选项增加匹配度阈值设定，默认0.5</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>

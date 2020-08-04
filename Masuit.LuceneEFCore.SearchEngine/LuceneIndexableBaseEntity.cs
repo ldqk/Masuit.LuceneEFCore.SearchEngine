@@ -2,6 +2,7 @@
 using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
@@ -29,7 +30,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public string Id { get; set; } 
 #endif
 #if Guid
-        public Guid Id { get; set; } 
+        public Guid Id { get; set; }
 #endif
 
         /// <summary>
