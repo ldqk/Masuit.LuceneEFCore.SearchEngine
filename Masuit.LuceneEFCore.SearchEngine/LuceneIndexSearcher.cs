@@ -8,6 +8,7 @@ using Lucene.Net.Store;
 using Lucene.Net.Support;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Masuit.LuceneEFCore.SearchEngine.Linq;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;

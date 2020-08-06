@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -101,7 +102,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         private ILuceneIndexable GetConcreteFromDocument(Document doc)
         {
             var t = Type.GetType(doc.Get("Type"));
-            var obj = t.Assembly.CreateInstance(t.FullName, true) as ILuceneIndexable;
+            var obj = Expression.Lambda<Func<ILuceneIndexable>>(Expression.New(t.GetConstructors()[0])).Compile()();
             foreach (var p in t.GetProperties().Where(p => p.GetCustomAttributes<LuceneIndexAttribute>().Any()))
             {
                 p.SetValue(obj, doc.Get(p.Name, p.PropertyType));
