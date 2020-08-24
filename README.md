@@ -10,6 +10,10 @@
 请注意：一旦使用本开源项目以及引用了本项目或包含本项目代码的公司因为违反劳动法（包括但不限定非法裁员、超时用工、雇佣童工等）在任何法律诉讼中败诉的，项目作者有权利追讨本项目的使用费，或者直接不允许使用任何包含本项目的源代码！
 
 ⭐⭐⭐喜欢这个项目的话就Star、Fork、Follow素质三连关♂注一下吧⭐⭐⭐
+
+## Stargazers over time  
+<img src="https://starchart.cc/ldqk/Masuit.LuceneEFCore.SearchEngine.svg">    
+
 ### 为什么没有集成到Masuit.Tools这个库？
 因为这个项目又引入了几个Lucene相关的库，如果集成到[Masuit.Tools](https://github.com/ldqk/Masuit.Tools "Masuit.Tools")，这必将给原来的项目增加了更多的引用包，使用过程中也有可能没有使用Lucene的场景，这就造成了项目更加的臃肿，所以做了个新的项目。
 ### 为什么有这个库？现成的ElasticSearch不好么？
