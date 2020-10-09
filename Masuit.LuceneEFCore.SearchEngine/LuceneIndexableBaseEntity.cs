@@ -17,7 +17,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 主键id
         /// </summary>
-        [LuceneIndex(Name = "Id", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED), Key]
+        [LuceneIndex(Name = "Id", Store = Field.Store.YES), Key]
 #if Int
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -36,7 +36,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 索引唯一id
         /// </summary>
-        [LuceneIndex(Name = "IndexId", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED)]
+        [LuceneIndex(Name = "IndexId", Store = Field.Store.YES)]
         [NotMapped, JsonIgnore]
         public string IndexId
         {
@@ -60,7 +60,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             }
 
             var classProperties = type.GetProperties();
-            doc.Add(new Field("Type", type.AssemblyQualifiedName, Field.Store.YES, Field.Index.NOT_ANALYZED));
+            doc.Add(new StringField("Type", type.AssemblyQualifiedName, Field.Store.YES));
             foreach (var propertyInfo in classProperties)
             {
                 var propertyValue = propertyInfo.GetValue(this);
@@ -74,7 +74,36 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 {
                     string name = !string.IsNullOrEmpty(attr.Name) ? attr.Name : propertyInfo.Name;
                     string value = attr.IsHtml ? propertyValue.ToString().RemoveHtmlTag() : propertyValue.ToString();
-                    doc.Add(new Field(name, value, attr.Store, attr.Index));
+                    switch (propertyValue)
+                    {
+                        case string _ when value.Length < 8191:
+                            doc.Add(new StringField(name, value, attr.Store));
+                            break;
+                        case string _:
+                            doc.Add(new TextField(name, value, attr.Store));
+                            break;
+                        case int num:
+                            doc.Add(new Int32Field(name, num, attr.Store));
+                            break;
+                        case long num:
+                            doc.Add(new Int64Field(name, num, attr.Store));
+                            break;
+                        case float num:
+                            doc.Add(new SingleField(name, num, attr.Store));
+                            break;
+                        case decimal num:
+                            doc.Add(new DoubleField(name, (double)num, attr.Store));
+                            break;
+                        case double num:
+                            doc.Add(new DoubleField(name, num, attr.Store));
+                            break;
+                        case DateTime _:
+                            doc.Add(new StringField(name, value, attr.Store));
+                            break;
+                        default:
+                            doc.Add(new TextField(name, value, attr.Store));
+                            break;
+                    }
                 }
             }
 

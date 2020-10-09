@@ -16,7 +16,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// <summary>
         /// 主键id
         /// </summary>
-        [LuceneIndex(Name = "Id", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED), Key]
+        [LuceneIndex(Name = "Id", Store = Field.Store.YES), Key]
 #if Int
         int Id { get; set; }
 #endif
@@ -33,7 +33,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// <summary>
         /// 索引id
         /// </summary>
-        [LuceneIndex(Name = "IndexId", Store = Field.Store.YES, Index = Field.Index.NOT_ANALYZED)]
+        [LuceneIndex(Name = "IndexId", Store = Field.Store.YES)]
         [JsonIgnore, NotMapped]
         string IndexId { get; set; }
 

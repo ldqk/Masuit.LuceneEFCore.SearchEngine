@@ -396,11 +396,6 @@
             索引字段名
             </summary>
         </member>
-        <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexAttribute.Index">
-            <summary>
-            索引行为
-            </summary>
-        </member>
         <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexAttribute.Store">
             <summary>
             是否被存储到索引库

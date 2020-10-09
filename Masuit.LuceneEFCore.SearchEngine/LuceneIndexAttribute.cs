@@ -11,7 +11,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
     {
         public LuceneIndexAttribute()
         {
-            Index = Field.Index.ANALYZED;
             Store = Field.Store.YES;
             IsHtml = false;
         }
@@ -20,11 +19,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// 索引字段名
         /// </summary>
         public string Name { get; set; }
-
-        /// <summary>
-        /// 索引行为
-        /// </summary>
-        public Field.Index Index { get; set; }
 
         /// <summary>
         /// 是否被存储到索引库
