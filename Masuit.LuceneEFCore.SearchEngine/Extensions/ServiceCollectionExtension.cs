@@ -19,7 +19,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
         /// <param name="option"></param>
         public static IServiceCollection AddSearchEngine<TContext>(this IServiceCollection services, LuceneIndexerOptions option) where TContext : DbContext
         {
-            services.AddSingleton(s => option);
+            services.AddSingleton(option);
             services.AddMemoryCache();
             services.TryAddSingleton<Directory>(s => FSDirectory.Open(option.Path));
             services.TryAddSingleton<Analyzer>(s => new JieBaAnalyzer(TokenizerMode.Search));

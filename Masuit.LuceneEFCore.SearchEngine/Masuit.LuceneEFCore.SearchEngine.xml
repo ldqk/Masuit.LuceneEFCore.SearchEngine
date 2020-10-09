@@ -391,6 +391,11 @@
             标记该字段可被索引
             </summary>
         </member>
+        <member name="M:Masuit.LuceneEFCore.SearchEngine.LuceneIndexAttribute.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:Masuit.LuceneEFCore.SearchEngine.LuceneIndexAttribute.Name">
             <summary>
             索引字段名

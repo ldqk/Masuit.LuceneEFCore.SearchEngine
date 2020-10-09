@@ -9,6 +9,9 @@ namespace Masuit.LuceneEFCore.SearchEngine
     [AttributeUsage(AttributeTargets.Property)]
     public class LuceneIndexAttribute : Attribute
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public LuceneIndexAttribute()
         {
             Store = Field.Store.YES;

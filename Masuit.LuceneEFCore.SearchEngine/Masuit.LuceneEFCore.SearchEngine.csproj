@@ -4,17 +4,17 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>懒得勤快</Authors>
-    <Company>懒得勤快懒得勤快</Company>
+    <Company>懒得勤快</Company>
     <Product>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，主键int版本</Product>
     <Description>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎</Description>
     <Copyright>懒得勤快</Copyright>
     <PackageProjectUrl>https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine</PackageProjectUrl>
     <PackageId>Masuit.LuceneEFCore.SearchEngine_int</PackageId>
-    <Version>1.0.3.3</Version>
+    <Version>1.0.3.4</Version>
     <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-    <PackageReleaseNotes>用λ表达式树替代反射</PackageReleaseNotes>
+    <PackageReleaseNotes>移除过时的api，使用新的推荐的api</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
