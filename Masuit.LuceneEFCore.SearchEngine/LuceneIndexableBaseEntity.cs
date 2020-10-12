@@ -77,7 +77,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                     switch (propertyValue)
                     {
                         case string _ when value.Length < 8191:
-                            doc.Add(new StringField(name, value, attr.Store));
+                            doc.Add(new TextField(name, value, attr.Store));
                             break;
                         case string _:
                             doc.Add(new TextField(name, value, attr.Store));
@@ -98,7 +98,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                             doc.Add(new DoubleField(name, num, attr.Store));
                             break;
                         case DateTime _:
-                            doc.Add(new StringField(name, value, attr.Store));
+                            doc.Add(new TextField(name, value, attr.Store));
                             break;
                         default:
                             doc.Add(new TextField(name, value, attr.Store));
