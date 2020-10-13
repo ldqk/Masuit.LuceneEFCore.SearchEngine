@@ -2,7 +2,6 @@
 using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Newtonsoft.Json;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
@@ -76,12 +75,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
                     string value = attr.IsHtml ? propertyValue.ToString().RemoveHtmlTag() : propertyValue.ToString();
                     switch (propertyValue)
                     {
-                        case string _ when value.Length < 8191:
-                            doc.Add(new TextField(name, value, attr.Store));
-                            break;
-                        case string _:
-                            doc.Add(new TextField(name, value, attr.Store));
-                            break;
                         case int num:
                             doc.Add(new Int32Field(name, num, attr.Store));
                             break;
@@ -96,9 +89,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
                             break;
                         case double num:
                             doc.Add(new DoubleField(name, num, attr.Store));
-                            break;
-                        case DateTime _:
-                            doc.Add(new TextField(name, value, attr.Store));
                             break;
                         default:
                             doc.Add(new TextField(name, value, attr.Store));
