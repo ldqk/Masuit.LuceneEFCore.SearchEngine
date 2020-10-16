@@ -1,4 +1,5 @@
 ### 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎
+ [[gitee仓库]](https://gitee.com/masuit_admin/Masuit.LuceneEFCore.SearchEngine)  [[github仓库]](https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine)  
 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。
 
 [官网页面](http://masuit.com/1437) | [实际应用案例体验](https://masuit.com/s/会声会影TeamViewer)
