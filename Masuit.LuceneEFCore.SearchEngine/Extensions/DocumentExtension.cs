@@ -15,33 +15,21 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
         public static object Get(this Document doc, string key, Type t)
         {
             string value = doc.Get(key);
-            switch (t)
+            return t switch
             {
-                case Type _ when t.IsAssignableFrom(typeof(int)):
-                    return int.Parse(value);
-                case Type _ when t.IsAssignableFrom(typeof(DateTime)):
-                    return DateTime.Parse(value);
-                case Type _ when t.IsAssignableFrom(typeof(double)):
-                    return double.Parse(value);
-                case Type _ when t.IsAssignableFrom(typeof(long)):
-                    return long.Parse(value);
-                case Type _ when t.IsAssignableFrom(typeof(decimal)):
-                    return decimal.Parse(value);
-                case Type _ when t.IsAssignableFrom(typeof(char)):
-                    return char.Parse(value);
-                case Type _ when t.IsAssignableFrom(typeof(byte)):
-                    return byte.Parse(value);
-                case Type _ when t.IsAssignableFrom(typeof(float)):
-                    return float.Parse(value);
-                case Type _ when t.IsAssignableFrom(typeof(bool)):
-                    return bool.Parse(value);
-                case Type _ when t.BaseType == typeof(Enum):
-                    return Enum.Parse(t, value);
-                case Type _ when t.IsAssignableFrom(typeof(string)):
-                    return value;
-                default:
-                    return Convert.ChangeType(value, t);
-            }
+                _ when t.IsAssignableFrom(typeof(string)) => value,
+                _ when t.IsAssignableFrom(typeof(int)) => int.TryParse(value, out var v) ? v : 0,
+                _ when t.IsAssignableFrom(typeof(long)) => long.TryParse(value, out var v) ? v : 0,
+                _ when t.IsAssignableFrom(typeof(double)) => double.TryParse(value, out var v) ? v : 0,
+                _ when t.IsAssignableFrom(typeof(float)) => float.TryParse(value, out var v) ? v : 0,
+                _ when t.IsAssignableFrom(typeof(decimal)) => decimal.TryParse(value, out var v) ? v : 0,
+                _ when t.IsAssignableFrom(typeof(char)) => char.TryParse(value, out var v) ? v : 0,
+                _ when t.IsAssignableFrom(typeof(byte)) => byte.TryParse(value, out var v) ? v : 0,
+                _ when t.IsAssignableFrom(typeof(bool)) => bool.TryParse(value, out var v) && v,
+                _ when t.IsAssignableFrom(typeof(DateTime)) => DateTime.TryParse(value, out var v) ? v : throw new Exception(value + "日期时间格式不正确"),
+                _ when t.BaseType == typeof(Enum) => Enum.Parse(t, value),
+                _ => Convert.ChangeType(value, t)
+            };
         }
 
         /// <summary>
@@ -53,33 +41,21 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
         public static object Get<T>(this Document doc, string key)
         {
             string value = doc.Get(key);
-            switch (typeof(T))
+            return typeof(T) switch
             {
-                case Type _ when typeof(T).IsAssignableFrom(typeof(int)):
-                    return int.Parse(value);
-                case Type _ when typeof(T).IsAssignableFrom(typeof(DateTime)):
-                    return DateTime.Parse(value);
-                case Type _ when typeof(T).IsAssignableFrom(typeof(double)):
-                    return double.Parse(value);
-                case Type _ when typeof(T).IsAssignableFrom(typeof(long)):
-                    return long.Parse(value);
-                case Type _ when typeof(T).IsAssignableFrom(typeof(decimal)):
-                    return decimal.Parse(value);
-                case Type _ when typeof(T).IsAssignableFrom(typeof(char)):
-                    return char.Parse(value);
-                case Type _ when typeof(T).IsAssignableFrom(typeof(byte)):
-                    return byte.Parse(value);
-                case Type _ when typeof(T).IsAssignableFrom(typeof(float)):
-                    return float.Parse(value);
-                case Type _ when typeof(T).IsAssignableFrom(typeof(bool)):
-                    return bool.Parse(value);
-                case Type _ when typeof(T).BaseType == typeof(Enum):
-                    return Enum.Parse(typeof(T), value);
-                case Type _ when typeof(T).IsAssignableFrom(typeof(string)):
-                    return value;
-                default:
-                    return Convert.ChangeType(value, typeof(T));
-            }
+                _ when typeof(T).IsAssignableFrom(typeof(string)) => value,
+                _ when typeof(T).IsAssignableFrom(typeof(int)) => int.TryParse(value, out var v) ? v : 0,
+                _ when typeof(T).IsAssignableFrom(typeof(long)) => long.TryParse(value, out var v) ? v : 0,
+                _ when typeof(T).IsAssignableFrom(typeof(double)) => double.TryParse(value, out var v) ? v : 0,
+                _ when typeof(T).IsAssignableFrom(typeof(float)) => float.TryParse(value, out var v) ? v : 0,
+                _ when typeof(T).IsAssignableFrom(typeof(decimal)) => decimal.TryParse(value, out var v) ? v : 0,
+                _ when typeof(T).IsAssignableFrom(typeof(char)) => char.TryParse(value, out var v) ? v : 0,
+                _ when typeof(T).IsAssignableFrom(typeof(byte)) => byte.TryParse(value, out var v) ? v : 0,
+                _ when typeof(T).IsAssignableFrom(typeof(bool)) => bool.TryParse(value, out var v) && v,
+                _ when typeof(T).IsAssignableFrom(typeof(DateTime)) => DateTime.TryParse(value, out var v) ? v : throw new Exception(value + "日期时间格式不正确"),
+                _ when typeof(T).BaseType == typeof(Enum) => Enum.Parse(typeof(T), value),
+                _ => Convert.ChangeType(value, typeof(T))
+            };
         }
     }
 }
