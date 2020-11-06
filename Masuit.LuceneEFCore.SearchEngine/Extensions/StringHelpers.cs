@@ -12,7 +12,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
         /// <param name="s"></param>
         /// <param name="chars"></param>
         /// <returns></returns>
-        public static string RemoveCharacters(this string s, IEnumerable<char> chars)
+        internal static string RemoveCharacters(this string s, IEnumerable<char> chars)
         {
             return string.IsNullOrEmpty(s) ? string.Empty : new string(s.Where(c => !chars.Contains(c)).ToArray());
         }
@@ -22,7 +22,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
         /// </summary>
         /// <param name="html">源html</param>
         /// <returns></returns>
-        public static string RemoveHtmlTag(this string html)
+        internal static string RemoveHtmlTag(this string html)
         {
             var strText = Regex.Replace(html, "<[^>]+>", "");
             strText = Regex.Replace(strText, "&[^;]+;", "");

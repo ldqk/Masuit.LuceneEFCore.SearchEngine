@@ -13,14 +13,6 @@
             <param name="t">类型</param>
             <returns></returns>
         </member>
-        <member name="M:Masuit.LuceneEFCore.SearchEngine.Extensions.DocumentExtension.Get``1(Lucene.Net.Documents.Document,System.String)">
-            <summary>
-            获取文档的值
-            </summary>
-            <param name="doc">Lucene文档</param>
-            <param name="key">键</param>
-            <returns></returns>
-        </member>
         <member name="M:Masuit.LuceneEFCore.SearchEngine.Extensions.ServiceCollectionExtension.AddSearchEngine``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Masuit.LuceneEFCore.SearchEngine.LuceneIndexerOptions)">
             <summary>
             依赖注入
@@ -350,15 +342,6 @@
         <member name="M:Masuit.LuceneEFCore.SearchEngine.Linq.LinqExtension.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
             <summary>
             与连接
-            </summary>
-            <typeparam name="T">类型</typeparam>
-            <param name="left">左条件</param>
-            <param name="right">右条件</param>
-            <returns>新表达式</returns>
-        </member>
-        <member name="M:Masuit.LuceneEFCore.SearchEngine.Linq.LinqExtension.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
-            <summary>
-            或连接
             </summary>
             <typeparam name="T">类型</typeparam>
             <param name="left">左条件</param>
