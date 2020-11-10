@@ -3,3 +3,4 @@
 /.vs
 /WebSearchDemo/lucene
 /Masuit.LuceneEFCore.SearchEngine.sln.DotSettings.user
+/Masuit.LuceneEFCore.SearchEngine/Masuit.LuceneEFCore.SearchEngine.xml

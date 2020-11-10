@@ -31,7 +31,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
         /// <param name="value"></param>
         /// <param name="type">目标类型</param>
         /// <returns></returns>
-        public static object ConvertTo(string value, Type type)
+        private static object ConvertTo(string value, Type type)
         {
             if (null == value)
             {
