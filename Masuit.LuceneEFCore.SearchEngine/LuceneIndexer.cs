@@ -1,5 +1,6 @@
 ﻿using Lucene.Net.Analysis;
 using Lucene.Net.Index;
+using Lucene.Net.Search;
 using Lucene.Net.Store;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using System;
@@ -141,14 +142,13 @@ namespace Masuit.LuceneEFCore.SearchEngine
             {
                 switch (change.State)
                 {
-                    case LuceneIndexState.Added:
-                        writer.AddDocument(change.Entity.ToDocument());
-                        break;
                     case LuceneIndexState.Removed:
-                        writer.DeleteDocuments(new Term("IndexId", change.Entity.IndexId));
+                        writer.DeleteDocuments(new TermQuery(new Term("Id", change.Entity.Id.ToString())));
                         break;
+                    case LuceneIndexState.Added:
                     case LuceneIndexState.Updated:
-                        writer.UpdateDocument(new Term("IndexId", change.Entity.IndexId), change.Entity.ToDocument());
+                        writer.DeleteDocuments(new TermQuery(new Term("Id", change.Entity.Id.ToString())));
+                        writer.AddDocument(change.Entity.ToDocument());
                         break;
                 }
             }

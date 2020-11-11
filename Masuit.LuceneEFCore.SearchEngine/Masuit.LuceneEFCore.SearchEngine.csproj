@@ -1,69 +1,78 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;net5</TargetFrameworks>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Authors>懒得勤快</Authors>
+        <Company>懒得勤快</Company>
+        <Product>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，主键int版本</Product>
+        <Description>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎</Description>
+        <Copyright>懒得勤快</Copyright>
+        <PackageProjectUrl>https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine</PackageProjectUrl>
+        <PackageId>Masuit.LuceneEFCore.SearchEngine_guid</PackageId>
+        <Version>1.1.0</Version>
+        <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
+        <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+        <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+        <PackageReleaseNotes>升级.net5</PackageReleaseNotes>
+        <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <LangVersion>9</LangVersion>
+        <FileVersion>1.1</FileVersion>
+        <AssemblyVersion>1.1</AssemblyVersion>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Authors>懒得勤快</Authors>
-    <Company>懒得勤快</Company>
-    <Product>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，主键int版本</Product>
-    <Description>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎</Description>
-    <Copyright>懒得勤快</Copyright>
-    <PackageProjectUrl>https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine</PackageProjectUrl>
-    <PackageId>Masuit.LuceneEFCore.SearchEngine_int</PackageId>
-    <Version>1.0.3.5</Version>
-    <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
-    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
-    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-    <PackageReleaseNotes>移除过时的api，使用新的推荐的api</PackageReleaseNotes>
-    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-  </ItemGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>TRACE;Int</DefineConstants>
+        <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
+    </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DefineConstants>TRACE;Int</DefineConstants>
+        <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;Int</DefineConstants>
-    <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Long版本|AnyCPU'">
+        <DefineConstants>TRACE;Long</DefineConstants>
+        <Optimize>true</Optimize>
+        <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>TRACE;Int</DefineConstants>
-    <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Guid版本|AnyCPU'">
+        <DefineConstants>TRACE;Guid</DefineConstants>
+        <Optimize>true</Optimize>
+        <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Long版本|AnyCPU'">
-    <DefineConstants>TRACE;Long</DefineConstants>
-    <Optimize>true</Optimize>
-    <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Guid版本|AnyCPU'">
-    <DefineConstants>TRACE;Guid</DefineConstants>
-    <Optimize>true</Optimize>
-    <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='String版本|AnyCPU'">
-    <DefineConstants>TRACE;String</DefineConstants>
-    <Optimize>true</Optimize>
-    <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />
-    <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
-    <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00005" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Masuit.LuceneEFCore.SearchEngine.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='String版本|AnyCPU'">
+        <DefineConstants>TRACE;String</DefineConstants>
+        <Optimize>true</Optimize>
+        <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />
+        <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
+        <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00005" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    </ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.1'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+    </ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net5'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="Masuit.LuceneEFCore.SearchEngine.xml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
 </Project>

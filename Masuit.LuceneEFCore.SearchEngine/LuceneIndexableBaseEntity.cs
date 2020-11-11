@@ -2,6 +2,7 @@
 using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
@@ -16,7 +17,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 主键id
         /// </summary>
-        [LuceneIndex(Name = "Id", Store = Field.Store.YES), Key]
+        [LuceneIndex(Name = nameof(Id), Store = Field.Store.YES), Key]
 #if Int
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -35,7 +36,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 索引唯一id
         /// </summary>
-        [LuceneIndex(Name = "IndexId", Store = Field.Store.YES)]
+        [LuceneIndex(Name = nameof(IndexId), Store = Field.Store.YES)]
         [NotMapped, JsonIgnore]
         public string IndexId
         {
@@ -73,27 +74,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 {
                     string name = !string.IsNullOrEmpty(attr.Name) ? attr.Name : propertyInfo.Name;
                     string value = attr.IsHtml ? propertyValue.ToString().RemoveHtmlTag() : propertyValue.ToString();
-                    switch (propertyValue)
-                    {
-                        case int num:
-                            doc.Add(new Int32Field(name, num, attr.Store));
-                            break;
-                        case long num:
-                            doc.Add(new Int64Field(name, num, attr.Store));
-                            break;
-                        case float num:
-                            doc.Add(new SingleField(name, num, attr.Store));
-                            break;
-                        case decimal num:
-                            doc.Add(new DoubleField(name, (double)num, attr.Store));
-                            break;
-                        case double num:
-                            doc.Add(new DoubleField(name, num, attr.Store));
-                            break;
-                        default:
-                            doc.Add(new TextField(name, value, attr.Store));
-                            break;
-                    }
+                    doc.Add(new TextField(name, value, attr.Store));
                 }
             }
 
