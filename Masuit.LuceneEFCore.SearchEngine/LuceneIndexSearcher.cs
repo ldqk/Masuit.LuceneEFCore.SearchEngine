@@ -64,7 +64,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 keyword = keyword.Replace(m.Value, "");
                 return m.Value;
             }));//必须包含的
-            list.AddRange(Regex.Matches(keyword, @"\s-.+\s").Cast<Match>().Select(m =>
+            list.AddRange(Regex.Matches(keyword, @"\s-.+\s?").Cast<Match>().Select(m =>
             {
                 keyword = keyword.Replace(m.Value, "");
                 return m.Value.Trim();
