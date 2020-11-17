@@ -59,6 +59,16 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 return value;
             }
 
+            list.AddRange(Regex.Matches(keyword, @""".+""").Cast<Match>().Select(m =>
+            {
+                keyword = keyword.Replace(m.Value, "");
+                return m.Value;
+            }));//必须包含的
+            list.AddRange(Regex.Matches(keyword, @"\s-.+\s").Cast<Match>().Select(m =>
+            {
+                keyword = keyword.Replace(m.Value, "");
+                return m.Value.Trim();
+            }));//必须不包含的
             list.AddRange(Regex.Matches(keyword, @"[\u4e00-\u9fa5]+").Cast<Match>().Select(m => m.Value));//中文
             list.AddRange(Regex.Matches(keyword, @"\p{P}?[A-Z]*[a-z]*[\p{P}|\p{S}]*").Cast<Match>().Select(m => m.Value));//英文单词
             list.AddRange(Regex.Matches(keyword, "([A-z]+)([0-9.]+)").Cast<Match>().SelectMany(m => m.Groups.Cast<Group>().Select(g => g.Value)));//英文+数字
@@ -81,7 +91,18 @@ namespace Masuit.LuceneEFCore.SearchEngine
             var terms = CutKeywords(keywords);
             foreach (var term in terms)
             {
-                finalQuery.Add(parser.Parse(term.Replace("~", "") + "~"), Occur.SHOULD);
+                if (term.StartsWith("\""))
+                {
+                    finalQuery.Add(parser.Parse(term.Trim('"')), Occur.MUST);
+                }
+                else if (term.StartsWith("-"))
+                {
+                    finalQuery.Add(parser.Parse(term.Trim('"')), Occur.MUST_NOT);
+                }
+                else
+                {
+                    finalQuery.Add(parser.Parse(term.Replace("~", "") + "~"), Occur.SHOULD);
+                }
             }
             return finalQuery;
         }
@@ -115,8 +136,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
             else
             {
                 // 多字段搜索
-                var multiFieldQueryParser = new MultiFieldQueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields.ToArray(), _analyzer, options.Boosts);
-                query = GetFuzzyquery(multiFieldQueryParser, options.Keywords);
+                var queryParser = new MultiFieldQueryParser(Lucene.Net.Util.LuceneVersion.LUCENE_48, options.Fields.ToArray(), _analyzer, options.Boosts);
+                query = GetFuzzyquery(queryParser, options.Keywords);
             }
 
             var sortFields = new List<SortField>
@@ -126,13 +147,12 @@ namespace Masuit.LuceneEFCore.SearchEngine
             sortFields.AddRange(options.OrderBy.Select(sortField => new SortField(sortField, SortFieldType.STRING)));
 
             // 排序规则处理
-
             var sort = new Sort(sortFields.ToArray());
             Expression<Func<ScoreDoc, bool>> where = m => m.Score >= options.Score;
             if (options.Type != null)
             {
                 // 过滤掉已经设置了类型的对象
-                @where = @where.And(m => options.Type.AssemblyQualifiedName == searcher.Doc(m.Doc).Get("Type"));
+                where = where.And(m => options.Type.AssemblyQualifiedName == searcher.Doc(m.Doc).Get("Type"));
             }
             var matches = searcher.Search(query, null, options.MaximumNumberOfHits, sort, true, true).ScoreDocs.Where(@where.Compile());
             results.TotalHits = matches.Count();

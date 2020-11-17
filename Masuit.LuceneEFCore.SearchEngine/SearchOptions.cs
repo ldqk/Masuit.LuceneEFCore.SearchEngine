@@ -27,26 +27,23 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public int MaximumNumberOfHits { get; set; }
 
         /// <summary>
-        /// 多字段搜索时，给字段的搜索加速
+        /// 多字段搜索时，给字段设定搜索权重
         /// </summary>
-        private Dictionary<string, float> boosts;
+        private Dictionary<string, float> _boosts;
 
         /// <summary>
-        /// 多字段搜索时，给字段的搜索加速
+        /// 多字段搜索时，给字段设定搜索权重
         /// </summary>
-        public Dictionary<string, float> Boosts
+        internal Dictionary<string, float> Boosts
         {
             get
             {
-                foreach (var field in Fields)
+                foreach (var field in Fields.Where(field => _boosts.All(x => x.Key.ToUpper() != field.ToUpper())))
                 {
-                    if (boosts.All(x => x.Key.ToUpper() != field.ToUpper()))
-                    {
-                        boosts.Add(field, 1.0f);
-                    }
+                    _boosts.Add(field, 2.0f);
                 }
 
-                return boosts;
+                return _boosts;
             }
         }
 
@@ -76,39 +73,12 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public float Score { get; set; } = 0.5f;
 
         /// <summary>
-        /// 清除多字段搜索时，给字段的搜索加速
-        /// </summary>
-        public void ClearBoosts()
-        {
-            boosts.Clear();
-        }
-
-        /// <summary>
-        /// 添加多字段搜索时，给字段的搜索加速
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        public void SetBoost(string key, float value)
-        {
-            boosts[key] = value;
-        }
-
-        /// <summary>
-        /// 设置多字段搜索时，给字段的搜索加速
-        /// </summary>
-        /// <param name="boosts"></param>
-        public void SetBoosts(Dictionary<string, float> boosts)
-        {
-            this.boosts = boosts;
-        }
-
-        /// <summary>
         /// 搜索选项
         /// </summary>
         /// <param name="keywords">关键词</param>
         /// <param name="fields">限定检索字段</param>
         /// <param name="maximumNumberOfHits">最大检索量</param>
-        /// <param name="boosts">多字段搜索时，给字段的搜索加速</param>
+        /// <param name="boosts">多字段搜索时，给字段设定搜索权重</param>
         /// <param name="type">文档类型</param>
         /// <param name="orderBy">排序字段</param>
         /// <param name="skip">跳过多少条</param>
@@ -119,14 +89,13 @@ namespace Masuit.LuceneEFCore.SearchEngine
             {
                 throw new ArgumentException("搜索关键词不能为空！");
             }
+
             Keywords = keywords;
             MaximumNumberOfHits = maximumNumberOfHits;
             Skip = skip;
             Take = take;
-            this.boosts = boosts ?? new Dictionary<string, float>();
-
+            this._boosts = boosts ?? new Dictionary<string, float>();
             Type = type;
-
             Fields = new List<string>();
             OrderBy = new List<string>();
 

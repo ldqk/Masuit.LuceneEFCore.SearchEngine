@@ -4,23 +4,23 @@
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <Authors>懒得勤快</Authors>
         <Company>懒得勤快</Company>
-        <Product>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，主键int版本</Product>
+        <Product>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，主键long版本</Product>
         <Description>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎</Description>
         <Copyright>懒得勤快</Copyright>
         <PackageProjectUrl>https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine</PackageProjectUrl>
-        <PackageId>Masuit.LuceneEFCore.SearchEngine_guid</PackageId>
-        <Version>1.1.0</Version>
+        <PackageId>Masuit.LuceneEFCore.SearchEngine_long</PackageId>
+        <Version>1.1.1</Version>
         <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
         <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
         <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-        <PackageReleaseNotes>升级.net5</PackageReleaseNotes>
+        <PackageReleaseNotes>支持""和-指令</PackageReleaseNotes>
         <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <LangVersion>9</LangVersion>
-        <FileVersion>1.1</FileVersion>
-        <AssemblyVersion>1.1</AssemblyVersion>
+        <FileVersion>1.1.1</FileVersion>
+        <AssemblyVersion>1.1.1</AssemblyVersion>
     </PropertyGroup>
 
     <ItemGroup>
