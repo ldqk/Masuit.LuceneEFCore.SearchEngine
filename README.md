@@ -1,6 +1,7 @@
 ### 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎
  <a href="https://gitee.com/masuit_admin/Masuit.LuceneEFCore.SearchEngine"><img src="https://gitee.com/static/images/logo-black.svg" height="32"></a> <a href="https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine"><img src="https://p.pstatp.com/origin/13841000102b8e2ba20b2" height="32"></a>  
-基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。
+基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。  
+`注意：该项目仅适用于单体项目，不适用于分布式应用，分布式应用请考虑使用大型的搜索引擎中间件做支撑，如：ElasticSearch`
 
 [官网页面](http://masuit.com/1437) | [实际应用案例体验](https://masuit.com/s?wd=会声会影+TeamViewer)
 
