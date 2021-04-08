@@ -27,7 +27,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />
+        <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
+        <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00005" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -37,6 +41,7 @@
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <DefineConstants>TRACE;Int</DefineConstants>
+        <Optimize>true</Optimize>
         <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
     </PropertyGroup>
 
@@ -57,14 +62,8 @@
         <Optimize>true</Optimize>
         <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
     </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />
-        <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
-        <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00005" />
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    </ItemGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'net5'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
     </ItemGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.1'">
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
