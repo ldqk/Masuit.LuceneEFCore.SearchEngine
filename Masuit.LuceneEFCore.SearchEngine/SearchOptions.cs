@@ -1,4 +1,5 @@
-﻿using Masuit.LuceneEFCore.SearchEngine.Extensions;
+﻿using Lucene.Net.Search;
+using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 多字段搜索时，给字段设定搜索权重
         /// </summary>
-        private Dictionary<string, float> _boosts;
+        private readonly Dictionary<string, float> _boosts;
 
         /// <summary>
         /// 多字段搜索时，给字段设定搜索权重
@@ -50,7 +51,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 排序字段
         /// </summary>
-        public List<string> OrderBy { get; set; }
+        public List<SortField> OrderBy { get; set; }
 
         /// <summary>
         /// 跳过多少条
@@ -94,10 +95,13 @@ namespace Masuit.LuceneEFCore.SearchEngine
             MaximumNumberOfHits = maximumNumberOfHits;
             Skip = skip;
             Take = take;
-            this._boosts = boosts ?? new Dictionary<string, float>();
+            _boosts = boosts ?? new Dictionary<string, float>();
             Type = type;
             Fields = new List<string>();
-            OrderBy = new List<string>();
+            OrderBy = new List<SortField>()
+            {
+                SortField.FIELD_SCORE
+            };
 
             // 添加被检索字段
             if (!string.IsNullOrEmpty(fields))
@@ -110,7 +114,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             if (!string.IsNullOrEmpty(orderBy))
             {
                 orderBy = orderBy.RemoveCharacters(" ");
-                OrderBy.AddRange(orderBy.Split(',').ToList());
+                OrderBy.AddRange(orderBy.Split(',').Select(sortField => new SortField(sortField, SortFieldType.STRING)));
             }
         }
 
@@ -154,6 +158,11 @@ namespace Masuit.LuceneEFCore.SearchEngine
             }
             Skip = (page - 1) * size;
             Take = size;
+        }
+
+        public void SetBoosts(string field, float boost)
+        {
+            _boosts[field] = boost;
         }
     }
 }

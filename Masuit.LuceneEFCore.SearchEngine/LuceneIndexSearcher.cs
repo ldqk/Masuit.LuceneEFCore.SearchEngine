@@ -140,21 +140,16 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 query = GetFuzzyquery(queryParser, options.Keywords);
             }
 
-            var sortFields = new List<SortField>
-            {
-                SortField.FIELD_SCORE
-            };
-            sortFields.AddRange(options.OrderBy.Select(sortField => new SortField(sortField, SortFieldType.STRING)));
-
             // 排序规则处理
-            var sort = new Sort(sortFields.ToArray());
+            var sort = new Sort(options.OrderBy.ToArray());
             Expression<Func<ScoreDoc, bool>> where = m => m.Score >= options.Score;
             if (options.Type != null)
             {
                 // 过滤掉已经设置了类型的对象
                 where = where.And(m => options.Type.AssemblyQualifiedName == searcher.Doc(m.Doc).Get("Type"));
             }
-            var matches = searcher.Search(query, null, options.MaximumNumberOfHits, sort, true, true).ScoreDocs.Where(@where.Compile());
+
+            var matches = searcher.Search(query, null, options.MaximumNumberOfHits, sort, true, true).ScoreDocs.Where(where.Compile());
             results.TotalHits = matches.Count();
 
             // 分页处理
