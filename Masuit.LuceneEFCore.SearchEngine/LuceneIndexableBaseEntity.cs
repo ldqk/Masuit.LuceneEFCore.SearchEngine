@@ -73,8 +73,28 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 foreach (var attr in attrs)
                 {
                     string name = !string.IsNullOrEmpty(attr.Name) ? attr.Name : propertyInfo.Name;
-                    string value = attr.IsHtml ? propertyValue.ToString().RemoveHtmlTag() : propertyValue.ToString();
-                    doc.Add(new TextField(name, value, attr.Store));
+                    switch (propertyValue)
+                    {
+                        case DateTime time:
+                            doc.Add(new StringField(name, time.ToString("yyyy-MM-dd HH:mm:ss"), attr.Store));
+                            break;
+                        case int num:
+                            doc.Add(new Int32Field(name, num, attr.Store));
+                            break;
+                        case long num:
+                            doc.Add(new Int64Field(name, num, attr.Store));
+                            break;
+                        case float num:
+                            doc.Add(new SingleField(name, num, attr.Store));
+                            break;
+                        case double num:
+                            doc.Add(new DoubleField(name, num, attr.Store));
+                            break;
+                        default:
+                            string value = attr.IsHtml ? propertyValue.ToString().RemoveHtmlTag() : propertyValue.ToString();
+                            doc.Add(new TextField(name, value, attr.Store));
+                            break;
+                    }
                 }
             }
 

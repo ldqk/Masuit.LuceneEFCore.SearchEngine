@@ -9,7 +9,7 @@
         <Copyright>懒得勤快</Copyright>
         <PackageProjectUrl>https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine</PackageProjectUrl>
         <PackageId>Masuit.LuceneEFCore.SearchEngine_int</PackageId>
-        <Version>1.1.2</Version>
+        <Version>1.1.3</Version>
         <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
         <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
         <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
@@ -19,8 +19,8 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <LangVersion>9</LangVersion>
-        <FileVersion>1.1.2</FileVersion>
-        <AssemblyVersion>1.1.2</AssemblyVersion>
+        <FileVersion>1.1.3</FileVersion>
+        <AssemblyVersion>1.1.3</AssemblyVersion>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
