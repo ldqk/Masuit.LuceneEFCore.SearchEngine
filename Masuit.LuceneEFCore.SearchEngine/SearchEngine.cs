@@ -1,4 +1,5 @@
-﻿using Lucene.Net.Analysis;
+﻿using JiebaNet.Segmenter;
+using Lucene.Net.Analysis;
 using Lucene.Net.Documents;
 using Lucene.Net.Store;
 using Masuit.LuceneEFCore.SearchEngine.Extensions;
@@ -165,20 +166,14 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 return;
             }
 
-            var index = new List<ILuceneIndexable>();
             var properties = Context.GetType().GetProperties();
             foreach (var pi in properties)
             {
-                if (typeof(IEnumerable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType))
+                if (typeof(IQueryable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType))
                 {
-                    var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null);
-                    index.AddRange(entities as IEnumerable<ILuceneIndexable>);
+                    var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null) as IQueryable<ILuceneIndexable>;
+                    LuceneIndexer.CreateIndex(entities, false);
                 }
-            }
-
-            if (index.Any())
-            {
-                LuceneIndexer.CreateIndex(index);
             }
         }
 
@@ -192,20 +187,14 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 return;
             }
 
-            var index = new List<ILuceneIndexable>();
             var properties = Context.GetType().GetProperties();
             foreach (var pi in properties)
             {
-                if (typeof(IEnumerable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType) && tables.Contains(pi.Name))
+                if (typeof(IQueryable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType) && tables.Contains(pi.Name))
                 {
-                    var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null);
-                    index.AddRange(entities as IEnumerable<ILuceneIndexable>);
+                    var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null) as IQueryable<ILuceneIndexable>;
+                    LuceneIndexer.CreateIndex(entities, false);
                 }
-            }
-
-            if (index.Any())
-            {
-                LuceneIndexer.CreateIndex(index);
             }
         }
 
@@ -313,6 +302,19 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public T SearchOne<T>(SearchOptions options) where T : class
         {
             return GetConcreteFromDocument(LuceneIndexSearcher.ScoredSearchSingle(options)) as T;
+        }
+
+        /// <summary>
+        /// 导入自定义词库
+        /// </summary>
+        /// <param name="words"></param>
+        public void ImportCustomerKeywords(IEnumerable<string> words)
+        {
+            var segmenter = new JiebaSegmenter();
+            foreach (var word in words)
+            {
+                segmenter.AddWord(word);
+            }
         }
     }
 }

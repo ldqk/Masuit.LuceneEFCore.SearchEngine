@@ -94,5 +94,11 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// </summary>
         /// <param name ="options">搜索选项</param>
         T SearchOne<T>(SearchOptions options) where T : class;
+
+        /// <summary>
+        /// 导入自定义词库
+        /// </summary>
+        /// <param name="words"></param>
+        void ImportCustomerKeywords(IEnumerable<string> words);
     }
 }

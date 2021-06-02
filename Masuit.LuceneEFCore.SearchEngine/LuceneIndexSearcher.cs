@@ -5,10 +5,8 @@ using Lucene.Net.Index;
 using Lucene.Net.QueryParsers.Classic;
 using Lucene.Net.Search;
 using Lucene.Net.Store;
-using Lucene.Net.Support;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Masuit.LuceneEFCore.SearchEngine.Linq;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
@@ -54,6 +52,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 return list;
             }
 
+            keyword = keyword.Replace("AND ", "+").Replace("NOT ", "-").Replace("OR ", " ");
             if (_memoryCache.TryGetValue(keyword, out List<string> value))
             {
                 return value;
@@ -97,7 +96,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 }
                 else if (term.StartsWith("-"))
                 {
-                    finalQuery.Add(parser.Parse(term.Trim('"')), Occur.MUST_NOT);
+                    finalQuery.Add(parser.Parse(term), Occur.MUST_NOT);
                 }
                 else
                 {
