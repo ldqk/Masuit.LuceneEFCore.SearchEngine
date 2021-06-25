@@ -5,3 +5,4 @@
 /Masuit.LuceneEFCore.SearchEngine.sln.DotSettings.user
 /Masuit.LuceneEFCore.SearchEngine/Masuit.LuceneEFCore.SearchEngine.xml
 Masuit.LuceneEFCore.SearchEngine.Test
+**/TestClass.cs
