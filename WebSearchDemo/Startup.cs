@@ -1,4 +1,5 @@
-﻿using Masuit.LuceneEFCore.SearchEngine;
+﻿using JiebaNet.Segmenter;
+using Masuit.LuceneEFCore.SearchEngine;
 using Masuit.LuceneEFCore.SearchEngine.Extensions;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -60,6 +61,9 @@ namespace WebSearchDemo
             {
                 app.UseDeveloperExceptionPage();
             }
+            new JiebaSegmenter().AddWord("会声会影"); //添加自定义词库
+            new JiebaSegmenter().AddWord("思杰马克丁"); //添加自定义词库
+            new JiebaSegmenter().AddWord("TeamViewer"); //添加自定义词库
             db.Post.AddRange(JsonConvert.DeserializeObject<List<Post>>(File.ReadAllText(AppContext.BaseDirectory + "Posts.json")));
             searchEngine.CreateIndex(new List<string>()
             {

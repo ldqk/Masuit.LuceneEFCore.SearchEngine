@@ -71,7 +71,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             list.AddRange(Regex.Matches(keyword, @"[\u4e00-\u9fa5]+").Cast<Match>().Select(m => m.Value));//中文
             list.AddRange(Regex.Matches(keyword, @"\p{P}?[A-Z]*[a-z]*[\p{P}|\p{S}]*").Cast<Match>().Select(m => m.Value));//英文单词
             list.AddRange(Regex.Matches(keyword, "([A-z]+)([0-9.]+)").Cast<Match>().SelectMany(m => m.Groups.Cast<Group>().Select(g => g.Value)));//英文+数字
-            list.AddRange(new JiebaSegmenter().CutForSearch(keyword));//结巴分词
+            list.AddRange(new JiebaSegmenter().Cut(keyword, true));//结巴分词
             list.RemoveAll(s => s.Length < 2);
             list = list.Distinct().OrderByDescending(s => s.Length).Take(10).ToList();
             _memoryCache.Set(keyword, list, TimeSpan.FromHours(1));
