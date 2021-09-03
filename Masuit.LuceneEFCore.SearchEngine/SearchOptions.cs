@@ -74,6 +74,11 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public float Score { get; set; } = 0.5f;
 
         /// <summary>
+        /// 过滤条件
+        /// </summary>
+        public Filter Filter { get; set; }
+
+        /// <summary>
         /// 搜索选项
         /// </summary>
         /// <param name="keywords">关键词</param>

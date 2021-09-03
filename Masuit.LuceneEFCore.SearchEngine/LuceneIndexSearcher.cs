@@ -148,7 +148,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 where = where.And(m => options.Type.AssemblyQualifiedName == searcher.Doc(m.Doc).Get("Type"));
             }
 
-            var matches = searcher.Search(query, null, options.MaximumNumberOfHits, sort, true, true).ScoreDocs.Where(where.Compile());
+            var matches = searcher.Search(query, options.Filter, options.MaximumNumberOfHits, sort, true, true).ScoreDocs.Where(where.Compile());
             results.TotalHits = matches.Count();
 
             // 分页处理
