@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;netstandard2.1;net5</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;net5;net6</TargetFrameworks>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <Authors>懒得勤快</Authors>
         <Company>懒得勤快</Company>
@@ -24,22 +24,32 @@
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+    <ItemGroup>
+      <None Include="..\README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />
         <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00005" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net5'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     </ItemGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.1'">
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
     </ItemGroup>
-    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net5'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    </ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net6'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -70,10 +80,5 @@
         <Optimize>true</Optimize>
         <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
     </PropertyGroup>
-    <ItemGroup>
-        <None Update="Masuit.LuceneEFCore.SearchEngine.xml">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-    </ItemGroup>
 
 </Project>
