@@ -8,8 +8,8 @@
         <Description>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎</Description>
         <Copyright>懒得勤快</Copyright>
         <PackageProjectUrl>https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine</PackageProjectUrl>
-        <PackageId>Masuit.LuceneEFCore.SearchEngine_int</PackageId>
-        <Version>1.1.5</Version>
+        <PackageId>Masuit.LuceneEFCore.SearchEngine_string</PackageId>
+        <Version>1.1.6</Version>
         <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
         <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
         <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
@@ -19,8 +19,8 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <LangVersion>9</LangVersion>
-        <FileVersion>1.1.5</FileVersion>
-        <AssemblyVersion>1.1.5</AssemblyVersion>
+        <FileVersion>1.1.6</FileVersion>
+        <AssemblyVersion>1.1.6</AssemblyVersion>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -49,7 +49,7 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
     </ItemGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'net6'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

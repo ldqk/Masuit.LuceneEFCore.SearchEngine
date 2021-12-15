@@ -73,6 +73,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             list.AddRange(Regex.Matches(keyword, "([A-z]+)([0-9.]+)").Cast<Match>().SelectMany(m => m.Groups.Cast<Group>().Select(g => g.Value)));//英文+数字
             list.AddRange(new JiebaSegmenter().Cut(keyword, true));//结巴分词
             list.RemoveAll(s => s.Length < 2);
+            list.AddRange(KeywordsManager.SynonymWords.Where(t => list.Contains(t.key) || list.Contains(t.value)).SelectMany(t => new[] { t.key, t.value }));
             list = list.Distinct().OrderByDescending(s => s.Length).Take(10).ToList();
             _memoryCache.Set(keyword, list, TimeSpan.FromHours(1));
             return list;
@@ -162,6 +163,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             }
 
             var docs = matches.ToList();
+
             // 创建结果集
             foreach (var match in docs)
             {
