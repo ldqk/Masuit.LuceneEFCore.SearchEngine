@@ -1,6 +1,5 @@
 ﻿using Lucene.Net.Analysis;
 using Lucene.Net.Index;
-using Lucene.Net.Search;
 using Lucene.Net.Store;
 using Masuit.LuceneEFCore.SearchEngine.Interfaces;
 using System;
@@ -9,7 +8,7 @@ using System.Linq;
 
 namespace Masuit.LuceneEFCore.SearchEngine
 {
-    public class LuceneIndexer : ILuceneIndexer
+    public class LuceneIndexer : IDisposable, ILuceneIndexer
     {
         /// <summary>
         /// 索引目录
@@ -51,6 +50,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             var config = new IndexWriterConfig(Lucene.Net.Util.LuceneVersion.LUCENE_48, _analyzer);
 
             using var writer = new IndexWriter(_directory, config);
+
             // 删除重建
             if (recreate)
             {
@@ -63,6 +63,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             {
                 writer.AddDocument(entity.ToDocument());
             }
+
             writer.Flush(true, true);
         }
 
@@ -143,17 +144,21 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 switch (change.State)
                 {
                     case LuceneIndexState.Removed:
-                        writer.DeleteDocuments(new TermQuery(new Term("Id", change.Entity.Id.ToString())));
+                        writer.DeleteDocuments(new Term("Id", change.Entity.Id.ToString()));
+                        writer.DeleteDocuments(new Term("IndexId", change.Entity.IndexId));
                         break;
+
                     case LuceneIndexState.Added:
                     case LuceneIndexState.Updated:
-                        writer.DeleteDocuments(new TermQuery(new Term("Id", change.Entity.Id.ToString())));
+                        writer.DeleteDocuments(new Term("Id", change.Entity.Id.ToString()));
+                        writer.DeleteDocuments(new Term("IndexId", change.Entity.IndexId));
                         writer.AddDocument(change.Entity.ToDocument());
                         break;
                 }
             }
 
             writer.Flush(true, changeset.HasDeletes);
+            writer.Commit();
         }
 
         /// <summary>
@@ -173,6 +178,13 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 Console.WriteLine(ex.Message);
                 return 0;
             }
+        }
+
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        public void Dispose()
+        {
+            _directory?.Dispose();
+            _analyzer?.Dispose();
         }
     }
 }

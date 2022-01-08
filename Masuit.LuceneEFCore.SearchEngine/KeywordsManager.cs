@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using JiebaNet.Segmenter;
+﻿using JiebaNet.Segmenter;
+using System.Collections.Generic;
 
 namespace Masuit.LuceneEFCore.SearchEngine
 {

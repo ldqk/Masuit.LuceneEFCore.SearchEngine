@@ -13,12 +13,11 @@
         <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
         <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
         <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-        <PackageReleaseNotes>支持""和-指令</PackageReleaseNotes>
         <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <LangVersion>9</LangVersion>
+        <LangVersion>latest</LangVersion>
         <FileVersion>1.1.6</FileVersion>
         <AssemblyVersion>1.1.6</AssemblyVersion>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -26,13 +25,6 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
-    <ItemGroup>
-      <None Include="..\README.md">
-        <Pack>True</Pack>
-        <PackagePath>\</PackagePath>
-      </None>
-    </ItemGroup>
-
     <ItemGroup>
         <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />
         <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00005" />

@@ -1,6 +1,7 @@
 ﻿#if Guid
-using System; 
+using System;
 #endif
+
 using Lucene.Net.Documents;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
@@ -19,15 +20,16 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         [LuceneIndex(Name = "Id", Store = Field.Store.YES), Key]
 #if Int
         int Id { get; set; }
+
 #endif
 #if Long
-        long Id { get; set; } 
+        long Id { get; set; }
 #endif
 #if String
-        string Id { get; set; } 
+        string Id { get; set; }
 #endif
 #if Guid
-        Guid Id { get; set; } 
+        Guid Id { get; set; }
 #endif
 
         /// <summary>
