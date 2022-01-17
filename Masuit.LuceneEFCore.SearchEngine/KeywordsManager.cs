@@ -1,5 +1,7 @@
 ﻿using JiebaNet.Segmenter;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using TinyPinyin;
 
 namespace Masuit.LuceneEFCore.SearchEngine
 {
@@ -9,6 +11,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// 近义词组
         /// </summary>
         internal static HashSet<(string key, string value)> SynonymWords { get; set; } = new();
+
+        internal static HashSet<(string key, string value)> Pinyins { get; set; } = new();
 
         /// <summary>
         /// 添加近义词
@@ -71,6 +75,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             foreach (var s in word)
             {
                 js.AddWord(s);
+                Pinyins.Add((s, PinyinHelper.GetPinyin(Regex.Replace(s, @"\p{P}|\p{S}", ""))));
             }
         }
     }

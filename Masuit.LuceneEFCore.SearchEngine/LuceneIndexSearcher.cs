@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
+using TinyPinyin;
 
 namespace Masuit.LuceneEFCore.SearchEngine
 {
@@ -74,7 +75,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
             list.AddRange(new JiebaSegmenter().Cut(keyword, true));//结巴分词
             list.RemoveAll(s => s.Length < 2);
             list.AddRange(KeywordsManager.SynonymWords.Where(t => list.Contains(t.key) || list.Contains(t.value)).SelectMany(t => new[] { t.key, t.value }));
-            list = list.Distinct().OrderByDescending(s => s.Length).Take(10).ToList();
+            var pinyins = list.SelectMany(s => KeywordsManager.Pinyins.ToLookup(t => t.value)[PinyinHelper.GetPinyin(Regex.Replace(s, @"\p{P}|\p{S}", ""))].Select(t => t.key));
+            list = list.Union(pinyins).Distinct().OrderByDescending(s => s.Length).Take(10).ToList();
             _memoryCache.Set(keyword, list, TimeSpan.FromHours(1));
             return list;
         }
