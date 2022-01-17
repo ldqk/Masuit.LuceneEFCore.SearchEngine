@@ -173,16 +173,19 @@ public void ConfigureServices(IServiceCollection services)
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ISearchEngine searchEngine, LuceneIndexerOptions luceneIndexerOptions)
 {
     // ...
-    // 导入自定义词库
+    // 导入自定义词库，支持中英文词
     KeywordsManager.AddWords("面向对象编程语言");
     KeywordsManager.AddWords("懒得勤快");
     KeywordsManager.AddWords("码数科技");
+    KeywordsManager.AddWords("Tree New Bee");
+    KeywordsManager.AddWords("男♂能可贵");
         
-    // 导入自定义同义词
+    // 导入自定义同义词，支持中英文词
     KeywordsManager.AddSynonyms("RDM","Redis Desktop Manager");
     KeywordsManager.AddSynonyms("RDM","Remote Desktop Manager");
     KeywordsManager.AddSynonyms("VS","Visual Studio");
     KeywordsManager.AddSynonyms("VS","Video Studio");
+    KeywordsManager.AddSynonyms("难能可贵","男♂能可贵");
         
     // 初始化索引库，建议结合定时任务使用，定期刷新索引库
     string lucenePath = Path.Combine(env.ContentRootPath, luceneIndexerOptions.Path);
