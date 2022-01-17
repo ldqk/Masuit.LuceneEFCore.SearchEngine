@@ -1,6 +1,6 @@
 ### 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎
  <a href="https://gitee.com/masuit/Masuit.LuceneEFCore.SearchEngine"><img src="https://gitee.com/static/images/logo-black.svg" height="32"></a> <a href="https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Font_Awesome_5_brands_github.svg/54px-Font_Awesome_5_brands_github.svg.png" height="36"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/GitHub_logo_2013.svg/128px-GitHub_logo_2013.svg.png" height="28"></a>  
-**仅100KB的代码量！** 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。  
+**仅100KB的代码量！** 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索，支持添加自定义词库，自定义同义词和同音词，搜索分词默认支持同音词搜索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。  
 **`注意：该项目仅适用于单体项目，不适用于分布式应用，分布式应用请考虑使用大型的搜索引擎中间件做支撑，如：ElasticSearch`**
 
 [官网页面](http://masuit.com/1437) | [实际应用案例体验](https://masuit.com/s?wd=会声会影+TeamViewer)
@@ -15,6 +15,11 @@
 
 ## Stargazers over time  
 <img src="https://starchart.cc/ldqk/Masuit.LuceneEFCore.SearchEngine.svg">    
+### 项目特点
+1. 基于原生Lucene实现，轻量高效，毫秒级响应
+2. 与EFCore无缝接入，配置代码少，可轻松接入现有项目
+3. 支持添加自定义词库，支持同义词和同音词检索，支持添加自定义同义词和同音词
+4. 不支持分布式应用，若你能解决分布式场景中索引库的同步问题，可以选择
 
 ### 为什么没有集成到Masuit.Tools这个库？
 因为这个项目又引入了几个Lucene相关的库，如果集成到[Masuit.Tools](https://github.com/ldqk/Masuit.Tools "Masuit.Tools")，这必将给原来的项目增加了更多的引用包，使用过程中也有可能没有使用Lucene的场景，这就造成了项目更加的臃肿，所以做了个新的项目。
@@ -147,7 +152,7 @@ public abstract class LuceneIndexableBaseEntity : ILuceneIndexable
 }
 ```
 实体继承自LuceneIndexableBaseEntity后，方便封装的Lucene可以直接调用ToDocument方法进行存储，同时，主键Id和IndexId需要参与Lucene索引文档的唯一标识(但IndexId不会生成到数据库)。
-#### 搜索引擎配置
+#### 搜索引擎配置、创建索引、导入自定义词库等
 Startup.cs
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -171,6 +176,17 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ISearchE
     string lucenePath = Path.Combine(env.ContentRootPath, luceneIndexerOptions.Path);
     if (!Directory.Exists(lucenePath) || Directory.GetFiles(lucenePath).Length < 1)
     {
+        // 导入自定义词库
+        KeywordsManager.AddWords("男娼起义");
+        KeywordsManager.AddWords("阳物运动");
+        KeywordsManager.AddWords("弟大勿勃");
+        
+        // 导入自定义同义词
+        KeywordsManager.AddSynonyms("地大物博","弟大勿勃");
+        KeywordsManager.AddSynonyms("难上加难","男上夹男");
+        KeywordsManager.AddSynonyms("小心地滑","小心弟滑");
+        
+        // 创建索引
         Console.WriteLine("索引库不存在，开始自动创建Lucene索引库...");
         searchEngine.CreateIndex(new List<string>()
         {
@@ -184,6 +200,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ISearchE
 }
 
 ```
+**同义词支持正向和反向查找，如配置了：`KeywordsManager.AddSynonyms("地大物博","弟大勿勃")`和`KeywordsManager.AddSynonyms("弟大勿勃","地大物博")`是等效的，只需要其中一条即可**  
 HomeController.cs
 ```csharp
 [Route("[controller]/[action]")]
