@@ -15,11 +15,12 @@
 
 ## Stargazers over time  
 <img src="https://starchart.cc/ldqk/Masuit.LuceneEFCore.SearchEngine.svg">    
-### 项目特点
-1. 基于原生Lucene实现，轻量高效，毫秒级响应
-2. 与EFCore无缝接入，配置代码少，可轻松接入现有项目
-3. 支持添加自定义词库，支持同义词和同音词检索，支持添加自定义同义词和同音词
-4. 不支持分布式应用，若你能解决分布式场景中索引库的同步问题，可以选择
+
+### 项目特点  
+1. 基于原生Lucene实现，轻量高效，毫秒级响应  
+2. 与EFCore无缝接入，配置代码少，可轻松接入现有项目  
+3. 支持添加自定义词库，支持同义词和同音词检索，支持添加自定义同义词和同音词  
+4. 不支持分布式应用，若你能解决分布式场景中索引库的同步问题，可以选择  
 
 ### 为什么没有集成到Masuit.Tools这个库？
 因为这个项目又引入了几个Lucene相关的库，如果集成到[Masuit.Tools](https://github.com/ldqk/Masuit.Tools "Masuit.Tools")，这必将给原来的项目增加了更多的引用包，使用过程中也有可能没有使用Lucene的场景，这就造成了项目更加的臃肿，所以做了个新的项目。
