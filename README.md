@@ -173,20 +173,20 @@ public void ConfigureServices(IServiceCollection services)
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ISearchEngine searchEngine, LuceneIndexerOptions luceneIndexerOptions)
 {
     // ...
+    // 导入自定义词库
+    KeywordsManager.AddWords("男娼起义");
+    KeywordsManager.AddWords("阳物运动");
+    KeywordsManager.AddWords("弟大勿勃");
+        
+    // 导入自定义同义词
+    KeywordsManager.AddSynonyms("地大物博","弟大勿勃");
+    KeywordsManager.AddSynonyms("难上加难","男上夹男");
+    KeywordsManager.AddSynonyms("小心地滑","小心弟滑");
+        
     // 初始化索引库，建议结合定时任务使用，定期刷新索引库
     string lucenePath = Path.Combine(env.ContentRootPath, luceneIndexerOptions.Path);
     if (!Directory.Exists(lucenePath) || Directory.GetFiles(lucenePath).Length < 1)
     {
-        // 导入自定义词库
-        KeywordsManager.AddWords("男娼起义");
-        KeywordsManager.AddWords("阳物运动");
-        KeywordsManager.AddWords("弟大勿勃");
-        
-        // 导入自定义同义词
-        KeywordsManager.AddSynonyms("地大物博","弟大勿勃");
-        KeywordsManager.AddSynonyms("难上加难","男上夹男");
-        KeywordsManager.AddSynonyms("小心地滑","小心弟滑");
-        
         // 创建索引
         Console.WriteLine("索引库不存在，开始自动创建Lucene索引库...");
         searchEngine.CreateIndex(new List<string>()
