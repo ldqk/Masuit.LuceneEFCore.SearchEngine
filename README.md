@@ -1,6 +1,6 @@
 ### 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎
  <a href="https://gitee.com/masuit/Masuit.LuceneEFCore.SearchEngine"><img src="https://gitee.com/static/images/logo-black.svg" height="32"></a> <a href="https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Font_Awesome_5_brands_github.svg/54px-Font_Awesome_5_brands_github.svg.png" height="36"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/GitHub_logo_2013.svg/128px-GitHub_logo_2013.svg.png" height="28"></a>  
-**仅100KB的代码量！** 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索，支持添加自定义词库，自定义同义词和同音词，搜索分词默认支持同音词搜索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。  
+**仅70KB的代码量！** 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索，支持添加自定义词库，自定义同义词和同音词，搜索分词默认支持同音词搜索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。  
 **`注意：该项目仅适用于单体项目，不适用于分布式应用，分布式应用请考虑使用大型的搜索引擎中间件做支撑，如：ElasticSearch`**
 
 [官网页面](http://masuit.com/1437) | [实际应用案例体验](https://masuit.com/s?wd=会声会影+TeamViewer)
@@ -52,9 +52,9 @@ public class DataContext : DbContext
     public virtual DbSet<Post> Post { get; set; }
 }
 ```
-准备实体对象，这里开始需要注意了，要想这个库的数据被全文检索，需要符合两个条件：
-1.实体必须继承自LuceneIndexableBaseEntity；
-2.需要被检索的字段需要被LuceneIndexAttribute所标记。
+准备实体对象，这里开始需要注意了，要想这个库的数据被全文检索，需要符合两个条件：  
+1. 实体必须继承自LuceneIndexableBaseEntity；
+2. 需要被检索的字段需要被LuceneIndexAttribute所标记。
 ```csharp
 /// <summary>
 /// 文章
@@ -110,11 +110,11 @@ public class Post : LuceneIndexableBaseEntity
 
 }
 ```
-LuceneIndexAttribute对应的4个自定义参数：
-1.Name：自定义索引字段名，默认为空；
-2.Index：索引行为，默认为Field.Index.ANALYZED；
-3.Store：是否被存储到索引库，默认为Field.Store.YES；
-4.IsHtml：是否是html，默认为false，若标记为true，则在索引解析时会先清空其中的html标签。
+LuceneIndexAttribute对应的4个自定义参数：  
+1. Name：自定义索引字段名，默认为空；
+2. Index：索引行为，默认为Field.Index.ANALYZED；
+3. Store：是否被存储到索引库，默认为Field.Store.YES；
+4. IsHtml：是否是html，默认为false，若标记为true，则在索引解析时会先清空其中的html标签。
 #### 为什么实体类要继承LuceneIndexableBaseEntity？
 LuceneIndexableBaseEntity源代码如下：
 ```csharp
@@ -173,20 +173,24 @@ public void ConfigureServices(IServiceCollection services)
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ISearchEngine searchEngine, LuceneIndexerOptions luceneIndexerOptions)
 {
     // ...
+    // 导入自定义词库，支持中英文词
+    KeywordsManager.AddWords("面向对象编程语言");
+    KeywordsManager.AddWords("懒得勤快");
+    KeywordsManager.AddWords("码数科技");
+    KeywordsManager.AddWords("Tree New Bee");
+    KeywordsManager.AddWords("男♂能可贵");
+        
+    // 导入自定义同义词，支持中英文词
+    KeywordsManager.AddSynonyms("RDM","Redis Desktop Manager");
+    KeywordsManager.AddSynonyms("RDM","Remote Desktop Manager");
+    KeywordsManager.AddSynonyms("VS","Visual Studio");
+    KeywordsManager.AddSynonyms("VS","Video Studio");
+    KeywordsManager.AddSynonyms("难能可贵","男♂能可贵");
+        
     // 初始化索引库，建议结合定时任务使用，定期刷新索引库
     string lucenePath = Path.Combine(env.ContentRootPath, luceneIndexerOptions.Path);
     if (!Directory.Exists(lucenePath) || Directory.GetFiles(lucenePath).Length < 1)
     {
-        // 导入自定义词库
-        KeywordsManager.AddWords("男娼起义");
-        KeywordsManager.AddWords("阳物运动");
-        KeywordsManager.AddWords("弟大勿勃");
-        
-        // 导入自定义同义词
-        KeywordsManager.AddSynonyms("地大物博","弟大勿勃");
-        KeywordsManager.AddSynonyms("难上加难","男上夹男");
-        KeywordsManager.AddSynonyms("小心地滑","小心弟滑");
-        
         // 创建索引
         Console.WriteLine("索引库不存在，开始自动创建Lucene索引库...");
         searchEngine.CreateIndex(new List<string>()
