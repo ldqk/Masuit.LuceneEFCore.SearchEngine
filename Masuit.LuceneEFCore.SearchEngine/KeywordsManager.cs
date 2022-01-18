@@ -1,4 +1,5 @@
 ﻿using JiebaNet.Segmenter;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TinyPinyin;
@@ -14,6 +15,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
 
         internal static HashSet<(string key, string value)> Pinyins { get; set; } = new();
 
+        private static readonly JiebaSegmenter JiebaSegmenter = new();
+
         /// <summary>
         /// 添加近义词
         /// </summary>
@@ -21,6 +24,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public static void AddSynonyms(KeyValuePair<string, string> pair)
         {
             SynonymWords.Add((pair.Key, pair.Value));
+            AddWords(pair.Key);
+            AddWords(pair.Value);
         }
 
         /// <summary>
@@ -30,6 +35,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public static void AddSynonyms((string, string) pair)
         {
             SynonymWords.Add((pair.Item1, pair.Item2));
+            AddWords(pair.Item1);
+            AddWords(pair.Item2);
         }
 
         /// <summary>
@@ -38,9 +45,13 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public static void AddSynonyms(string key, string value, params string[] values)
         {
             SynonymWords.Add((key, value));
+            AddWords(key);
+            AddWords(value);
             foreach (var s in values)
             {
                 SynonymWords.Add((key, s));
+                AddWords(key);
+                AddWords(s);
             }
         }
 
@@ -53,6 +64,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
             foreach (var t in pairs)
             {
                 SynonymWords.Add(t);
+                AddWords(t.key);
+                AddWords(t.value);
             }
         }
 
@@ -64,6 +77,8 @@ namespace Masuit.LuceneEFCore.SearchEngine
         {
             foreach (var pair in pairs)
             {
+                AddWords(pair.Key);
+                AddWords(pair.Value);
                 SynonymWords.Add((pair.Key, pair.Value));
             }
         }
@@ -74,19 +89,34 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="word"></param>
         public static void AddWords(string word)
         {
-            new JiebaSegmenter().AddWord(word);
+            JiebaSegmenter.AddWord(word);
+            Pinyins.Add((word, PinyinHelper.GetPinyin(Regex.Replace(word, @"\p{P}|\p{S}", ""))));
+        }
+
+        /// <summary>
+        /// 添加关键词
+        /// </summary>
+        /// <param name="words"></param>
+        public static void AddWords(IEnumerable<string> words)
+        {
+            foreach (var s in words)
+            {
+                JiebaSegmenter.AddWord(s);
+                Pinyins.Add((s, PinyinHelper.GetPinyin(Regex.Replace(s, @"\p{P}|\p{S}", ""))));
+            }
         }
 
         /// <summary>
         /// 添加关键词
         /// </summary>
         /// <param name="word"></param>
-        public static void AddWords(IEnumerable<string> word)
+        /// <param name="words"></param>
+        public static void AddWords(string word, params string[] words)
         {
-            var js = new JiebaSegmenter();
-            foreach (var s in word)
+            JiebaSegmenter.AddWord(word);
+            foreach (var s in words)
             {
-                js.AddWord(s);
+                JiebaSegmenter.AddWord(s);
                 Pinyins.Add((s, PinyinHelper.GetPinyin(Regex.Replace(s, @"\p{P}|\p{S}", ""))));
             }
         }
