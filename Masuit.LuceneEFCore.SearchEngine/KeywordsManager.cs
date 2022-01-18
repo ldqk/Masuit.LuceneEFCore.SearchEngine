@@ -35,6 +35,18 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 添加近义词
         /// </summary>
+        public static void AddSynonyms(string key, string value, params string[] values)
+        {
+            SynonymWords.Add((key, value));
+            foreach (var s in values)
+            {
+                SynonymWords.Add((key, s));
+            }
+        }
+
+        /// <summary>
+        /// 添加近义词
+        /// </summary>
         /// <param name="pair"></param>
         public static void AddSynonyms(IEnumerable<(string key, string value)> pairs)
         {
