@@ -52,9 +52,9 @@ public class DataContext : DbContext
     public virtual DbSet<Post> Post { get; set; }
 }
 ```
-准备实体对象，这里开始需要注意了，要想这个库的数据被全文检索，需要符合两个条件：
-1.实体必须继承自LuceneIndexableBaseEntity；
-2.需要被检索的字段需要被LuceneIndexAttribute所标记。
+准备实体对象，这里开始需要注意了，要想这个库的数据被全文检索，需要符合两个条件：  
+1. 实体必须继承自LuceneIndexableBaseEntity；
+2. 需要被检索的字段需要被LuceneIndexAttribute所标记。
 ```csharp
 /// <summary>
 /// 文章
@@ -110,11 +110,11 @@ public class Post : LuceneIndexableBaseEntity
 
 }
 ```
-LuceneIndexAttribute对应的4个自定义参数：
-1.Name：自定义索引字段名，默认为空；
-2.Index：索引行为，默认为Field.Index.ANALYZED；
-3.Store：是否被存储到索引库，默认为Field.Store.YES；
-4.IsHtml：是否是html，默认为false，若标记为true，则在索引解析时会先清空其中的html标签。
+LuceneIndexAttribute对应的4个自定义参数：  
+1. Name：自定义索引字段名，默认为空；
+2. Index：索引行为，默认为Field.Index.ANALYZED；
+3. Store：是否被存储到索引库，默认为Field.Store.YES；
+4. IsHtml：是否是html，默认为false，若标记为true，则在索引解析时会先清空其中的html标签。
 #### 为什么实体类要继承LuceneIndexableBaseEntity？
 LuceneIndexableBaseEntity源代码如下：
 ```csharp
