@@ -24,8 +24,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public static void AddSynonyms(KeyValuePair<string, string> pair)
         {
             SynonymWords.Add((pair.Key, pair.Value));
-            AddWords(pair.Key);
-            AddWords(pair.Value);
+            AddWords(pair.Key, pair.Value);
         }
 
         /// <summary>
@@ -35,8 +34,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public static void AddSynonyms((string, string) pair)
         {
             SynonymWords.Add((pair.Item1, pair.Item2));
-            AddWords(pair.Item1);
-            AddWords(pair.Item2);
+            AddWords(pair.Item1, pair.Item2);
         }
 
         /// <summary>
@@ -45,12 +43,10 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public static void AddSynonyms(string key, string value, params string[] values)
         {
             SynonymWords.Add((key, value));
-            AddWords(key);
-            AddWords(value);
+            AddWords(key, value);
             foreach (var s in values)
             {
                 SynonymWords.Add((key, s));
-                AddWords(key);
                 AddWords(s);
             }
         }
@@ -58,14 +54,13 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <summary>
         /// 添加近义词
         /// </summary>
-        /// <param name="pair"></param>
+        /// <param name="pairs"></param>
         public static void AddSynonyms(IEnumerable<(string key, string value)> pairs)
         {
             foreach (var t in pairs)
             {
                 SynonymWords.Add(t);
-                AddWords(t.key);
-                AddWords(t.value);
+                AddWords(t.key, t.value);
             }
         }
 
@@ -77,8 +72,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         {
             foreach (var pair in pairs)
             {
-                AddWords(pair.Key);
-                AddWords(pair.Value);
+                AddWords(pair.Key, pair.Value);
                 SynonymWords.Add((pair.Key, pair.Value));
             }
         }
