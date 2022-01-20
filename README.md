@@ -184,8 +184,11 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ISearchE
     KeywordsManager.AddSynonyms("RDM","Redis Desktop Manager");
     KeywordsManager.AddSynonyms("RDM","Remote Desktop Manager");
     KeywordsManager.AddSynonyms("VS","Visual Studio");
+    KeywordsManager.AddSynonyms("Visual Studio","宇宙最强IDE");
     KeywordsManager.AddSynonyms("VS","Video Studio");
     KeywordsManager.AddSynonyms("难能可贵","男♂能可贵");
+    // 提问：以上示例配置了近义词：VS->Visual Studio和Visual Studio->宇宙最强IDE？那么分词时VS是否能够找到间接近义词“宇宙最强IDE”？
+    // 答案是不能，为什么不能？近义词查找并没有实现递归查找，为什么不做递归查找？因为近义词库是完全不可控的动态配置，如果做了递归查找，词库的配置不当很有可能造成死递归，所以，如果需要让VS和“宇宙最强IDE”同义，则需要再单独配置
         
     // 初始化索引库，建议结合定时任务使用，定期刷新索引库
     string lucenePath = Path.Combine(env.ContentRootPath, luceneIndexerOptions.Path);
