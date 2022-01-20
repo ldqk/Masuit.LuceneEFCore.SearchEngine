@@ -76,7 +76,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             list.RemoveAll(s => s.Length < 2);
             list.AddRange(KeywordsManager.SynonymWords.Where(t => list.Contains(t.key) || list.Contains(t.value)).SelectMany(t => new[] { t.key, t.value }));
             var pinyins = list.SelectMany(s => KeywordsManager.Pinyins.ToLookup(t => t.value)[PinyinHelper.GetPinyin(Regex.Replace(s, @"\p{P}|\p{S}", ""))].Select(t => t.key));
-            list = list.Union(pinyins).Distinct().OrderByDescending(s => s.Length).Take(10).ToList();
+            list = list.Union(pinyins).Distinct().OrderByDescending(s => s.Length).Take(10).Select(s => s.Trim('[', ']', '{', '}', '(', ')')).ToList();
             _memoryCache.Set(keyword, list, TimeSpan.FromHours(1));
             return list;
         }

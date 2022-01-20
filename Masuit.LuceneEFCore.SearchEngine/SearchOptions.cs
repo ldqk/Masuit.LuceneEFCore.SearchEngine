@@ -89,7 +89,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <param name="orderBy">排序字段</param>
         /// <param name="skip">跳过多少条</param>
         /// <param name="take">取多少条</param>
-        public SearchOptions(string keywords, string fields, int maximumNumberOfHits = 10000, Dictionary<string, float> boosts = null, Type type = null, string orderBy = null, int? skip = null, int? take = null)
+        public SearchOptions(string keywords, string fields, int maximumNumberOfHits = 1000, Dictionary<string, float> boosts = null, Type type = null, string orderBy = null, int? skip = null, int? take = null)
         {
             if (string.IsNullOrWhiteSpace(keywords))
             {
