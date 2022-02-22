@@ -93,17 +93,24 @@ namespace Masuit.LuceneEFCore.SearchEngine
             var terms = CutKeywords(keywords);
             foreach (var term in terms)
             {
-                if (term.StartsWith("\""))
+                try
                 {
-                    finalQuery.Add(parser.Parse(term.Trim('"')), Occur.MUST);
+                    if (term.StartsWith("\""))
+                    {
+                        finalQuery.Add(parser.Parse(term.Trim('"')), Occur.MUST);
+                    }
+                    else if (term.StartsWith("-"))
+                    {
+                        finalQuery.Add(parser.Parse(term), Occur.MUST_NOT);
+                    }
+                    else
+                    {
+                        finalQuery.Add(parser.Parse(term.Replace("~", "") + "~"), Occur.SHOULD);
+                    }
                 }
-                else if (term.StartsWith("-"))
+                catch (ParseException)
                 {
-                    finalQuery.Add(parser.Parse(term), Occur.MUST_NOT);
-                }
-                else
-                {
-                    finalQuery.Add(parser.Parse(term.Replace("~", "") + "~"), Occur.SHOULD);
+                    finalQuery.Add(parser.Parse(Regex.Replace(term, @"\p{P}|\p{S}", "")), Occur.SHOULD);
                 }
             }
             return finalQuery;
