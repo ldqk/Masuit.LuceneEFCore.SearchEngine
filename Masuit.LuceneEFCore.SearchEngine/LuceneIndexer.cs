@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Masuit.LuceneEFCore.SearchEngine
 {
-    public class LuceneIndexer : IDisposable, ILuceneIndexer
+    public class LuceneIndexer : ILuceneIndexer
     {
         /// <summary>
         /// 索引目录
@@ -178,13 +178,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 Console.WriteLine(ex.Message);
                 return 0;
             }
-        }
-
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
-        public void Dispose()
-        {
-            _directory?.Dispose();
-            _analyzer?.Dispose();
         }
     }
 }

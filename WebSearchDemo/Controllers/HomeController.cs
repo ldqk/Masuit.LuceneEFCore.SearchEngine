@@ -15,6 +15,7 @@ namespace WebSearchDemo.Controllers
         {
             _searchEngine = searchEngine;
         }
+
         /// <summary>
         /// 搜索
         /// </summary>
@@ -75,6 +76,7 @@ namespace WebSearchDemo.Controllers
         {
             //从数据库更新并同步索引库
             Post p = _searchEngine.Context.Post.Find(post.Id);
+
             // update...
             _searchEngine.Context.Post.Update(p);
             _searchEngine.SaveChanges();

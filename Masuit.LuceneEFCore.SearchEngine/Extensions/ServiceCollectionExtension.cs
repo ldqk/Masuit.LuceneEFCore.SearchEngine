@@ -23,10 +23,10 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
             services.AddMemoryCache();
             services.TryAddSingleton<Directory>(s => FSDirectory.Open(option.Path));
             services.TryAddSingleton<Analyzer>(s => new JieBaAnalyzer(TokenizerMode.Search));
-            services.TryAddTransient<ILuceneIndexer, LuceneIndexer>();
-            services.TryAddTransient<ILuceneIndexSearcher, LuceneIndexSearcher>();
-            services.TryAddTransient(typeof(ISearchEngine<>), typeof(SearchEngine<>));
-            services.TryAddTransient<ISearchEngine<TContext>, SearchEngine<TContext>>();
+            services.TryAddScoped<ILuceneIndexer, LuceneIndexer>();
+            services.TryAddScoped<ILuceneIndexSearcher, LuceneIndexSearcher>();
+            services.TryAddScoped(typeof(ISearchEngine<>), typeof(SearchEngine<>));
+            services.TryAddScoped<ISearchEngine<TContext>, SearchEngine<TContext>>();
             return services;
         }
     }

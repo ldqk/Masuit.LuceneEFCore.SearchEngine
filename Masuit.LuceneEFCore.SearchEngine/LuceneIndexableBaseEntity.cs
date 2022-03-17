@@ -21,13 +21,14 @@ namespace Masuit.LuceneEFCore.SearchEngine
 #if Int
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
 #endif
 #if Long
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; } 
+        public long Id { get; set; }
 #endif
 #if String
-        public string Id { get; set; } 
+        public string Id { get; set; }
 #endif
 #if Guid
         public Guid Id { get; set; }
@@ -41,6 +42,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         public string IndexId
         {
             get => GetType().Name + ":" + Id;
+
             set
             {
             }
@@ -78,18 +80,23 @@ namespace Masuit.LuceneEFCore.SearchEngine
                         case DateTime time:
                             doc.Add(new StringField(name, time.ToString("yyyy-MM-dd HH:mm:ss"), attr.Store));
                             break;
+
                         case int num:
                             doc.Add(new Int32Field(name, num, attr.Store));
                             break;
+
                         case long num:
                             doc.Add(new Int64Field(name, num, attr.Store));
                             break;
+
                         case float num:
                             doc.Add(new SingleField(name, num, attr.Store));
                             break;
+
                         case double num:
                             doc.Add(new DoubleField(name, num, attr.Store));
                             break;
+
                         default:
                             string value = attr.IsHtml ? propertyValue.ToString().RemoveHtmlTag() : propertyValue.ToString();
                             doc.Add(new TextField(name, value, attr.Store));

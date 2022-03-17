@@ -32,6 +32,7 @@ namespace WebSearchDemo
             services.AddDbContext<DataContext>(db =>
             {
                 db.UseInMemoryDatabase("test");
+
                 //db.UseSqlServer("Data Source=.;Initial Catalog=MyBlogs;Integrated Security=True");
             });
             services.AddSearchEngine<DataContext>(new LuceneIndexerOptions()
@@ -65,6 +66,8 @@ namespace WebSearchDemo
             new JiebaSegmenter().AddWord("思杰马克丁"); //添加自定义词库
             new JiebaSegmenter().AddWord("TeamViewer"); //添加自定义词库
             db.Post.AddRange(JsonConvert.DeserializeObject<List<Post>>(File.ReadAllText(AppContext.BaseDirectory + "Posts.json")));
+            db.SaveChanges();
+            searchEngine.DeleteIndex();
             searchEngine.CreateIndex(new List<string>()
             {
                 nameof(Post)
