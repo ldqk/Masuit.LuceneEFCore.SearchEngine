@@ -80,7 +80,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// 删除索引
         /// </summary>
         /// <param name="entries">实体集</param>
-        public void Delete<T>(List<T> entries) where T : ILuceneIndexable
+        public void Delete<T>(IList<T> entries) where T : ILuceneIndexable
         {
             var set = new LuceneIndexChangeset
             {

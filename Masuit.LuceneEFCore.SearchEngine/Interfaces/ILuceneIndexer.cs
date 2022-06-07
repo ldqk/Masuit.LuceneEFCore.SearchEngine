@@ -27,7 +27,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// 删除索引
         /// </summary>
         /// <param name="entries">实体集</param>
-        void Delete<T>(List<T> entries) where T : ILuceneIndexable;
+        void Delete<T>(IList<T> entries) where T : ILuceneIndexable;
 
         /// <summary>
         /// 删除所有索引
