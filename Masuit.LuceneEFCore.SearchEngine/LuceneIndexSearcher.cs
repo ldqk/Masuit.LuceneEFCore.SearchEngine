@@ -44,46 +44,46 @@ namespace Masuit.LuceneEFCore.SearchEngine
         /// <returns></returns>
         public List<string> CutKeywords(string keyword)
         {
-            var list = new List<string>
-            {
-                keyword
-            };
             if (keyword.Length <= 2)
             {
-                return list;
+                return new List<string>
+                {
+                    keyword
+                };
             }
 
             keyword = keyword.Replace("AND ", "+").Replace("NOT ", "-").Replace("OR ", " ");
-            if (_memoryCache.TryGetValue(keyword, out List<string> value))
+            return _memoryCache.GetOrCreate(keyword, entry =>
             {
-                return value;
-            }
+                entry.AbsoluteExpiration = DateTimeOffset.Now.AddHours(1);
+                var list = new List<string>
+                {
+                    keyword
+                };
+                list.AddRange(Regex.Matches(keyword, @""".+""").Cast<Match>().Select(m =>
+                {
+                    keyword = keyword.Replace(m.Value, "");
+                    return m.Value;
+                }));//必须包含的
+                list.AddRange(Regex.Matches(keyword, @"\s-.+\s?").Cast<Match>().Select(m =>
+                {
+                    keyword = keyword.Replace(m.Value, "");
+                    return m.Value.Trim();
+                }));//必须不包含的
+                list.AddRange(Regex.Matches(keyword, @"[\u4e00-\u9fa5]+").Cast<Match>().Select(m => m.Value));//中文
+                list.AddRange(Regex.Matches(keyword, @"\p{P}?[A-Z]*[a-z]*[\p{P}|\p{S}]*").Cast<Match>().Select(m => m.Value));//英文单词
+                list.AddRange(Regex.Matches(keyword, "([A-z]+)([0-9.]+)").Cast<Match>().SelectMany(m => m.Groups.Cast<Group>().Select(g => g.Value)));//英文+数字
+                list.AddRange(new JiebaSegmenter().Cut(keyword, true));//结巴分词
+                list.RemoveAll(s => s.Length < 2);
+                list.AddRange(KeywordsManager.SynonymWords.Where(t => list.Contains(t.key) || list.Contains(t.value)).SelectMany(t => new[] { t.key, t.value }));
+                var pinyins = new List<string>();
+                foreach (var s in list)
+                {
+                    pinyins.AddRange(KeywordsManager.Pinyins.ToLookup(t => t.value)[PinyinHelper.GetPinyin(Regex.Replace(s, @"\p{P}|\p{S}", ""))].Select(t => t.key));
+                }
 
-            list.AddRange(Regex.Matches(keyword, @""".+""").Cast<Match>().Select(m =>
-            {
-                keyword = keyword.Replace(m.Value, "");
-                return m.Value;
-            }));//必须包含的
-            list.AddRange(Regex.Matches(keyword, @"\s-.+\s?").Cast<Match>().Select(m =>
-            {
-                keyword = keyword.Replace(m.Value, "");
-                return m.Value.Trim();
-            }));//必须不包含的
-            list.AddRange(Regex.Matches(keyword, @"[\u4e00-\u9fa5]+").Cast<Match>().Select(m => m.Value));//中文
-            list.AddRange(Regex.Matches(keyword, @"\p{P}?[A-Z]*[a-z]*[\p{P}|\p{S}]*").Cast<Match>().Select(m => m.Value));//英文单词
-            list.AddRange(Regex.Matches(keyword, "([A-z]+)([0-9.]+)").Cast<Match>().SelectMany(m => m.Groups.Cast<Group>().Select(g => g.Value)));//英文+数字
-            list.AddRange(new JiebaSegmenter().Cut(keyword, true));//结巴分词
-            list.RemoveAll(s => s.Length < 2);
-            list.AddRange(KeywordsManager.SynonymWords.Where(t => list.Contains(t.key) || list.Contains(t.value)).SelectMany(t => new[] { t.key, t.value }));
-            var pinyins = new List<string>();
-            foreach (var s in list)
-            {
-                pinyins.AddRange(KeywordsManager.Pinyins.ToLookup(t => t.value)[PinyinHelper.GetPinyin(Regex.Replace(s, @"\p{P}|\p{S}", ""))].Select(t => t.key));
-            }
-
-            list = list.Union(pinyins).Distinct().OrderByDescending(s => s.Length).Take(10).Select(s => s.Trim('[', ']', '{', '}', '(', ')')).ToList();
-            _memoryCache.Set(keyword, list, TimeSpan.FromHours(1));
-            return list;
+                return list.Union(pinyins).Distinct().OrderByDescending(s => s.Length).Take(10).Select(s => s.Trim('[', ']', '{', '}', '(', ')')).ToList();
+            });
         }
 
         /// <summary>
@@ -118,6 +118,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                     finalQuery.Add(parser.Parse(Regex.Replace(term, @"\p{P}|\p{S}", "")), Occur.SHOULD);
                 }
             }
+
             return finalQuery;
         }
 
