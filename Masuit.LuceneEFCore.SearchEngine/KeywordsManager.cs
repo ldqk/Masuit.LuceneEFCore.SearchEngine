@@ -1,4 +1,6 @@
 ﻿using JiebaNet.Segmenter;
+using Lucene.Net.Analysis.JieBa;
+using Lucene.Net.Analysis;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
