@@ -41,7 +41,7 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
     </ItemGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'net6'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
