@@ -1,6 +1,7 @@
 ﻿using Lucene.Net.Documents;
 using Newtonsoft.Json;
 using System;
+using System.ComponentModel;
 using System.Globalization;
 
 namespace Masuit.LuceneEFCore.SearchEngine.Extensions
@@ -33,9 +34,14 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
         /// <returns></returns>
         private static object ConvertTo(string value, Type type)
         {
-            if (null == value)
+            if (value == null)
             {
                 return default;
+            }
+
+            if (value.GetType() == type)
+            {
+                return value;
             }
 
             if (type.IsEnum)
@@ -47,6 +53,24 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
             {
                 var underlyingType = Nullable.GetUnderlyingType(type);
                 return underlyingType!.IsEnum ? Enum.Parse(underlyingType, value.ToString(CultureInfo.CurrentCulture)) : Convert.ChangeType(value, underlyingType);
+            }
+
+            var converter = TypeDescriptor.GetConverter(value);
+            if (converter != null)
+            {
+                if (converter.CanConvertTo(type))
+                {
+                    return converter.ConvertTo(value, type);
+                }
+            }
+
+            converter = TypeDescriptor.GetConverter(type);
+            if (converter != null)
+            {
+                if (converter.CanConvertFrom(value.GetType()))
+                {
+                    return converter.ConvertFrom(value);
+                }
             }
 
             return Convert.ChangeType(value, type);
