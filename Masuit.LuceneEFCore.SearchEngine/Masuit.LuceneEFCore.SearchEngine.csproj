@@ -18,12 +18,23 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <LangVersion>latest</LangVersion>
-        <FileVersion>1.1.6</FileVersion>
-        <AssemblyVersion>1.1.6</AssemblyVersion>
+        <FileVersion>1.2</FileVersion>
+        <AssemblyVersion>1.2</AssemblyVersion>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryUrl>https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine</RepositoryUrl>
+        <PackageTags>lucene;efcore;EntityFramework;masuit</PackageTags>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Title>Masuit.LuceneEFCore.SearchEngine</Title>
     </PropertyGroup>
+    <ItemGroup>
+      <None Include="..\README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
+    </ItemGroup>
     <ItemGroup>
         <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />
         <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00005" />
