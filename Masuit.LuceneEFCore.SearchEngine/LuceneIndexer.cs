@@ -132,7 +132,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         }
 
         /// <summary>
-        /// 更新索引
+        /// 更新索引-删除索引时仅利用IndexId去删除
         /// </summary>
         /// <param name="changeset">实体</param>
         public void Update(LuceneIndexChangeset changeset)
@@ -144,13 +144,13 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 switch (change.State)
                 {
                     case LuceneIndexState.Removed:
-                        writer.DeleteDocuments(new Term("Id", change.Entity.Id.ToString()));
+                        //writer.DeleteDocuments(new Term("Id", change.Entity.Id.ToString()));
                         writer.DeleteDocuments(new Term("IndexId", change.Entity.IndexId));
                         break;
 
                     case LuceneIndexState.Added:
                     case LuceneIndexState.Updated:
-                        writer.DeleteDocuments(new Term("Id", change.Entity.Id.ToString()));
+                        //writer.DeleteDocuments(new Term("Id", change.Entity.Id.ToString()));
                         writer.DeleteDocuments(new Term("IndexId", change.Entity.IndexId));
                         writer.AddDocument(change.Entity.ToDocument());
                         break;
