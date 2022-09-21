@@ -41,7 +41,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
         [NotMapped, JsonIgnore]
         public string IndexId
         {
-            get => GetType().Name + ":" + Id;
+            get => LuceneIndexerOptions.IndexIdGenerator(GetType(), Id);
 
             set
             {
@@ -69,6 +69,25 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 if (propertyValue == null)
                 {
                     continue;
+                }
+
+                {
+                    //1. 该处修复用IndexId去删除索引无效的问题
+                    if (propertyInfo.Name == nameof(LuceneIndexableBaseEntity.IndexId))
+                    {
+                        var filed = new Field(propertyInfo.Name, propertyValue.ToString(), new FieldType()
+                        {
+                            IsStored = true,
+                            IsIndexed = true,
+                            IsTokenized = false
+                        });
+                        doc.Add(filed);
+                        continue;
+                    }
+
+                    //2. 以Id为目标的删除放在其他处： 也利用到了IndexId
+
+
                 }
 
                 var attrs = propertyInfo.GetCustomAttributes<LuceneIndexAttribute>();
