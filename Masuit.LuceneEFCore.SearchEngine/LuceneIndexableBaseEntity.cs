@@ -71,23 +71,18 @@ namespace Masuit.LuceneEFCore.SearchEngine
                     continue;
                 }
 
+                //1. 该处修复用IndexId去删除索引无效的问题
+                //2. 以Id为目标的删除放在其他处： 也利用到了IndexId
+                if (propertyInfo.Name == nameof(IndexId))
                 {
-                    //1. 该处修复用IndexId去删除索引无效的问题
-                    if (propertyInfo.Name == nameof(LuceneIndexableBaseEntity.IndexId))
+                    var filed = new Field(propertyInfo.Name, propertyValue.ToString(), new FieldType
                     {
-                        var filed = new Field(propertyInfo.Name, propertyValue.ToString(), new FieldType()
-                        {
-                            IsStored = true,
-                            IsIndexed = true,
-                            IsTokenized = false
-                        });
-                        doc.Add(filed);
-                        continue;
-                    }
-
-                    //2. 以Id为目标的删除放在其他处： 也利用到了IndexId
-
-
+                        IsStored = true,
+                        IsIndexed = true,
+                        IsTokenized = false
+                    });
+                    doc.Add(filed);
+                    continue;
                 }
 
                 var attrs = propertyInfo.GetCustomAttributes<LuceneIndexAttribute>();
@@ -114,6 +109,10 @@ namespace Masuit.LuceneEFCore.SearchEngine
 
                         case double num:
                             doc.Add(new DoubleField(name, num, attr.Store));
+                            break;
+
+                        case Guid guid:
+                            doc.Add(new StringField(name, guid.ToString(), attr.Store));
                             break;
 
                         default:
