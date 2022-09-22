@@ -26,7 +26,6 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <RepositoryUrl>https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine</RepositoryUrl>
         <PackageTags>lucene;efcore;EntityFramework;masuit</PackageTags>
-        <ImplicitUsings>enable</ImplicitUsings>
         <Title>Masuit.LuceneEFCore.SearchEngine</Title>
     </PropertyGroup>
     <ItemGroup>
