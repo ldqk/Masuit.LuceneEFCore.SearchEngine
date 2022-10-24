@@ -37,7 +37,7 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// </summary>
         [LuceneIndex(Name = "IndexId", Store = Field.Store.YES)]
         [JsonIgnore, NotMapped]
-        string IndexId { get; set; }
+        internal string IndexId { get; set; }
 
         /// <summary>
         /// 转换成Lucene文档
