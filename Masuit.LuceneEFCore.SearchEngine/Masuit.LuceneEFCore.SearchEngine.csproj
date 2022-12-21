@@ -8,8 +8,8 @@
         <Description>基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎</Description>
         <Copyright>懒得勤快</Copyright>
         <PackageProjectUrl>https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine</PackageProjectUrl>
-        <PackageId>Masuit.LuceneEFCore.SearchEngine_int</PackageId>
-        <Version>1.2.2</Version>
+        <PackageId>Masuit.LuceneEFCore.SearchEngine_guid</PackageId>
+        <Version>1.2.3</Version>
         <Configurations>Debug;Release;String版本;Guid版本;Long版本</Configurations>
         <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
         <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
@@ -29,31 +29,35 @@
         <Title>Masuit.LuceneEFCore.SearchEngine</Title>
     </PropertyGroup>
     <ItemGroup>
-      <None Include="..\README.md">
-        <Pack>True</Pack>
-        <PackagePath>\</PackagePath>
-      </None>
+      <None Remove="Resources\dict.txt" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="JieBa.Lucene.Analyzer" Version="1.0.1" />
-        <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00005" />
+      <EmbeddedResource Include="Resources\dict.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="..\README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Lucene.JIEba.Segment.NetCore" Version="1.0" />
+        <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00016" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
         <PackageReference Include="TinyPinyin.Net" Version="1.0.2" />
     </ItemGroup>
-    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.1'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
-    </ItemGroup>
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net5'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net7'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
     </ItemGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'net6'">
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
     </ItemGroup>
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net7'">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0" />
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net5'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
     </ItemGroup>
-
+    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.1'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+    </ItemGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <DefineConstants>TRACE;Int</DefineConstants>
         <DocumentationFile>.\Masuit.LuceneEFCore.SearchEngine.xml</DocumentationFile>
