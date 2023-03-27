@@ -1,6 +1,6 @@
-### 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎
+### 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎(码数鲁森库)
  <a href="https://gitee.com/masuit/Masuit.LuceneEFCore.SearchEngine"><img src="https://gitee.com/static/images/logo-black.svg" height="32"></a> <a href="https://github.com/ldqk/Masuit.LuceneEFCore.SearchEngine"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Font_Awesome_5_brands_github.svg/54px-Font_Awesome_5_brands_github.svg.png" height="36"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/GitHub_logo_2013.svg/128px-GitHub_logo_2013.svg.png" height="28"></a>  
-**仅70KB的代码量！** 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索，支持添加自定义词库，自定义同义词和同音词，搜索分词默认支持同音词搜索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。  
+**仅70KB的代码量！新手友好。** 基于EntityFrameworkCore和Lucene.NET实现的全文检索搜索引擎，可轻松实现高性能的全文检索，支持添加自定义词库，自定义同义词和同音词，搜索分词默认支持同音词搜索。可以轻松应用于任何基于EntityFrameworkCore的实体框架数据库。  
 **`注意：该项目仅适用于单体项目的简单搜索场景，不适用于分布式应用以及复杂的搜索场景，分布式应用请考虑使用大型的搜索引擎中间件做支撑，如：ElasticSearch，或考虑数据库的正则表达式查询`**
 
 [官网页面](http://masuit.com/1437) | [实际应用案例体验](https://masuit.com/s?wd=会声会影+TeamViewer)
