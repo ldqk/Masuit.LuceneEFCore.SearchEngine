@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.1;net5;net6;net7</TargetFrameworks>
+        <TargetFrameworks>netstandard2.1;net5;net6;net7;net8</TargetFrameworks>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <Authors>懒得勤快</Authors>
         <Company>懒得勤快</Company>
@@ -43,8 +43,11 @@
     <ItemGroup>
         <PackageReference Include="Lucene.JIEba.Segment.NetCore" Version="1.0" />
         <PackageReference Include="Lucene.Net.QueryParser" Version="4.8.0-beta00016" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
         <PackageReference Include="TinyPinyin.Net" Version="1.0.2" />
+    </ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net8'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0" />
     </ItemGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'net7'">
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
