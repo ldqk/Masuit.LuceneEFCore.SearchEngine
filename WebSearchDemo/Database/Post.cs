@@ -1,4 +1,4 @@
-using Masuit.LuceneEFCore.SearchEngine;
+ï»¿using Masuit.LuceneEFCore.SearchEngine;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WebSearchDemo.Database
 {
     /// <summary>
-    /// ÎÄÕÂ
+    /// æ–‡ç« 
     /// </summary>
     [Table("Post")]
     public class Post : LuceneIndexableBaseEntity
@@ -17,44 +17,44 @@ namespace WebSearchDemo.Database
         }
 
         /// <summary>
-        /// ±êÌâ
+        /// æ ‡é¢˜
         /// </summary>
-        [Required(ErrorMessage = "ÎÄÕÂ±êÌâ²»ÄÜÎª¿Õ£¡"), LuceneIndex]
+        [Required(ErrorMessage = "æ–‡ç« æ ‡é¢˜ä¸èƒ½ä¸ºç©ºï¼"), LuceneIndex]
         public string Title { get; set; }
 
         /// <summary>
-        /// ×÷Õß
+        /// ä½œè€…
         /// </summary>
-        [Required, MaxLength(24, ErrorMessage = "×÷ÕßÃû×î³¤Ö§³Ö24¸ö×Ö·û£¡"), LuceneIndex]
+        [Required, MaxLength(24, ErrorMessage = "ä½œè€…åæœ€é•¿æ”¯æŒ24ä¸ªå­—ç¬¦ï¼"), LuceneIndex]
         public string Author { get; set; }
 
         /// <summary>
-        /// ÄÚÈİ
+        /// å†…å®¹
         /// </summary>
-        [Required(ErrorMessage = "ÎÄÕÂÄÚÈİ²»ÄÜÎª¿Õ£¡"), LuceneIndex(IsHtml = true)]
+        [Required(ErrorMessage = "æ–‡ç« å†…å®¹ä¸èƒ½ä¸ºç©ºï¼"), LuceneIndex(IsHtml = true)]
         public string Content { get; set; }
 
         /// <summary>
-        /// ·¢±íÊ±¼ä
+        /// å‘è¡¨æ—¶é—´
         /// </summary>
         public DateTime PostDate { get; set; }
 
         /// <summary>
-        /// ×÷ÕßÓÊÏä
+        /// ä½œè€…é‚®ç®±
         /// </summary>
-        [Required(ErrorMessage = "×÷ÕßÓÊÏä²»ÄÜÎª¿Õ£¡"), LuceneIndex]
+        [Required(ErrorMessage = "ä½œè€…é‚®ç®±ä¸èƒ½ä¸ºç©ºï¼"), LuceneIndex]
         public string Email { get; set; }
 
         /// <summary>
-        /// ±êÇ©
+        /// æ ‡ç­¾
         /// </summary>
-        [StringLength(256, ErrorMessage = "±êÇ©×î´óÔÊĞí255¸ö×Ö·û"), LuceneIndex]
+        [StringLength(256, ErrorMessage = "æ ‡ç­¾æœ€å¤§å…è®¸255ä¸ªå­—ç¬¦"), LuceneIndex]
         public string Label { get; set; }
 
         /// <summary>
-        /// ÎÄÕÂ¹Ø¼ü´Ê
+        /// æ–‡ç« å…³é”®è¯
         /// </summary>
-        [StringLength(256, ErrorMessage = "ÎÄÕÂ¹Ø¼ü´Ê×î´óÔÊĞí255¸ö×Ö·û"), LuceneIndex]
+        [StringLength(256, ErrorMessage = "æ–‡ç« å…³é”®è¯æœ€å¤§å…è®¸255ä¸ªå­—ç¬¦"), LuceneIndex]
         public string Keyword { get; set; }
 
     }
