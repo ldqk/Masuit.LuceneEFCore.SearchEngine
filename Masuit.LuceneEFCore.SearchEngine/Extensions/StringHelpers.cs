@@ -43,19 +43,5 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
 				@this.Add(obj);
 			}
 		}
-
-		/// <summary>
-		/// 移除符合条件的元素
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="this"></param>
-		/// <param name="where"></param>
-		public static void RemoveWhere<T>(this ICollection<T> @this, Func<T, bool> @where)
-		{
-			foreach (var obj in @this.Where(where).ToList())
-			{
-				@this.Remove(obj);
-			}
-		}
 	}
 }

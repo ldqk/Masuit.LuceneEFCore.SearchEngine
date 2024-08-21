@@ -108,6 +108,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             {
                 p.SetValue(obj, doc.Get(p.Name, p.PropertyType));
             }
+
             return obj;
         }
 
@@ -172,7 +173,12 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 if (typeof(IQueryable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType))
                 {
                     var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null) as IQueryable<ILuceneIndexable>;
-                    LuceneIndexer.CreateIndex(entities, false);
+                    var count = entities.Count();
+                    var pages = count * 1m / 100;
+                    for (int i = 0; i < pages; i++)
+                    {
+                        LuceneIndexer.CreateIndex(entities.Skip(i * 100).Take(100).ToList(), false);
+                    }
                 }
             }
         }
@@ -193,9 +199,22 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 if (typeof(IQueryable<ILuceneIndexable>).IsAssignableFrom(pi.PropertyType) && tables.Contains(pi.Name))
                 {
                     var entities = Context.GetType().GetProperty(pi.Name).GetValue(Context, null) as IQueryable<ILuceneIndexable>;
-                    LuceneIndexer.CreateIndex(entities, false);
+                    var count = entities.Count();
+                    var pages = count * 1m / 100;
+                    for (int i = 0; i < pages; i++)
+                    {
+                        LuceneIndexer.CreateIndex(entities.Skip(i * 100).Take(100).ToList(), false);
+                    }
                 }
             }
+        }
+
+        /// <summary>
+        /// 创建数据集索引
+        /// </summary>
+        public void CreateIndex(IEnumerable<ILuceneIndexable> entities, bool recreate = true)
+        {
+            LuceneIndexer.CreateIndex(entities,recreate);
         }
 
         /// <summary>
@@ -224,7 +243,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             var sw = Stopwatch.StartNew();
             foreach (var indexResult in indexResults.Results)
             {
-                var entity = (T)GetConcreteFromDocument(indexResult.Document);
+                var entity = (T) GetConcreteFromDocument(indexResult.Document);
                 resultSet.Results.Add(entity);
             }
 
@@ -255,7 +274,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
             {
                 IScoredSearchResult<T> result = new ScoredSearchResult<T>();
                 result.Score = indexResult.Score;
-                result.Entity = (T)GetConcreteFromDocument(indexResult.Document);
+                result.Entity = (T) GetConcreteFromDocument(indexResult.Document);
                 results.Results.Add(result);
             }
 

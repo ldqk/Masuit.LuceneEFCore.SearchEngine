@@ -104,6 +104,7 @@ namespace Masuit.LuceneEFCore.SearchEngine
                 {
                     writer.Commit();
                 }
+
                 writer.Flush(true, true);
             }
             catch (Exception ex)
@@ -141,23 +142,27 @@ namespace Masuit.LuceneEFCore.SearchEngine
             using var writer = new IndexWriter(_directory, config);
             foreach (var change in changeset.Entries)
             {
+                var type = change.Entity.GetType();
+                if (type.Assembly.IsDynamic && type.FullName.Contains("Prox"))
+                {
+                    type = type.BaseType;
+                }
+
                 switch (change.State)
                 {
                     case LuceneIndexState.Removed:
-                        //writer.DeleteDocuments(new Term("Id", change.Entity.Id.ToString()));
-                        writer.DeleteDocuments(new Term("IndexId", change.Entity.IndexId));
+                        writer.DeleteDocuments(new Term("IndexId", type.FullName + change.Entity.Id));
                         break;
 
                     case LuceneIndexState.Added:
                     case LuceneIndexState.Updated:
-                        //writer.DeleteDocuments(new Term("Id", change.Entity.Id.ToString()));
-                        writer.DeleteDocuments(new Term("IndexId", change.Entity.IndexId));
+                        writer.DeleteDocuments(new Term("IndexId", type.FullName + change.Entity.Id));
                         writer.AddDocument(change.Entity.ToDocument());
                         break;
                 }
             }
 
-            writer.Flush(true, changeset.HasDeletes);
+            writer.Flush(true, true);
             writer.Commit();
         }
 

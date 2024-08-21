@@ -33,13 +33,6 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
 #endif
 
         /// <summary>
-        /// 索引id
-        /// </summary>
-        [LuceneIndex(Name = "IndexId", Store = Field.Store.YES)]
-        [JsonIgnore, NotMapped]
-        internal string IndexId { get; set; }
-
-        /// <summary>
         /// 转换成Lucene文档
         /// </summary>
         /// <returns></returns>

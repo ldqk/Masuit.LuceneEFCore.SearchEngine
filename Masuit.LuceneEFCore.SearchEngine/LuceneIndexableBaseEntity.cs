@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Reflection;
 
 namespace Masuit.LuceneEFCore.SearchEngine
@@ -35,20 +36,6 @@ namespace Masuit.LuceneEFCore.SearchEngine
 #endif
 
         /// <summary>
-        /// 索引唯一id
-        /// </summary>
-        [LuceneIndex(Name = nameof(ILuceneIndexable.IndexId), Store = Field.Store.YES)]
-        [NotMapped, JsonIgnore]
-        string ILuceneIndexable.IndexId
-        {
-            get => LuceneIndexerOptions.IndexIdGenerator(GetType(), Id);
-
-            set
-            {
-            }
-        }
-
-        /// <summary>
         /// 转换成Lucene文档
         /// </summary>
         /// <returns></returns>
@@ -63,29 +50,21 @@ namespace Masuit.LuceneEFCore.SearchEngine
 
             var classProperties = type.GetProperties();
             doc.Add(new StringField("Type", type.AssemblyQualifiedName, Field.Store.YES));
+            doc.Add(new StringField("IndexId", type.FullName + Id, Field.Store.YES));
             foreach (var propertyInfo in classProperties)
             {
+                var attrs = propertyInfo.GetCustomAttributes<LuceneIndexAttribute>().ToList();
+                if (attrs.Count==0)
+                {
+                    continue;
+                }
+
                 var propertyValue = propertyInfo.GetValue(this);
                 if (propertyValue == null)
                 {
                     continue;
                 }
 
-                //1. 该处修复用IndexId去删除索引无效的问题
-                //2. 以Id为目标的删除放在其他处： 也利用到了IndexId
-                if (propertyInfo.Name == nameof(ILuceneIndexable.IndexId))
-                {
-                    var filed = new Field(propertyInfo.Name, propertyValue.ToString(), new FieldType
-                    {
-                        IsStored = true,
-                        IsIndexed = true,
-                        IsTokenized = false
-                    });
-                    doc.Add(filed);
-                    continue;
-                }
-
-                var attrs = propertyInfo.GetCustomAttributes<LuceneIndexAttribute>();
                 foreach (var attr in attrs)
                 {
                     string name = !string.IsNullOrEmpty(attr.Name) ? attr.Name : propertyInfo.Name;

@@ -1,10 +1,8 @@
 ﻿using Lucene.Net.Documents;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
 
 namespace Masuit.LuceneEFCore.SearchEngine.Extensions
 {
@@ -77,26 +75,5 @@ namespace Masuit.LuceneEFCore.SearchEngine.Extensions
 
 			return Convert.ChangeType(value, type);
 		}
-
-#if NET6_0_OR_GREATER
-#else
-
-		/// <summary>
-		/// 按字段去重
-		/// </summary>
-		/// <typeparam name="TSource"></typeparam>
-		/// <typeparam name="TKey"></typeparam>
-		/// <param name="source"></param>
-		/// <param name="keySelector"></param>
-		/// <returns></returns>
-		public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
-		{
-			if (source == null) throw new ArgumentNullException(nameof(source));
-			if (keySelector == null) throw new ArgumentNullException(nameof(keySelector));
-			var set = new HashSet<TKey>();
-			return source.Where(item => set.Add(keySelector(item)));
-		}
-
-#endif
 	}
 }

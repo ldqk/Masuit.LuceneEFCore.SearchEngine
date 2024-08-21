@@ -35,6 +35,12 @@ namespace Masuit.LuceneEFCore.SearchEngine.Interfaces
         /// 创建指定数据表的索引
         /// </summary>
         void CreateIndex(List<string> tables);
+        /// <summary>
+        /// 创建数据集索引
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <param name="recreate"></param>
+        void CreateIndex(IEnumerable<ILuceneIndexable> entities, bool recreate = true);
 
         /// <summary>
         /// 删除索引
