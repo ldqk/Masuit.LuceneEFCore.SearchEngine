@@ -39,9 +39,9 @@ namespace Masuit.LuceneEFCore.SearchEngine
         {
             get
             {
-                foreach (var field in Fields.Where(field => _boosts.All(x => x.Key.ToUpper() != field.ToUpper())))
+                foreach (var @field in Fields.Where(@field => _boosts.All(x => x.Key.ToUpper() != @field.ToUpper())))
                 {
-                    _boosts.Add(field, 2.0f);
+                    _boosts.Add(@field, 2.0f);
                 }
 
                 return _boosts;
